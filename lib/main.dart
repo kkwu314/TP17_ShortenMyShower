@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import 'dart:async';
@@ -15,6 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Shorten My Shower',
       theme: ThemeData(
         // This is the theme of your application.
@@ -43,69 +46,477 @@ class LandingPage extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.blue[300],
         title: HomeNav(),
         toolbarHeight: 180,
       ),
-      body: Container(
-        height: 1920,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/background.jpg"),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: SingleChildScrollView(
-            child: Column(
+
+      body: SingleChildScrollView(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                  height: size.height / 2,
-                  width: size.width / 2,
-                  //color: Colors.amber,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+            Container(
+              height: 640,
+              decoration: BoxDecoration(
+                color: Colors.blue[200],
+                image: DecorationImage(
+                  image: AssetImage("assets/images/background.jpg"),
+                  fit: BoxFit.fitHeight,
+                ),
+              ),
+              child: Container(
+                height: 600,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/background.jpg"),
+                    fit: BoxFit.contain,
+                  ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        FittedBox(
+                          child: Column(
+                            children: [
+                              Text(
+                                "Water in \n        Australia".toUpperCase(),
+                                style: TextStyle(
+                                    fontSize: 50, fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                " abcdfefaoiefjaoifjaojfai \n abcdfefaoiefjaoifjaojfai ",
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: 50,
+                          color: Colors.amber,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            Icon(
+              Icons.arrow_downward,
+              size: 60,
+              color: Colors.blue[300],
+            ),
+            //
+            WaterStats(),
+            //
+            FittedBox(
+              // height: 300,
+              // color: Colors.blue[100],
+              // width: 1200,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // picture
+                  Column(
                     children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      Row(
                         children: [
                           Text(
-                            "Water in \n       Australia".toUpperCase(),
+                            "1 ",
                             style: TextStyle(
-                                fontSize: 50, fontWeight: FontWeight.bold),
+                                color: Colors.black87,
+                                fontSize: 60,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic),
                           ),
-                          SizedBox(
-                            height: 20.0,
-                          ),
-                          ElevatedButton(
-                              onPressed: () {},
-                              child: Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Icon(
-                                      Icons.info,
-                                      size: 50.0,
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 100,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                            "assets/images/water_strong.jpg"),
+                                        fit: BoxFit.fitWidth,
+                                      ),
+                                      borderRadius: BorderRadius.circular(20)),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    width: 300,
+                                    // color: Colors.orange[300],
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          "The aim is 155 Litres \nper person per day",
+                                          style: TextStyle(
+                                              color: Colors.black87,
+                                              fontSize: 20),
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text('Learn More'),
-                                  )
-                                ],
-                              ))
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
+
+                      Row(
+                        children: [
+                          Text(
+                            "2 ",
+                            style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 60,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 100,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                            "assets/images/water_stars.jpg"),
+                                        fit: BoxFit.fitWidth,
+                                      ),
+                                      borderRadius: BorderRadius.circular(20)),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    width: 300,
+                                    // color: Colors.orange[300],
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          "By shorten shower time  \nunder 4 Minutes",
+                                          style: TextStyle(
+                                              color: Colors.black87,
+                                              fontSize: 20),
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "3 ",
+                            style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 60,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 100,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                            "assets/images/water_money.jpg"),
+                                        fit: BoxFit.fitWidth,
+                                      ),
+                                      borderRadius: BorderRadius.circular(20)),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    width: 300,
+                                    //color: Colors.orange[600],
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          "Estimate to save \n200 AUD per year",
+                                          style: TextStyle(
+                                              color: Colors.black87,
+                                              fontSize: 20),
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "4 ",
+                            style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 60,
+                                fontWeight: FontWeight.bold,
+                                fontStyle: FontStyle.italic),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 100,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                            "assets/images/water_love.jpg"),
+                                        fit: BoxFit.fitWidth,
+                                      ),
+                                      borderRadius: BorderRadius.circular(20)),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    width: 300,
+                                    //color: Colors.orange[100],
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          "Reduce about 359 kg CO2 \nGHG emissions per year",
+                                          style: TextStyle(
+                                              color: Colors.black87,
+                                              fontSize: 20),
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      //
                     ],
                   ),
-                )
-              ],
-            ),
+
+                  //
+                ],
+              ),
+            )
           ],
-        )),
+        ),
+      ),
+
+      //),
+    );
+  }
+}
+
+class WaterStats extends StatelessWidget {
+  const WaterStats({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FittedBox(
+      // height: 300,
+      // color: Colors.blue[100],
+      // width: 1200,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // picture
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 300,
+                      height: 300,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/water_strong.jpg"),
+                            fit: BoxFit.fitWidth,
+                          ),
+                          borderRadius: BorderRadius.circular(50)),
+                    ),
+                    Text(
+                      "155 Litres",
+                      style: TextStyle(color: Colors.black87, fontSize: 40),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Icon(
+                      Icons.water_drop,
+                      color: Colors.blue[400],
+                      size: 100,
+                    ),
+                  ],
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 300,
+                      height: 300,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/water_stars.jpg"),
+                            fit: BoxFit.fitWidth,
+                          ),
+                          borderRadius: BorderRadius.circular(50)),
+                    ),
+                    Container(
+                      width: 300,
+                      // color: Colors.orange[300],
+                      child: Column(
+                        children: [
+                          Text(
+                            "4 Minutes",
+                            style:
+                                TextStyle(color: Colors.black87, fontSize: 40),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Icon(
+                            Icons.timer,
+                            color: Colors.blue[400],
+                            size: 100,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 300,
+                      height: 300,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/water_money.jpg"),
+                            fit: BoxFit.fitWidth,
+                          ),
+                          borderRadius: BorderRadius.circular(50)),
+                    ),
+                    Container(
+                      width: 300,
+                      //color: Colors.orange[600],
+                      child: Column(
+                        children: [
+                          Text(
+                            "200 Aud",
+                            style:
+                                TextStyle(color: Colors.black87, fontSize: 40),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Icon(
+                            Icons.attach_money_rounded,
+                            color: Colors.blue[400],
+                            size: 100,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 300,
+                      height: 300,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/water_love.jpg"),
+                            fit: BoxFit.fitWidth,
+                          ),
+                          borderRadius: BorderRadius.circular(50)),
+                    ),
+                    Container(
+                      width: 300,
+                      //color: Colors.orange[100],
+                      child: Column(
+                        children: [
+                          Text(
+                            "359 Kg",
+                            style:
+                                TextStyle(color: Colors.black87, fontSize: 40),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Icon(
+                            Icons.co2,
+                            size: 100,
+                            color: Colors.blue[400],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              //
+            ],
+          ),
+
+          //
+        ],
       ),
     );
   }
@@ -119,52 +530,63 @@ class HomeNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 180,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/images/background.jpg"),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Row(
-          children: [
-            Image.asset(
-              "assets/images/logo.png",
-              height: 100,
-              alignment: Alignment.topCenter,
-            ),
-            const SizedBox(width: 5),
-            Text(
-              "Shorten My Shower".toUpperCase(),
-              style: const TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-                //color: kPrimaryColor,
+      height: 200,
+      // decoration: BoxDecoration(
+      //   image: DecorationImage(
+      //     image: AssetImage("assets/images/background.jpg"),
+      //     fit: BoxFit.fitWidth,
+      //   ),
+      // ),
+      color: Colors.blue[100],
+      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Expanded(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Image.asset(
+                "assets/images/logo.png",
+                height: 100,
+                alignment: Alignment.topCenter,
               ),
-            ),
-          ],
+              const SizedBox(width: 5),
+              Text(
+                "Shorten My Shower".toUpperCase(),
+                style: const TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  //color: kPrimaryColor,
+                ),
+              ),
+            ],
+          ),
         ),
         //
+        SizedBox(
+          height: 10.0,
+        ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.all(4.0),
               child: TextButton(
                   style: TextButton.styleFrom(
-                      primary: Colors.white,
+                      primary: Colors.black,
                       textStyle:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/');
+                  },
                   child: const Text("Home")),
             ),
             Padding(
               padding: const EdgeInsets.all(4.0),
               child: TextButton(
                   style: TextButton.styleFrom(
-                      primary: Colors.white,
+                      primary: Colors.black,
                       textStyle:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       shape: RoundedRectangleBorder(
@@ -178,7 +600,7 @@ class HomeNav extends StatelessWidget {
               padding: const EdgeInsets.all(4.0),
               child: TextButton(
                   style: TextButton.styleFrom(
-                      primary: Colors.white,
+                      primary: Colors.black,
                       textStyle:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       shape: RoundedRectangleBorder(
@@ -190,7 +612,7 @@ class HomeNav extends StatelessWidget {
               padding: const EdgeInsets.all(4.0),
               child: TextButton(
                   style: TextButton.styleFrom(
-                      primary: Colors.white,
+                      primary: Colors.black,
                       textStyle:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       shape: RoundedRectangleBorder(
@@ -202,7 +624,7 @@ class HomeNav extends StatelessWidget {
               padding: const EdgeInsets.all(4.0),
               child: TextButton(
                   style: TextButton.styleFrom(
-                      primary: Colors.white,
+                      primary: Colors.black,
                       textStyle:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       shape: RoundedRectangleBorder(
@@ -211,216 +633,14 @@ class HomeNav extends StatelessWidget {
                   child: const Text("Login")),
             ),
           ],
+        ),
+        SizedBox(
+          height: 20.0,
         )
       ]),
     );
   }
 }
-
-// class TimerPage extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     Size size = MediaQuery.of(context).size;
-//     return Scaffold(
-//       appBar: AppBar(
-//         backgroundColor: Colors.blue[300],
-//         title: HomeNav(),
-//         toolbarHeight: 180,
-//       ),
-//       body: Container(
-//         height: 1920,
-//         decoration: BoxDecoration(
-//           image: DecorationImage(
-//             image: AssetImage("assets/images/background.jpg"),
-//             fit: BoxFit.cover,
-//           ),
-//         ),
-//         child: SingleChildScrollView(
-//             child: Column(
-//           mainAxisAlignment: MainAxisAlignment.start,
-//           children: [
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.start,
-//               children: [
-//                 Container(
-//                   height: size.height / 2,
-//                   width: size.width / 2,
-//                   //color: Colors.amber,
-//                   child: Row(
-//                     mainAxisAlignment: MainAxisAlignment.center,
-//                     children: [
-//                       Column(
-//                         mainAxisAlignment: MainAxisAlignment.center,
-//                         children: [
-//                           Text(
-//                             "Time in \n       Australia".toUpperCase(),
-//                             style: TextStyle(
-//                                 fontSize: 50, fontWeight: FontWeight.bold),
-//                           ),
-//                           SizedBox(
-//                             height: 20.0,
-//                           ),
-//                           ElevatedButton(
-//                               onPressed: () {},
-//                               child: Row(
-//                                 children: [
-//                                   Padding(
-//                                     padding: const EdgeInsets.all(8.0),
-//                                     child: Icon(
-//                                       Icons.info,
-//                                       size: 50.0,
-//                                     ),
-//                                   ),
-//                                   Padding(
-//                                     padding: const EdgeInsets.all(8.0),
-//                                     child: Text('Learn More'),
-//                                   )
-//                                 ],
-//                               ))
-//                         ],
-//                       ),
-//                     ],
-//                   ),
-//                 )
-//               ],
-//             ),
-//           ],
-//         )),
-//       ),
-//     );
-//   }
-// }
-
-// class TimerPage extends StatefulWidget {
-//   @override
-//   _TimerPageState createState() => _TimerPageState();
-// }
-
-// class _TimerPageState extends State<TimerPage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     Size size = MediaQuery.of(context).size;
-//     return Scaffold(
-//       body: Container(
-//         height: size.height,
-//         width: size.width,
-//         child: Column(
-//           children: [
-//             Container(
-//               color: Colors.blue[200],
-//               child: Padding(
-//                 padding: const EdgeInsets.all(50.0),
-//                 child: Row(
-//                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                     children: [
-//                       Container(
-//                         child: Row(
-//                           children: [
-//                             Image.asset(
-//                               "assets/images/logo.png",
-//                               height: 100,
-//                               alignment: Alignment.topCenter,
-//                             ),
-//                             SizedBox(width: 5),
-//                             Text(
-//                               "Shorten My Shower".toUpperCase(),
-//                               style: TextStyle(
-//                                 fontSize: 30,
-//                                 fontWeight: FontWeight.bold,
-//                                 //color: kPrimaryColor,
-//                               ),
-//                             ),
-//                           ],
-//                         ),
-//                       ),
-//                       //
-//                       Container(
-//                         child: Row(
-//                           children: [
-//                             Padding(
-//                               padding: const EdgeInsets.all(4.0),
-//                               child: ElevatedButton(
-//                                   style: ElevatedButton.styleFrom(
-//                                       primary: Colors.white,
-//                                       onPrimary: Colors.black,
-//                                       fixedSize: Size(100, 60),
-//                                       shape: RoundedRectangleBorder(
-//                                           borderRadius:
-//                                               BorderRadius.circular(50))),
-//                                   onPressed: () {
-//                                     Navigator.pushNamed(context, '/');
-//                                   },
-//                                   child: Text("Home")),
-//                             ),
-//                             Padding(
-//                               padding: const EdgeInsets.all(4.0),
-//                               child: ElevatedButton(
-//                                   style: ElevatedButton.styleFrom(
-//                                       primary: Colors.blue[300],
-//                                       onPrimary: Colors.black,
-//                                       fixedSize: Size(100, 60),
-//                                       shape: RoundedRectangleBorder(
-//                                           borderRadius:
-//                                               BorderRadius.circular(50))),
-//                                   onPressed: () {
-//                                     Navigator.pushNamed(context, '/timer');
-//                                   },
-//                                   child: Text("Timer")),
-//                             ),
-//                             Padding(
-//                               padding: const EdgeInsets.all(4.0),
-//                               child: ElevatedButton(
-//                                   style: ElevatedButton.styleFrom(
-//                                       primary: Colors.white,
-//                                       onPrimary: Colors.black,
-//                                       fixedSize: Size(100, 60),
-//                                       shape: RoundedRectangleBorder(
-//                                           borderRadius:
-//                                               BorderRadius.circular(50))),
-//                                   onPressed: () {},
-//                                   child: Text("Estimation")),
-//                             ),
-//                             Padding(
-//                               padding: const EdgeInsets.all(4.0),
-//                               child: ElevatedButton(
-//                                   style: ElevatedButton.styleFrom(
-//                                       primary: Colors.white,
-//                                       onPrimary: Colors.black,
-//                                       fixedSize: Size(100, 60),
-//                                       shape: RoundedRectangleBorder(
-//                                           borderRadius:
-//                                               BorderRadius.circular(50))),
-//                                   onPressed: () {},
-//                                   child: Text("Refletion")),
-//                             ),
-//                             Padding(
-//                               padding: const EdgeInsets.all(4.0),
-//                               child: ElevatedButton(
-//                                   style: ElevatedButton.styleFrom(
-//                                       primary: Colors.white,
-//                                       onPrimary: Colors.black,
-//                                       fixedSize: Size(100, 60),
-//                                       shape: RoundedRectangleBorder(
-//                                           borderRadius:
-//                                               BorderRadius.circular(50))),
-//                                   onPressed: () {},
-//                                   child: Text("Login")),
-//                             ),
-//                           ],
-//                         ),
-//                       )
-//                     ]),
-//               ),
-//             ),
-//             Expanded(
-//               child: BodyTimerPage(),
-//             )
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
 
 class BodyTimerPage extends StatefulWidget {
   const BodyTimerPage({Key? key}) : super(key: key);
@@ -433,6 +653,8 @@ class _BodyTimerPageState extends State<BodyTimerPage> {
   //
   Duration duration = Duration();
   Timer? timer;
+  List<Widget> _reportList = [];
+  bool isShown = false;
 
   @override
   void initState() {
@@ -480,11 +702,18 @@ class _BodyTimerPageState extends State<BodyTimerPage> {
     });
   }
 
+  void setShowReport() {
+    setState(() {
+      isShown = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.blue[300],
         title: HomeNav(),
         toolbarHeight: 180,
@@ -495,33 +724,44 @@ class _BodyTimerPageState extends State<BodyTimerPage> {
         decoration: BoxDecoration(
           color: Colors.blue[100],
         ),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          // CustomAppBar(),
-          // Obx(() => Row(children: [
-          //       Container(
-          //           padding: EdgeInsets.fromLTRB(30, 20, 0, 0),
-          //           child: Text(menuController.activeItem.value,
-          //               style: TextStyle(
-          //                   fontSize: 24, fontWeight: FontWeight.bold)))
-          //     ])),
-          Center(
-            child: Column(
-              children: [
-                buildIcons(),
-                buildTime(),
-                SizedBox(
-                  height: 24.0,
-                ),
-                buildButtons(),
-                Row(
+        child: SingleChildScrollView(
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Center(
+              child: Column(
+                children: [
+                  // buildIcons(),
+
+                  Container(
+                    height: 60,
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: _starsForRatings()),
+                  ),
+                  SizedBox(
+                    height: 24.0,
+                  ),
+                  buildTime(),
+                  SizedBox(
+                    height: 24.0,
+                  ),
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: _starsForRatings()),
-                buildReport(),
-                buildTimerData(duration.inSeconds.toString())
-              ],
+                    children: [
+                      Container(height: 50, child: buildButtons()),
+                      Container(height: 50, child: buildReset()),
+                    ],
+                  ),
+
+                  buildTimerData(duration.inSeconds.toString()),
+                  //
+
+                  //
+                ],
+              ),
             ),
-          ),
-        ]),
+          ]),
+        ),
       ),
     );
   }
@@ -530,15 +770,15 @@ class _BodyTimerPageState extends State<BodyTimerPage> {
     return Text(timedata);
   }
 
-  Widget buildReport() {
-    return ElevatedButton(
-      child: Text("Get A report"),
-      onPressed: () {
-        // navigate to new page and pass the record time
-        print('${duration.inSeconds} second passing to report');
-      },
-    );
-  }
+  // Widget buildReport() {
+  //   return ElevatedButton(
+  //     child: Text("Get A report"),
+  //     onPressed: () {
+  //       // navigate to new page and pass the record time
+  //       print('${duration.inSeconds} second passing to report');
+  //     },
+  //   );
+  // }
 
   //
   List<Icon> _starsForRatings() {
@@ -546,7 +786,7 @@ class _BodyTimerPageState extends State<BodyTimerPage> {
     //
 
     // for (int i = 0; i < duration.inMinutes.remainder(60); i++) {
-    for (int i = 0; i < duration.inSeconds.remainder(60); i++) {
+    for (int i = 0; i < duration.inSeconds.remainder(4); i++) {
       stars.add(Icon(
         Icons.water_drop,
         color: Colors.blue[300],
@@ -556,65 +796,130 @@ class _BodyTimerPageState extends State<BodyTimerPage> {
     return stars;
   }
 
-  Widget buildIcons() {
-    final isRunning = timer == null ? false : timer!.isActive;
-    final isCompleted = duration.inSeconds == 0;
+  // Widget buildIcons() {
+  //   final isRunning = timer == null ? false : timer!.isActive;
+  //   final isCompleted = duration.inSeconds == 0;
 
-    return isRunning || !isCompleted
-        ? Image.asset('images/icons8-rain.gif', width: 60.0, height: 60.0)
-        : Container(
-            width: 60,
-            height: 60,
-            child: Icon(
-              Icons.cloud,
-              size: 50,
-            ),
-          );
-  }
+  //   return isRunning || !isCompleted
+  //       // ? Image.asset('images/icons8-rain.gif', width: 60.0, height: 60.0)
+  //       ? null
+  //       : Container(
+  //           width: 60,
+  //           height: 60,
+  //           child: Icon(
+  //             Icons.cloud,
+  //             size: 50,
+  //           ),
+  //         );
+  // }
 
   Widget buildButtons() {
     final isRunning = timer == null ? false : timer!.isActive;
     final isCompleted = duration.inSeconds == 0;
 
-    return isRunning || !isCompleted
+    return !isRunning && isCompleted
         ? Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
-                child: isRunning
-                    ? Text(
-                        "Stop",
-                        style: TextStyle(color: Colors.redAccent),
-                      )
-                    : Text(
-                        "Resume",
-                        style: TextStyle(color: Colors.black),
-                      ),
-                onPressed: () {
-                  if (isRunning) {
-                    stopTimer(resets: false);
-                  } else {
-                    startTimer(resets: false);
-                  }
-                },
-              ),
-              ElevatedButton(
+                style: ElevatedButton.styleFrom(fixedSize: Size(120, 120)),
                 child: Text(
-                  "Reset",
-                  style: TextStyle(color: Colors.redAccent),
+                  "Start",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 26),
                 ),
                 onPressed: () {
-                  reset();
+                  startTimer();
                 },
               ),
             ],
           )
-        : ElevatedButton(
-            child: Text("Start"),
-            onPressed: () {
-              startTimer();
-            },
-          );
+        : isRunning && !isCompleted
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(fixedSize: Size(120, 120)),
+                    child: Text(
+                      "Stop",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 26),
+                    ),
+                    onPressed: () {
+                      stopTimer(resets: false);
+                    },
+                  ),
+                ],
+              )
+            : Row();
+    // : ElevatedButton(
+    //     child: Text(
+    //       "Reset",
+    //       style: TextStyle(color: Colors.redAccent),
+    //     ),
+    //     onPressed: () {
+    //       reset();
+    //     },
+    //   );
+  }
+
+  Widget buildReset() {
+    final isRunning = timer == null ? false : timer!.isActive;
+    final isCompleted = duration.inSeconds == 0;
+
+    return !isRunning
+        ? isCompleted
+            ? Row()
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(fixedSize: Size(100, 100)),
+                    child: Text(
+                      "Reset",
+                      style: TextStyle(
+                          color: Colors.red[300],
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
+                    ),
+                    onPressed: () {
+                      reset();
+                    },
+                  ),
+                  SizedBox(
+                    width: 15.0,
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(fixedSize: Size(120, 120)),
+                    child: Text(
+                      "Get a report",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16),
+                    ),
+                    onPressed: () {
+                      // navigate to new page and pass the record time
+                      print('${duration.inSeconds} second passing to report');
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ShowerReport(
+                            minutes: duration.inMinutes.toString(),
+                            seconds: duration.inSeconds.toString(),
+                          ),
+                        ),
+                      );
+                    },
+                  )
+                ],
+              )
+        : Row();
   }
 
   //
@@ -637,6 +942,11 @@ class _BodyTimerPageState extends State<BodyTimerPage> {
 
   Widget buildTimeCard({required String time, required String header}) {
     return Container(
+      padding: EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        color: Colors.blue[300],
+        borderRadius: BorderRadius.circular(20),
+      ),
       child: Column(
         children: [
           const SizedBox(
@@ -660,137 +970,83 @@ class _BodyTimerPageState extends State<BodyTimerPage> {
           const SizedBox(
             height: 24.0,
           ),
-          Text(header),
+          Text(
+            header,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+              fontSize: 20.0,
+            ),
+          ),
         ],
       ),
     );
   }
 }
-//
 
-// const kPrimaryColor = Color(0xFF8BB4FF);
-// const kTextcolor = Color(0xFF241424);
-// const kDarkButton = Color(0xFF372930);
-// const lightBackground = Color(0xFFCAECFF);
+class ShowerReport extends StatelessWidget {
+  final minutes;
+  final seconds;
 
-// class HomePage extends StatelessWidget {
-//   const HomePage({Key? key}) : super(key: key);
+  const ShowerReport({Key? key, this.minutes, this.seconds}) : super(key: key);
 
-//   @override
-//   Widget build(BuildContext context) {
-//     Size size = MediaQuery.of(context).size;
-//     return Scaffold(
-//       body: Container(
-//         height: size.height,
-//         width: size.width,
-//         decoration: const BoxDecoration(
-//           image: DecorationImage(
-//               image: AssetImage("assets/images/background.jpg"),
-//               fit: BoxFit.cover),
-//         ),
-// child: Expanded(
-//   child: Column(
-//     crossAxisAlignment: CrossAxisAlignment.start,
-//     children: <Widget>[
-//       Padding(
-//         padding: const EdgeInsets.all(50.0),
-//         child:
-//               ),
-//               const SizedBox(
-//                 height: 100,
-//               ),
-//               //
-//               Spacer(),
-
-//               //HomeBody(),
-
-//               Spacer(
-//                 flex: 2,
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class HomeBody extends StatelessWidget {
-//   const HomeBody({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(
-//         horizontal: 20,
-//       ),
-//       child: Padding(
-//         padding: const EdgeInsets.only(left: 100.0),
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: <Widget>[
-//             Padding(
-//               padding: const EdgeInsets.only(bottom: 20.0),
-//               child: Text("Water in \nAustralia".toUpperCase(),
-//                   style: Theme.of(context).textTheme.headline1!.copyWith(
-//                         color: kTextcolor,
-//                         fontWeight: FontWeight.bold,
-//                       )),
-//             ),
-//             Padding(
-//               padding: const EdgeInsets.only(top: 8.0),
-//               child: Text(
-//                 "Blahblahblahblahblahblahblahblahblahblahblahblah\nblahblahblahblahblahblahblahahblah\nblahblahblahblahblahblahblahblah\nblahblahblahblahblah",
-//                 style: TextStyle(
-//                   fontSize: 21,
-//                   color: kTextcolor.withOpacity(0.5),
-//                 ),
-//               ),
-//             ),
-//             FittedBox(
-//               child: Container(
-//                 margin: EdgeInsets.symmetric(vertical: 20),
-//                 padding: EdgeInsets.all(15),
-//                 decoration: BoxDecoration(
-//                   color: Color(0xFF3D3E41),
-//                   borderRadius: BorderRadius.circular(34),
-//                 ),
-//                 child: Row(
-//                   children: <Widget>[
-//                     Container(
-//                       padding: EdgeInsets.all(10),
-//                       height: 38,
-//                       width: 38,
-//                       decoration: BoxDecoration(
-//                         color: kPrimaryColor,
-//                         shape: BoxShape.circle,
-//                       ),
-//                       child: Container(
-//                         decoration: BoxDecoration(
-//                           color: Color(0xFF3D3E41),
-//                           shape: BoxShape.circle,
-//                         ),
-//                       ),
-//                     ),
-//                     SizedBox(width: 15),
-//                     Text(
-//                       "Learn More".toUpperCase(),
-//                       style: TextStyle(
-//                         color: Colors.white,
-//                         fontWeight: FontWeight.bold,
-//                         fontSize: 19,
-//                       ),
-//                     ),
-//                     SizedBox(
-//                       width: 15,
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.blue[300],
+        title: HomeNav(),
+        toolbarHeight: 180,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(
+              width: 500,
+              height: 500,
+              color: Colors.blue[200],
+              child: Column(children: [
+                SizedBox(
+                  height: 50,
+                ),
+                Text(
+                  'Shower Time Report',
+                  style: TextStyle(fontSize: 36),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  child: Image.asset(
+                    "images/water_stars.jpg",
+                    width: 150,
+                    height: 150,
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Your this shower time is ",
+                  style: TextStyle(fontSize: 20),
+                ),
+                Text(
+                  "${minutes} minutes ${seconds} seconds",
+                  style: TextStyle(fontSize: 20),
+                ),
+                Text(
+                  "Your are super shower star !",
+                  style: TextStyle(fontSize: 20),
+                ),
+              ]),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
