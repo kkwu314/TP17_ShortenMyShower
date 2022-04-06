@@ -3,10 +3,20 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "87a46ba1874c9017aff773f6d77c22cc",
+  "assets/AssetManifest.json": "4793d0fcb6c4f9f3b63fee67e25e2555",
 "assets/assets/images/background.jpg": "4544ffcd97825d99c5716f6e32a33ff2",
 "assets/assets/images/icons8-rain.gif": "7f3dd8ced7fb2a89f7111b868d502b4b",
 "assets/assets/images/logo.png": "bee3faabdb849409707c147e30f3eda4",
+"assets/assets/images/water_bye.jpg": "4126d084f83d61c5c151ea9e16c4e487",
+"assets/assets/images/water_cry.jpg": "10b24fa6df12ade5327d9e677dcebdad",
+"assets/assets/images/water_drop.jpg": "fbff624c2fc7d5d164900c19deac2a8c",
+"assets/assets/images/water_glass.jpg": "1a2970d9c629b5285bd0af990d88b76b",
+"assets/assets/images/water_love.jpg": "a8a12f9c8e8d143c047e58feeaeaf42f",
+"assets/assets/images/water_mad.jpg": "79bdb7e687ea8564fc884727fbddca62",
+"assets/assets/images/water_money.jpg": "9f3d02de12372762547294719fe4b217",
+"assets/assets/images/water_normal.jpg": "27e7ae10d84c6fede4184baf50d21160",
+"assets/assets/images/water_stars.jpg": "cd3c5e5034850e591660b193048ddb99",
+"assets/assets/images/water_strong.jpg": "46c9c7f0064bba8f32f64d9fb76d7a98",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
 "assets/fonts/MaterialIcons-Regular.otf": "95db9098c58fd6db106f1116bae85a0b",
 "assets/NOTICES": "2d7236aca695ba4cd213a3478e55d740",
@@ -21,9 +31,9 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "82d52eadd75d973c01860fd5d67db0f0",
-"/": "82d52eadd75d973c01860fd5d67db0f0",
-"main.dart.js": "edda2db27997a6284c036f7d5f382325",
+"index.html": "1d889df7720e1166eff5e2e48fa8409e",
+"/": "1d889df7720e1166eff5e2e48fa8409e",
+"main.dart.js": "513c7fd67eea5671105ab90066d0b27f",
 "manifest.json": "f0dbebcdbf873311c2c3c70e6e111e13",
 "version.json": "1f8373c1f4e85b6217b1268f1a8a2e17"
 };
