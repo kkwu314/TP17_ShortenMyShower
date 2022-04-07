@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'Shorten My Shower',
       theme: ThemeData(
         // This is the theme of your application.
@@ -36,6 +35,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => LandingPage(),
         '/timer': (context) => BodyTimerPage(),
       },
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -83,265 +83,519 @@ class LandingPage extends StatelessWidget {
                           child: Column(
                             children: [
                               Text(
-                                "Water in \n        Australia".toUpperCase(),
+                                "Shorten my \n             shower"
+                                    .toUpperCase(),
                                 style: TextStyle(
                                     fontSize: 50, fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                " abcdfefaoiefjaoifjaojfai \n abcdfefaoiefjaoifjaojfai ",
+                                "Saving water for Australia \n ",
                                 style: TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                "Adult Generation Z (18-25) in Victoria \ncares about water conservation \nbut does not have good water habits. \nWe aim to improve the awareness of saving water \nvia developing a 4 minutes shower habit. ",
+                                style: TextStyle(
+                                    fontStyle: FontStyle.italic,
+                                    color: Colors.black87),
                               ),
                             ],
                           ),
                         ),
-                        Container(
-                          width: 50,
-                          color: Colors.amber,
-                        ),
+                        // Container(
+                        //   width: 50,
+                        //   color: Colors.amber,
+                        // ),
                       ],
                     ),
                   ],
                 ),
               ),
             ),
-
-            Icon(
-              Icons.arrow_downward,
-              size: 60,
-              color: Colors.blue[300],
+            SizedBox(
+              height: 18,
             ),
-            //
-            WaterStats(),
-            //
             FittedBox(
-              // height: 300,
-              // color: Colors.blue[100],
-              // width: 1200,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+              child: Row(
                 children: [
-                  // picture
-                  Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            "1 ",
-                            style: TextStyle(
-                                color: Colors.black87,
-                                fontSize: 60,
-                                fontWeight: FontWeight.bold,
-                                fontStyle: FontStyle.italic),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        image: AssetImage(
-                                            "assets/images/water_strong.jpg"),
-                                        fit: BoxFit.fitWidth,
-                                      ),
-                                      borderRadius: BorderRadius.circular(20)),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    width: 300,
-                                    // color: Colors.orange[300],
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          "The aim is 155 Litres \nper person per day",
-                                          style: TextStyle(
-                                              color: Colors.black87,
-                                              fontSize: 20),
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      Row(
-                        children: [
-                          Text(
-                            "2 ",
-                            style: TextStyle(
-                                color: Colors.black87,
-                                fontSize: 60,
-                                fontWeight: FontWeight.bold,
-                                fontStyle: FontStyle.italic),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        image: AssetImage(
-                                            "assets/images/water_stars.jpg"),
-                                        fit: BoxFit.fitWidth,
-                                      ),
-                                      borderRadius: BorderRadius.circular(20)),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    width: 300,
-                                    // color: Colors.orange[300],
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          "By shorten shower time  \nunder 4 Minutes",
-                                          style: TextStyle(
-                                              color: Colors.black87,
-                                              fontSize: 20),
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            "3 ",
-                            style: TextStyle(
-                                color: Colors.black87,
-                                fontSize: 60,
-                                fontWeight: FontWeight.bold,
-                                fontStyle: FontStyle.italic),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        image: AssetImage(
-                                            "assets/images/water_money.jpg"),
-                                        fit: BoxFit.fitWidth,
-                                      ),
-                                      borderRadius: BorderRadius.circular(20)),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    width: 300,
-                                    //color: Colors.orange[600],
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          "Estimate to save \n200 AUD per year",
-                                          style: TextStyle(
-                                              color: Colors.black87,
-                                              fontSize: 20),
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            "4 ",
-                            style: TextStyle(
-                                color: Colors.black87,
-                                fontSize: 60,
-                                fontWeight: FontWeight.bold,
-                                fontStyle: FontStyle.italic),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        image: AssetImage(
-                                            "assets/images/water_love.jpg"),
-                                        fit: BoxFit.fitWidth,
-                                      ),
-                                      borderRadius: BorderRadius.circular(20)),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    width: 300,
-                                    //color: Colors.orange[100],
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          "Reduce about 359 kg CO2 \nGHG emissions per year",
-                                          style: TextStyle(
-                                              color: Colors.black87,
-                                              fontSize: 20),
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      //
-                    ],
-                  ),
-
-                  //
+                  Text(
+                    "Introduction",
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w600,
+                        fontStyle: FontStyle.italic),
+                  )
                 ],
               ),
-            )
+            ),
+
+            // Icon(
+            //   Icons.arrow_downward,
+            //   size: 60,
+            //   color: Colors.blue[300],
+            // ),
+            //
+            Container(
+              width: 800,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 40.0, vertical: 10.0),
+                child: WaterStats(),
+              ),
+            ),
+            //
+            Container(
+              width: 800,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 40.0, vertical: 10.0),
+                child: Text(
+                  "Have you paid attention to your water usage? It is not just the number on the water bill. In addition to saving money, saving water can also contribute to the energy conservation and emission reduction of the earth. The easier way is to shorten your shower time as the shower takes up about 31% of household water usage based on stats. So let's start our water-saving journey by knowing some key statistics. The most important one is to shower in 4 minutes.",
+                  overflow: TextOverflow.clip,
+                  softWrap: true,
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.normal,
+                      fontStyle: FontStyle.normal),
+                ),
+              ),
+            ),
+            //
+            FittedBox(
+              child: Row(
+                children: [
+                  Text(
+                    "Stats",
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w600,
+                        fontStyle: FontStyle.italic),
+                  )
+                ],
+              ),
+            ),
+            FittedBox(
+                child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: Colors.blue[200],
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: ListOfPros(),
+                ),
+              ),
+            )),
+
+            //
+            FittedBox(
+              child: Row(
+                children: [
+                  Text(
+                    "Timer",
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w600,
+                        fontStyle: FontStyle.italic),
+                  )
+                ],
+              ),
+            ),
+
+            //
+            Container(
+              width: 800,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 40.0, vertical: 10.0),
+                child: Text(
+                  "A timer can record your bathing routine and algorithmically give you water-saving suggestions. About a quarter of household water is used for showers. Are you spending more than the recommended 4-minute water saving limit? We can all make a difference to help protect our water and the environment.",
+                  overflow: TextOverflow.clip,
+                  softWrap: true,
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.normal,
+                      fontStyle: FontStyle.normal),
+                ),
+              ),
+            ),
+            //
+            Container(
+              child: Column(
+                children: [
+                  IconButton(
+                    hoverColor: Colors.blue.withOpacity(.10),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/timer');
+                    },
+                    icon: Icon(
+                      Icons.timer,
+                    ),
+                    iconSize: 60,
+                    color: Colors.blue[300],
+                  ),
+                  Text(
+                    "Click to start timing!",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.normal),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(height: 30),
+            //
+            FittedBox(
+              child: Row(
+                children: [
+                  Text(
+                    "Estimation",
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w600,
+                        fontStyle: FontStyle.italic),
+                  )
+                ],
+              ),
+            ),
+            //
+            Container(
+              width: 800,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 40.0, vertical: 10.0),
+                child: Text(
+                  "Always paying a lot of water bills? Want to know how much water you used in a more visual way? Wonder what is the average water bill of a household with similar facilities to yours? Try our water usage estimation feature! Simply input basic information about your facilities and water usage habits, your water usage will be estimated with equivalence to help you better understand the water amount you used. ",
+                  overflow: TextOverflow.clip,
+                  softWrap: true,
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.normal,
+                      fontStyle: FontStyle.normal),
+                ),
+              ),
+            ),
+            //
+            //
+            Container(
+              child: Column(
+                children: [
+                  IconButton(
+                    hoverColor: Colors.blue.withOpacity(.10),
+                    onPressed: () {
+                      //Navigator.pushNamed(context, '/timer');
+                    },
+                    icon: Icon(Icons.calculate_rounded),
+                    iconSize: 60,
+                    color: Colors.blue[300],
+                  ),
+                  Text(
+                    "Click to start an estimation!",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.normal),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(height: 30),
+            //
+            FittedBox(
+              child: Row(
+                children: [
+                  Text(
+                    "Reflection",
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w600,
+                        fontStyle: FontStyle.italic),
+                  )
+                ],
+              ),
+            ),
+            //
+            Container(
+              width: 800,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 40.0, vertical: 10.0),
+                child: Text(
+                  "We provide a platform for people to share their water usage experiences. You can post your thoughts and suggestions on saving water, Write down what you think you did well and what you think you didn't do well, and how you plan to change in the future. Also, you can see others’ posts and learn from their experience to improve your awareness of saving water.",
+                  overflow: TextOverflow.clip,
+                  softWrap: true,
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.normal,
+                      fontStyle: FontStyle.normal),
+                ),
+              ),
+            ),
+            //
+            //
+            Container(
+              child: Column(
+                children: [
+                  IconButton(
+                    hoverColor: Colors.blue.withOpacity(.10),
+                    onPressed: () {
+                      //Navigator.pushNamed(context, '/timer');
+                    },
+                    icon: Icon(Icons.text_snippet_rounded),
+                    iconSize: 60,
+                    color: Colors.blue[300],
+                  ),
+                  Text(
+                    "Click to start writing!",
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.normal),
+                  )
+                ],
+              ),
+            ),
+            //
+            SizedBox(height: 30),
+
+            //
           ],
         ),
       ),
 
       //),
+    );
+  }
+}
+
+class ListOfPros extends StatelessWidget {
+  const ListOfPros({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FittedBox(
+      // height: 300,
+      // color: Colors.blue[100],
+      // width: 1200,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // picture
+          Column(
+            children: [
+              Row(
+                children: [
+                  Text(
+                    "1 ",
+                    style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 60,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 100,
+                          height: 100,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    "assets/images/water_strong.jpg"),
+                                fit: BoxFit.fitWidth,
+                              ),
+                              borderRadius: BorderRadius.circular(20)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            width: 300,
+                            // color: Colors.orange[300],
+                            child: Row(
+                              children: [
+                                Text(
+                                  "The aim is 155 Litres \nper person per day",
+                                  style: TextStyle(
+                                      color: Colors.black87, fontSize: 20),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+
+              Row(
+                children: [
+                  Text(
+                    "2 ",
+                    style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 60,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 100,
+                          height: 100,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image:
+                                    AssetImage("assets/images/water_stars.jpg"),
+                                fit: BoxFit.fitWidth,
+                              ),
+                              borderRadius: BorderRadius.circular(20)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            width: 300,
+                            // color: Colors.orange[300],
+                            child: Row(
+                              children: [
+                                Text(
+                                  "By shorten shower time  \nunder 4 Minutes",
+                                  style: TextStyle(
+                                      color: Colors.black87, fontSize: 20),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Text(
+                    "3 ",
+                    style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 60,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 100,
+                          height: 100,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image:
+                                    AssetImage("assets/images/water_money.jpg"),
+                                fit: BoxFit.fitWidth,
+                              ),
+                              borderRadius: BorderRadius.circular(20)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            width: 300,
+                            //color: Colors.orange[600],
+                            child: Row(
+                              children: [
+                                Text(
+                                  "Estimate to save \n200 AUD per year",
+                                  style: TextStyle(
+                                      color: Colors.black87, fontSize: 20),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Text(
+                    "4 ",
+                    style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 60,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 100,
+                          height: 100,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image:
+                                    AssetImage("assets/images/water_love.jpg"),
+                                fit: BoxFit.fitWidth,
+                              ),
+                              borderRadius: BorderRadius.circular(20)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            width: 300,
+                            //color: Colors.orange[100],
+                            child: Row(
+                              children: [
+                                Text(
+                                  "Reduce about 359 kg CO2 \nGHG emissions per year",
+                                  style: TextStyle(
+                                      color: Colors.black87, fontSize: 20),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              //
+            ],
+          ),
+
+          //
+        ],
+      ),
     );
   }
 }
@@ -380,10 +634,13 @@ class WaterStats extends StatelessWidget {
                     ),
                     Text(
                       "155 Litres",
-                      style: TextStyle(color: Colors.black87, fontSize: 40),
+                      style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: 50,
+                          fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 15,
                     ),
                     Icon(
                       Icons.water_drop,
@@ -416,11 +673,13 @@ class WaterStats extends StatelessWidget {
                         children: [
                           Text(
                             "4 Minutes",
-                            style:
-                                TextStyle(color: Colors.black87, fontSize: 40),
+                            style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 50,
+                                fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 15,
                           ),
                           Icon(
                             Icons.timer,
@@ -455,11 +714,13 @@ class WaterStats extends StatelessWidget {
                         children: [
                           Text(
                             "200 Aud",
-                            style:
-                                TextStyle(color: Colors.black87, fontSize: 40),
+                            style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 50,
+                                fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 15,
                           ),
                           Icon(
                             Icons.attach_money_rounded,
@@ -494,11 +755,13 @@ class WaterStats extends StatelessWidget {
                         children: [
                           Text(
                             "359 Kg",
-                            style:
-                                TextStyle(color: Colors.black87, fontSize: 40),
+                            style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 50,
+                                fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 15,
                           ),
                           Icon(
                             Icons.co2,
@@ -594,7 +857,7 @@ class HomeNav extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, '/timer');
                   },
-                  child: const Text("Time")),
+                  child: const Text("Timer")),
             ),
             Padding(
               padding: const EdgeInsets.all(4.0),
@@ -618,7 +881,7 @@ class HomeNav extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
                   onPressed: () {},
-                  child: const Text("Refletion")),
+                  child: const Text("Reflection")),
             ),
             Padding(
               padding: const EdgeInsets.all(4.0),
@@ -718,50 +981,69 @@ class _BodyTimerPageState extends State<BodyTimerPage> {
         title: HomeNav(),
         toolbarHeight: 180,
       ),
-      body: Container(
-        height: size.height,
-        width: size.width,
-        decoration: BoxDecoration(
-          color: Colors.blue[100],
-        ),
-        child: SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Center(
-              child: Column(
-                children: [
-                  // buildIcons(),
-
-                  Container(
-                    height: 60,
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: _starsForRatings()),
-                  ),
-                  SizedBox(
-                    height: 24.0,
-                  ),
-                  buildTime(),
-                  SizedBox(
-                    height: 24.0,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Container(
+              height: size.height / 2,
+              width: size.width * 3 / 4,
+              decoration: BoxDecoration(
+                  color: Colors.blue[100],
+                  borderRadius: BorderRadius.circular(50)),
+              child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(height: 50, child: buildButtons()),
-                      Container(height: 50, child: buildReset()),
-                    ],
-                  ),
+                      Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            // buildIcons(),
+                            Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Text(
+                                'Shower Timer',
+                                style: TextStyle(
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              height: 60,
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: _starsForRatings()),
+                            ),
+                            SizedBox(
+                              height: 24.0,
+                            ),
+                            buildTime(),
+                            SizedBox(
+                              height: 24.0,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(height: 50, child: buildButtons()),
+                                Container(height: 50, child: buildReset()),
+                              ],
+                            ),
 
-                  buildTimerData(duration.inSeconds.toString()),
-                  //
+                            // buildTimerData(duration.inSeconds.toString()),
+                            //
 
-                  //
-                ],
+                            //
+                          ],
+                        ),
+                      ),
+                    ]),
               ),
             ),
-          ]),
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -910,8 +1192,10 @@ class _BodyTimerPageState extends State<BodyTimerPage> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => ShowerReport(
-                            minutes: duration.inMinutes.toString(),
-                            seconds: duration.inSeconds.toString(),
+                            minutes:
+                                duration.inMinutes.remainder(60).toString(),
+                            seconds:
+                                duration.inSeconds.remainder(60).toString(),
                           ),
                         ),
                       );
@@ -987,12 +1271,22 @@ class _BodyTimerPageState extends State<BodyTimerPage> {
 class ShowerReport extends StatelessWidget {
   final minutes;
   final seconds;
+  // <= 4 great
+  // > 4 <= 7 better than average
+  // over 7
 
-  const ShowerReport({Key? key, this.minutes, this.seconds}) : super(key: key);
+  const ShowerReport({
+    Key? key,
+    this.minutes,
+    this.seconds,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    var isGood = int.parse(minutes) < 4;
+    var isAverage = int.parse(minutes) >= 4 && int.parse(minutes) <= 7;
+    var isOver = int.parse(minutes) > 7;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -1003,46 +1297,104 @@ class ShowerReport extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              width: 500,
-              height: 500,
-              color: Colors.blue[200],
-              child: Column(children: [
-                SizedBox(
-                  height: 50,
-                ),
-                Text(
-                  'Shower Time Report',
-                  style: TextStyle(fontSize: 36),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
                 Container(
-                  child: Image.asset(
-                    "images/water_stars.jpg",
-                    width: 150,
-                    height: 150,
+                  height: size.height / 2,
+                  width: size.width * 4 / 6,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Colors.blue[200],
                   ),
+                  child: Column(children: [
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Text(
+                      'Shower Time Report',
+                      style:
+                          TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    isGood
+                        ? Container(
+                            child: Image.asset(
+                              "assets/images/water_love.jpg",
+                              width: 150,
+                              height: 150,
+                            ),
+                          )
+                        : isAverage
+                            ? Container(
+                                child: Image.asset(
+                                  "assets/images/water_stars.jpg",
+                                  width: 150,
+                                  height: 150,
+                                ),
+                              )
+                            : Container(
+                                child: Image.asset(
+                                  "assets/images/water_cry.jpg",
+                                  width: 150,
+                                  height: 150,
+                                ),
+                              ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    // Text(
+                    //   "Your this shower time is ",
+                    //   style: TextStyle(fontSize: 20),
+                    // ),
+                    // Text(
+                    //   "${minutes} minutes ${seconds} seconds",
+                    //   style: TextStyle(fontSize: 20),
+                    // ),
+                    FittedBox(
+                      child: isGood
+                          ? Column(
+                              children: [
+                                Text(
+                                  "Legend ! \nYour shower time is ${minutes} minutes ${seconds} seconds, \nwithin 4 minutes target.",
+                                  //style: TextStyle(fontSize: 20),
+                                ),
+                              ],
+                            )
+                          : isAverage
+                              ? Column(
+                                  children: [
+                                    Text(
+                                      "Superstar ! \nYour shower time is ${minutes} minutes ${seconds} seconds, \nshorter than average.",
+                                      //style: TextStyle(fontSize: 20),
+                                    ),
+                                  ],
+                                )
+                              : Column(
+                                  children: [
+                                    Text(
+                                      "No stres s! \nYour shower time is ${minutes} minutes ${seconds} seconds, \nTry faster on the next shower.",
+                                      //style: TextStyle(fontSize: 20),
+                                    ),
+                                  ],
+                                ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/timer');
+                          },
+                          child: Text(
+                            'Time Again',
+                          )),
+                    )
+                  ]),
                 ),
-                SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  "Your this shower time is ",
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  "${minutes} minutes ${seconds} seconds",
-                  style: TextStyle(fontSize: 20),
-                ),
-                Text(
-                  "Your are super shower star !",
-                  style: TextStyle(fontSize: 20),
-                ),
-              ]),
+              ],
             ),
           ],
         ),
