@@ -3,10 +3,13 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "4793d0fcb6c4f9f3b63fee67e25e2555",
+  "assets/AssetManifest.json": "48aaf032507068bfd5adc58c1636fbbe",
 "assets/assets/images/background.jpg": "4544ffcd97825d99c5716f6e32a33ff2",
 "assets/assets/images/icons8-rain.gif": "7f3dd8ced7fb2a89f7111b868d502b4b",
+"assets/assets/images/landing_picture.jpg": "362d71fb6f2e3ee6fb2a97ff31c2e02f",
 "assets/assets/images/logo.png": "bee3faabdb849409707c147e30f3eda4",
+"assets/assets/images/shower_background.jpg": "87e4113ac81f0ca75eb433b56bc865ed",
+"assets/assets/images/shower_man.jpg": "5cf21703bcdad51089d092a2333d0e89",
 "assets/assets/images/water_bye.jpg": "4126d084f83d61c5c151ea9e16c4e487",
 "assets/assets/images/water_cry.jpg": "10b24fa6df12ade5327d9e677dcebdad",
 "assets/assets/images/water_drop.jpg": "fbff624c2fc7d5d164900c19deac2a8c",
@@ -31,9 +34,9 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "c4186b4dcd7a075dcffaaa9a6f82c3c8",
-"/": "c4186b4dcd7a075dcffaaa9a6f82c3c8",
-"main.dart.js": "0da15c2ab4850b0963b80adeb6f617e1",
+"index.html": "f7f4e4c05df64f2885b0fe47fa37a369",
+"/": "f7f4e4c05df64f2885b0fe47fa37a369",
+"main.dart.js": "c596fd6016e69c1fbc454d8892f14a21",
 "manifest.json": "f0dbebcdbf873311c2c3c70e6e111e13",
 "version.json": "1f8373c1f4e85b6217b1268f1a8a2e17"
 };
