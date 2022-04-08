@@ -47,7 +47,7 @@ class LandingPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.blue[300],
+        backgroundColor: Colors.blue[100],
         title: HomeNav(),
         toolbarHeight: 180,
       ),
@@ -59,9 +59,9 @@ class LandingPage extends StatelessWidget {
             Container(
               height: 640,
               decoration: BoxDecoration(
-                color: Colors.blue[200],
+                color: Colors.blue[100],
                 image: DecorationImage(
-                  image: AssetImage("assets/images/background.jpg"),
+                  image: AssetImage("assets/images/shower_background.jpg"),
                   fit: BoxFit.fitHeight,
                 ),
               ),
@@ -69,7 +69,7 @@ class LandingPage extends StatelessWidget {
                 height: 600,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("assets/images/background.jpg"),
+                    image: AssetImage("assets/images/landing_picture.jpg"),
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -102,10 +102,10 @@ class LandingPage extends StatelessWidget {
                             ],
                           ),
                         ),
-                        // Container(
-                        //   width: 50,
-                        //   color: Colors.amber,
-                        // ),
+                        Container(
+                          width: 50,
+                          color: Colors.amber,
+                        ),
                       ],
                     ),
                   ],
@@ -165,7 +165,7 @@ class LandingPage extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    "Stats",
+                    "Keys",
                     style: TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.w600,
@@ -180,7 +180,7 @@ class LandingPage extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
-                  color: Colors.blue[200],
+                  color: Colors.blue[100],
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
@@ -189,175 +189,387 @@ class LandingPage extends StatelessWidget {
               ),
             )),
 
-            //
+            // FittedBox(child: Row(children: [
+
+            // ]),)
+            // //
+
             FittedBox(
               child: Row(
                 children: [
-                  Text(
-                    "Timer",
-                    style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.w600,
-                        fontStyle: FontStyle.italic),
-                  )
+                  Container(
+                    width: 160,
+                    // color: Colors.amber[300],
+                    child: Column(
+                      children: [
+                        FittedBox(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5.0),
+                              color: Colors.blue[100]!.withOpacity(0.3),
+                            ),
+                            child: Text(
+                              "Timer",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600,
+                                  fontStyle: FontStyle.italic),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            width: 120,
+                            child: Text(
+                              "Time your shower with a lovely timer, a cute water drop will encourage you to reach 4 minutes target based on your reported time.",
+                              overflow: TextOverflow.clip,
+                              softWrap: true,
+                              style: TextStyle(
+                                  // fontSize: 16,
+                                  fontWeight: FontWeight.normal,
+                                  fontStyle: FontStyle.normal),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          child: Column(
+                            children: [
+                              IconButton(
+                                hoverColor: Colors.blue.withOpacity(.10),
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/timer');
+                                },
+                                icon: Icon(
+                                  Icons.timer,
+                                ),
+                                iconSize: 60,
+                                color: Colors.blue[300],
+                              ),
+                              Text(
+                                "Start timing!",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FontStyle.normal),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 30.0,
+                        )
+                      ],
+                    ),
+                  ),
+                  //
+                  Container(
+                    width: 160,
+                    // color: Colors.amber[100],
+                    child: Column(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5.0),
+                            color: Colors.blue[100]!.withOpacity(0.6),
+                          ),
+                          child: Text(
+                            "Estimation",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FontStyle.italic),
+                          ),
+                        ),
+                        //
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            width: 120,
+                            child: Text(
+                              "Estimating water usage by inputting base facilities information and get a better awareness of water.",
+                              overflow: TextOverflow.clip,
+                              softWrap: true,
+                              style: TextStyle(
+                                  // fontSize: 16,
+                                  fontWeight: FontWeight.normal,
+                                  fontStyle: FontStyle.normal),
+                            ),
+                          ),
+                        ),
+
+                        //
+                        //
+                        Container(
+                          child: Column(
+                            children: [
+                              IconButton(
+                                hoverColor: Colors.blue.withOpacity(.10),
+                                onPressed: () {
+                                  //Navigator.pushNamed(context, '/timer');
+                                },
+                                icon: Icon(Icons.calculate_rounded),
+                                iconSize: 60,
+                                color: Colors.blue[300],
+                              ),
+                              Text(
+                                "Start estimating!",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FontStyle.normal),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 30),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    // color: Colors.amberAccent,
+                    width: 160,
+                    child: Column(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5.0),
+                            color: Colors.blue[100]!.withOpacity(0.95),
+                          ),
+                          child: Text(
+                            "Reflection",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FontStyle.italic),
+                          ),
+                        ),
+                        //
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            width: 120,
+                            child: Text(
+                              "Share your thoughts and tricks of saving water. Let more people knows the secret of quick shower for the environment.",
+                              overflow: TextOverflow.clip,
+                              softWrap: true,
+                              style: TextStyle(
+                                  // fontSize: 16,
+                                  fontWeight: FontWeight.normal,
+                                  fontStyle: FontStyle.normal),
+                            ),
+                          ),
+                        ),
+
+                        //
+                        //
+                        Container(
+                          child: Column(
+                            children: [
+                              IconButton(
+                                hoverColor: Colors.blue.withOpacity(.10),
+                                onPressed: () {
+                                  //Navigator.pushNamed(context, '/timer');
+                                },
+                                icon: Icon(Icons.text_snippet_rounded),
+                                iconSize: 60,
+                                color: Colors.blue[300],
+                              ),
+                              Text(
+                                "Start writing!",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FontStyle.normal),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 30),
+                      ],
+                    ),
+                  ),
+                  //
                 ],
               ),
             ),
 
-            //
-            Container(
-              width: 800,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 40.0, vertical: 10.0),
-                child: Text(
-                  "A timer can record your bathing routine and algorithmically give you water-saving suggestions. About a quarter of household water is used for showers. Are you spending more than the recommended 4-minute water saving limit? We can all make a difference to help protect our water and the environment.",
-                  overflow: TextOverflow.clip,
-                  softWrap: true,
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.normal,
-                      fontStyle: FontStyle.normal),
-                ),
-              ),
-            ),
-            //
-            Container(
-              child: Column(
-                children: [
-                  IconButton(
-                    hoverColor: Colors.blue.withOpacity(.10),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/timer');
-                    },
-                    icon: Icon(
-                      Icons.timer,
-                    ),
-                    iconSize: 60,
-                    color: Colors.blue[300],
-                  ),
-                  Text(
-                    "Click to start timing!",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.normal),
-                  )
-                ],
-              ),
-            ),
-            SizedBox(height: 30),
-            //
-            FittedBox(
-              child: Row(
-                children: [
-                  Text(
-                    "Estimation",
-                    style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.w600,
-                        fontStyle: FontStyle.italic),
-                  )
-                ],
-              ),
-            ),
-            //
-            Container(
-              width: 800,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 40.0, vertical: 10.0),
-                child: Text(
-                  "Always paying a lot of water bills? Want to know how much water you used in a more visual way? Wonder what is the average water bill of a household with similar facilities to yours? Try our water usage estimation feature! Simply input basic information about your facilities and water usage habits, your water usage will be estimated with equivalence to help you better understand the water amount you used. ",
-                  overflow: TextOverflow.clip,
-                  softWrap: true,
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.normal,
-                      fontStyle: FontStyle.normal),
-                ),
-              ),
-            ),
-            //
-            //
-            Container(
-              child: Column(
-                children: [
-                  IconButton(
-                    hoverColor: Colors.blue.withOpacity(.10),
-                    onPressed: () {
-                      //Navigator.pushNamed(context, '/timer');
-                    },
-                    icon: Icon(Icons.calculate_rounded),
-                    iconSize: 60,
-                    color: Colors.blue[300],
-                  ),
-                  Text(
-                    "Click to start an estimation!",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.normal),
-                  )
-                ],
-              ),
-            ),
-            SizedBox(height: 30),
-            //
-            FittedBox(
-              child: Row(
-                children: [
-                  Text(
-                    "Reflection",
-                    style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.w600,
-                        fontStyle: FontStyle.italic),
-                  )
-                ],
-              ),
-            ),
-            //
-            Container(
-              width: 800,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 40.0, vertical: 10.0),
-                child: Text(
-                  "We provide a platform for people to share their water usage experiences. You can post your thoughts and suggestions on saving water, Write down what you think you did well and what you think you didn't do well, and how you plan to change in the future. Also, you can see others’ posts and learn from their experience to improve your awareness of saving water.",
-                  overflow: TextOverflow.clip,
-                  softWrap: true,
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.normal,
-                      fontStyle: FontStyle.normal),
-                ),
-              ),
-            ),
-            //
-            //
-            Container(
-              child: Column(
-                children: [
-                  IconButton(
-                    hoverColor: Colors.blue.withOpacity(.10),
-                    onPressed: () {
-                      //Navigator.pushNamed(context, '/timer');
-                    },
-                    icon: Icon(Icons.text_snippet_rounded),
-                    iconSize: 60,
-                    color: Colors.blue[300],
-                  ),
-                  Text(
-                    "Click to start writing!",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.normal),
-                  )
-                ],
-              ),
-            ),
+            // FittedBox(
+            //   child: Row(
+            //     children: [
+            //       //
+            //       FittedBox(
+            //         child: Row(
+            //           children: [
+            //             Text(
+            //               "Timer",
+            //               style: TextStyle(
+            //                   fontSize: 30,
+            //                   fontWeight: FontWeight.w600,
+            //                   fontStyle: FontStyle.italic),
+            //             )
+            //           ],
+            //         ),
+            //       ),
+
+            //       //
+            //       Container(
+            //         width: 800,
+            //         child: Padding(
+            //           padding: const EdgeInsets.symmetric(
+            //               horizontal: 40.0, vertical: 10.0),
+            //           child: Text(
+            //             "A timer can record your bathing routine and algorithmically give you water-saving suggestions. About a quarter of household water is used for showers. Are you spending more than the recommended 4-minute water saving limit? We can all make a difference to help protect our water and the environment.",
+            //             overflow: TextOverflow.clip,
+            //             softWrap: true,
+            //             style: TextStyle(
+            //                 fontSize: 16,
+            //                 fontWeight: FontWeight.normal,
+            //                 fontStyle: FontStyle.normal),
+            //           ),
+            //         ),
+            //       ),
+            //       //
+            //       Container(
+            //         child: Column(
+            //           children: [
+            //             IconButton(
+            //               hoverColor: Colors.blue.withOpacity(.10),
+            //               onPressed: () {
+            //                 Navigator.pushNamed(context, '/timer');
+            //               },
+            //               icon: Icon(
+            //                 Icons.timer,
+            //               ),
+            //               iconSize: 60,
+            //               color: Colors.blue[300],
+            //             ),
+            //             Text(
+            //               "Click to start timing!",
+            //               style: TextStyle(
+            //                   fontSize: 16,
+            //                   fontWeight: FontWeight.bold,
+            //                   fontStyle: FontStyle.normal),
+            //             )
+            //           ],
+            //         ),
+            //       ),
+            //       SizedBox(height: 30),
+            //       //
+            //       FittedBox(
+            //         child: Row(
+            //           children: [
+            //             Text(
+            //               "Estimation",
+            //               style: TextStyle(
+            //                   fontSize: 30,
+            //                   fontWeight: FontWeight.w600,
+            //                   fontStyle: FontStyle.italic),
+            //             )
+            //           ],
+            //         ),
+            //       ),
+            //       //
+            //       Container(
+            //         width: 800,
+            //         child: Padding(
+            //           padding: const EdgeInsets.symmetric(
+            //               horizontal: 40.0, vertical: 10.0),
+            //           child: Text(
+            //             "Always paying a lot of water bills? Want to know how much water you used in a more visual way? Wonder what is the average water bill of a household with similar facilities to yours? Try our water usage estimation feature! Simply input basic information about your facilities and water usage habits, your water usage will be estimated with equivalence to help you better understand the water amount you used. ",
+            //             overflow: TextOverflow.clip,
+            //             softWrap: true,
+            //             style: TextStyle(
+            //                 fontSize: 16,
+            //                 fontWeight: FontWeight.normal,
+            //                 fontStyle: FontStyle.normal),
+            //           ),
+            //         ),
+            //       ),
+            //       //
+            //       //
+            //       Container(
+            //         child: Column(
+            //           children: [
+            //             IconButton(
+            //               hoverColor: Colors.blue.withOpacity(.10),
+            //               onPressed: () {
+            //                 //Navigator.pushNamed(context, '/timer');
+            //               },
+            //               icon: Icon(Icons.calculate_rounded),
+            //               iconSize: 60,
+            //               color: Colors.blue[300],
+            //             ),
+            //             Text(
+            //               "Click to start an estimation!",
+            //               style: TextStyle(
+            //                   fontSize: 16,
+            //                   fontWeight: FontWeight.bold,
+            //                   fontStyle: FontStyle.normal),
+            //             )
+            //           ],
+            //         ),
+            //       ),
+            //       SizedBox(height: 30),
+            //       //
+            //       FittedBox(
+            //         child: Row(
+            //           children: [
+            //             Text(
+            //               "Reflection",
+            //               style: TextStyle(
+            //                   fontSize: 30,
+            //                   fontWeight: FontWeight.w600,
+            //                   fontStyle: FontStyle.italic),
+            //             )
+            //           ],
+            //         ),
+            //       ),
+            //       //
+            //       Container(
+            //         width: 800,
+            //         child: Padding(
+            //           padding: const EdgeInsets.symmetric(
+            //               horizontal: 40.0, vertical: 10.0),
+            //           child: Text(
+            //             "We provide a platform for people to share their water usage experiences. You can post your thoughts and suggestions on saving water, Write down what you think you did well and what you think you didn't do well, and how you plan to change in the future. Also, you can see others’ posts and learn from their experience to improve your awareness of saving water.",
+            //             overflow: TextOverflow.clip,
+            //             softWrap: true,
+            //             style: TextStyle(
+            //                 fontSize: 16,
+            //                 fontWeight: FontWeight.normal,
+            //                 fontStyle: FontStyle.normal),
+            //           ),
+            //         ),
+            //       ),
+            //       //
+            //       //
+            //       Container(
+            //         child: Column(
+            //           children: [
+            //             IconButton(
+            //               hoverColor: Colors.blue.withOpacity(.10),
+            //               onPressed: () {
+            //                 //Navigator.pushNamed(context, '/timer');
+            //               },
+            //               icon: Icon(Icons.text_snippet_rounded),
+            //               iconSize: 60,
+            //               color: Colors.blue[300],
+            //             ),
+            //             Text(
+            //               "Click to start writing!",
+            //               style: TextStyle(
+            //                   fontSize: 16,
+            //                   fontWeight: FontWeight.bold,
+            //                   fontStyle: FontStyle.normal),
+            //             )
+            //           ],
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+
             //
             SizedBox(height: 30),
 
@@ -977,7 +1189,7 @@ class _BodyTimerPageState extends State<BodyTimerPage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.blue[300],
+        backgroundColor: Colors.blue[100],
         title: HomeNav(),
         toolbarHeight: 180,
       ),
@@ -987,11 +1199,12 @@ class _BodyTimerPageState extends State<BodyTimerPage> {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Container(
-              height: size.height / 2,
-              width: size.width * 3 / 4,
+              height: size.height * 5 / 6,
+              width: size.width * 5 / 6,
               decoration: BoxDecoration(
-                  color: Colors.blue[100],
-                  borderRadius: BorderRadius.circular(50)),
+                borderRadius: BorderRadius.circular(50),
+                color: Colors.blue[100],
+              ),
               child: SingleChildScrollView(
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -1012,25 +1225,113 @@ class _BodyTimerPageState extends State<BodyTimerPage> {
                               ),
                             ),
                             Container(
-                              height: 60,
+                              width: 800,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 40.0, vertical: 10.0),
+                                child: Text(
+                                  "Simply click on start before shower and come back to check your report with one of lovely water drops indicator.",
+                                  overflow: TextOverflow.clip,
+                                  softWrap: true,
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.normal,
+                                      fontStyle: FontStyle.normal),
+                                ),
+                              ),
+                            ),
+                            FittedBox(
                               child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: _starsForRatings()),
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(50.0),
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          child: Image.asset(
+                                            "assets/images/water_love.jpg",
+                                            width: 150,
+                                            height: 150,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(50.0),
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          child: Image.asset(
+                                            "assets/images/water_stars.jpg",
+                                            width: 150,
+                                            height: 150,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(50.0),
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          child: Image.asset(
+                                            "assets/images/water_cry.jpg",
+                                            width: 150,
+                                            height: 150,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                            SizedBox(
-                              height: 24.0,
-                            ),
-                            buildTime(),
-                            SizedBox(
-                              height: 24.0,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(height: 50, child: buildButtons()),
-                                Container(height: 50, child: buildReset()),
-                              ],
-                            ),
+
+                            Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.blue[100],
+                                  borderRadius: BorderRadius.circular(50),
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                        "assets/images/shower_background.jpg"),
+                                    fit: BoxFit.fitHeight,
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Column(children: [
+                                    Container(
+                                      height: 60,
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: _starsForRatings()),
+                                    ),
+                                    SizedBox(
+                                      height: 24.0,
+                                    ),
+                                    buildTime(),
+                                    SizedBox(
+                                      height: 24.0,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                            height: 50, child: buildButtons()),
+                                        Container(
+                                            height: 50, child: buildReset()),
+                                      ],
+                                    ),
+                                  ]),
+                                ),
+                              ),
+                            )
 
                             // buildTimerData(duration.inSeconds.toString()),
                             //
@@ -1287,10 +1588,13 @@ class ShowerReport extends StatelessWidget {
     var isGood = int.parse(minutes) < 4;
     var isAverage = int.parse(minutes) >= 4 && int.parse(minutes) <= 7;
     var isOver = int.parse(minutes) > 7;
+    // var isGood = int.parse(seconds) < 4;
+    // var isAverage = int.parse(seconds) >= 4 && int.parse(seconds) <= 7;
+    // var isOver = int.parse(seconds) > 7;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.blue[300],
+        backgroundColor: Colors.blue[100],
         title: HomeNav(),
         toolbarHeight: 180,
       ),
@@ -1301,98 +1605,128 @@ class ShowerReport extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  height: size.height / 2,
-                  width: size.width * 4 / 6,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: Colors.blue[200],
-                  ),
-                  child: Column(children: [
-                    SizedBox(
-                      height: 50,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Text(
+                        'Shower Report',
+                        style: TextStyle(
+                            fontSize: 32, fontWeight: FontWeight.bold),
+                      ),
                     ),
-                    Text(
-                      'Shower Time Report',
-                      style:
-                          TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    isGood
-                        ? Container(
-                            child: Image.asset(
-                              "assets/images/water_love.jpg",
-                              width: 150,
-                              height: 150,
+                    FittedBox(
+                      child: Container(
+                        // height: size.height * 4 / 6,
+                        // width: size.width * 5 / 6,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: Colors.blue[200],
+                        ),
+                        child: Column(children: [
+                          SizedBox(
+                            height: 20,
+                          ),
+                          isGood
+                              ? Container(
+                                  child: Image.asset(
+                                    "assets/images/water_love.jpg",
+                                    width: 150,
+                                    height: 150,
+                                  ),
+                                )
+                              : isAverage
+                                  ? Container(
+                                      child: Image.asset(
+                                        "assets/images/water_stars.jpg",
+                                        width: 150,
+                                        height: 150,
+                                      ),
+                                    )
+                                  : Container(
+                                      child: Image.asset(
+                                        "assets/images/water_cry.jpg",
+                                        width: 150,
+                                        height: 150,
+                                      ),
+                                    ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          // Text(
+                          //   "Your this shower time is ",
+                          //   style: TextStyle(fontSize: 20),
+                          // ),
+                          // Text(
+                          //   "${minutes} minutes ${seconds} seconds",
+                          //   style: TextStyle(fontSize: 20),
+                          // ),
+                          FittedBox(
+                            child: isGood
+                                ? Padding(
+                                    padding: const EdgeInsets.all(50.0),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          "Legend ! \nYour shower time is ${minutes} minutes ${seconds} seconds, \nwithin 4 minutes target.",
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontStyle: FontStyle.italic),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                : isAverage
+                                    ? Padding(
+                                        padding: const EdgeInsets.all(50.0),
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              "Superstar ! \nYour shower time is ${minutes} minutes ${seconds} seconds, \nshorter than average.",
+                                              style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontStyle: FontStyle.italic),
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    : Padding(
+                                        padding: const EdgeInsets.all(50.0),
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              "No stress! \nYour shower time is ${minutes} minutes ${seconds} seconds, \nTry faster on the next shower.",
+                                              style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontStyle: FontStyle.italic),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                          ),
+
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  fixedSize: Size(100, 50)),
+                              child: Text(
+                                'Again',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20),
+                              ),
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/timer');
+                              },
                             ),
                           )
-                        : isAverage
-                            ? Container(
-                                child: Image.asset(
-                                  "assets/images/water_stars.jpg",
-                                  width: 150,
-                                  height: 150,
-                                ),
-                              )
-                            : Container(
-                                child: Image.asset(
-                                  "assets/images/water_cry.jpg",
-                                  width: 150,
-                                  height: 150,
-                                ),
-                              ),
-                    SizedBox(
-                      height: 20,
+                        ]),
+                      ),
                     ),
-                    // Text(
-                    //   "Your this shower time is ",
-                    //   style: TextStyle(fontSize: 20),
-                    // ),
-                    // Text(
-                    //   "${minutes} minutes ${seconds} seconds",
-                    //   style: TextStyle(fontSize: 20),
-                    // ),
-                    FittedBox(
-                      child: isGood
-                          ? Column(
-                              children: [
-                                Text(
-                                  "Legend ! \nYour shower time is ${minutes} minutes ${seconds} seconds, \nwithin 4 minutes target.",
-                                  //style: TextStyle(fontSize: 20),
-                                ),
-                              ],
-                            )
-                          : isAverage
-                              ? Column(
-                                  children: [
-                                    Text(
-                                      "Superstar ! \nYour shower time is ${minutes} minutes ${seconds} seconds, \nshorter than average.",
-                                      //style: TextStyle(fontSize: 20),
-                                    ),
-                                  ],
-                                )
-                              : Column(
-                                  children: [
-                                    Text(
-                                      "No stres s! \nYour shower time is ${minutes} minutes ${seconds} seconds, \nTry faster on the next shower.",
-                                      //style: TextStyle(fontSize: 20),
-                                    ),
-                                  ],
-                                ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/timer');
-                          },
-                          child: Text(
-                            'Time Again',
-                          )),
-                    )
-                  ]),
+                  ],
                 ),
               ],
             ),
