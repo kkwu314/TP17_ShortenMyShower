@@ -1,11 +1,11 @@
 {
-    "name": "shorten_my_shower",
-    "short_name": "shorten_my_shower",
+    "name": "Shorten My Shower",
+    "short_name": "Shorten My Shower",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "An IE project for FIT5120 to help people save water by shorten their shower time. ",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
