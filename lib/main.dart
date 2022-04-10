@@ -2296,8 +2296,7 @@ class _ShowerReportState extends State<ShowerReport> {
 Future<List<WaterData>> fetchWaterData(http.Client client) async {
   final response = await client
       // .get(Uri.parse('https://api.jsonbin.io/b/62500812d8a4cc06909ddd01'));
-      .get(Uri.parse(
-          'https://tp17api20220323123034.azurewebsites.net/api/water'));
+      .get(Uri.parse('https://tp17-api.azurewebsites.net/api/WaterDatas'));
 
   return compute(parseWaterData, response.body);
 }
@@ -2333,27 +2332,27 @@ class WaterData {
 
   WaterData.fromJson(Map<String, dynamic> json) {
     year = json['Year'];
-    newSouthWales = json['New south wales'];
-    victoria = json['Victoria'];
-    queensland = json['Queensland'];
-    southAustralia = json['South australia'];
-    westernAustralia = json['Western australia'];
-    tasmania = json['Tasmania'];
-    northernTerritory = json['Northern territory'];
-    australianCapitalTerritory = json['Australian capital territory'];
+    newSouthWales = json['newSouthWales'];
+    victoria = json['victoria'];
+    queensland = json['queensland'];
+    southAustralia = json['southAustralia'];
+    westernAustralia = json['westernAustralia'];
+    tasmania = json['tasmania'];
+    northernTerritory = json['northernTerritory'];
+    australianCapitalTerritory = json['australianCapitalTerritory'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['Year'] = this.year;
-    data['New south wales'] = this.newSouthWales;
-    data['Victoria'] = this.victoria;
-    data['Queensland'] = this.queensland;
-    data['South australia'] = this.southAustralia;
-    data['Western australia'] = this.westernAustralia;
-    data['Tasmania'] = this.tasmania;
-    data['Northern territory'] = this.northernTerritory;
-    data['Australian capital territory'] = this.australianCapitalTerritory;
+    data['newSouthWales'] = this.newSouthWales;
+    data['victoria'] = this.victoria;
+    data['queensland'] = this.queensland;
+    data['southAustralia'] = this.southAustralia;
+    data['westernAustralia'] = this.westernAustralia;
+    data['tasmania'] = this.tasmania;
+    data['northernTerritory'] = this.northernTerritory;
+    data['australianCapitalTerritory'] = this.australianCapitalTerritory;
     return data;
   }
 }
