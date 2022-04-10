@@ -17160,7 +17160,7 @@ s.yE()},
 hm(a){var s=0,r=A.a4(t.l),q,p
 var $async$hm=A.a5(function(b,c){if(b===1)return A.a1(c,r)
 while(true)switch(s){case 0:s=3
-return A.a0(a.pf("GET",A.q_("https://tp17api20220323123034.azurewebsites.net/api/water"),null),$async$hm)
+return A.a0(a.pf("GET",A.q_("https://tp17-api.azurewebsites.net/api/WaterDatas"),null),$async$hm)
 case 3:p=c
 q=A.arh().$2$2(A.asY(),A.ask(A.aqD(p.e).c.a.j(0,"charset")).cj(0,p.w),t.N,t.l)
 s=1
@@ -55978,27 +55978,27 @@ $S:0}
 A.a6J.prototype={
 $1(a){var s=new A.he(),r=J.aq(a)
 s.a=r.j(a,"Year")
-s.b=r.j(a,"New south wales")
-s.c=r.j(a,"Victoria")
-s.d=r.j(a,"Queensland")
-s.e=r.j(a,"South australia")
-s.f=r.j(a,"Western australia")
-s.r=r.j(a,"Tasmania")
-s.w=r.j(a,"Northern territory")
-s.x=r.j(a,"Australian capital territory")
+s.b=r.j(a,"newSouthWales")
+s.c=r.j(a,"victoria")
+s.d=r.j(a,"queensland")
+s.e=r.j(a,"southAustralia")
+s.f=r.j(a,"westernAustralia")
+s.r=r.j(a,"tasmania")
+s.w=r.j(a,"northernTerritory")
+s.x=r.j(a,"australianCapitalTerritory")
 return s},
 $S:354}
 A.he.prototype={
 a0M(){var s=this,r=new A.df(t.dl)
 r.m(0,"Year",s.a)
-r.m(0,"New south wales",s.b)
-r.m(0,"Victoria",s.c)
-r.m(0,"Queensland",s.d)
-r.m(0,"South australia",s.e)
-r.m(0,"Western australia",s.f)
-r.m(0,"Tasmania",s.r)
-r.m(0,"Northern territory",s.w)
-r.m(0,"Australian capital territory",s.x)
+r.m(0,"newSouthWales",s.b)
+r.m(0,"victoria",s.c)
+r.m(0,"queensland",s.d)
+r.m(0,"southAustralia",s.e)
+r.m(0,"westernAustralia",s.f)
+r.m(0,"tasmania",s.r)
+r.m(0,"northernTerritory",s.w)
+r.m(0,"australianCapitalTerritory",s.x)
 return r}}
 A.fm.prototype={
 P(a5,a6){var s,r,q,p,o,n,m,l,k,j,i,h,g,f=1000,e=null,d=[],c=[],b=[],a=[],a0=[],a1=[],a2=[],a3=[],a4=[]
