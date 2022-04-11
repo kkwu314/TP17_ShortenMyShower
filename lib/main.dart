@@ -1495,6 +1495,9 @@ class _BodyTimerPageState extends State<BodyTimerPage> {
                       // navigate to new page and pass the record time
                       print('${duration.inSeconds} second passing to report');
 
+                      //post shower record to db
+                      postRecord(duration.inSeconds);
+
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -2355,6 +2358,38 @@ class WaterData {
     data['australianCapitalTerritory'] = this.australianCapitalTerritory;
     return data;
   }
+}
+
+//post shower record to database
+class ShowerRecord {
+  int showerTime;
+  DateTime recordDate;
+  int? userId;
+
+  ShowerRecord(
+      {required this.showerTime, required this.recordDate, this.userId});
+
+  Map<String, dynamic> toJson() => {
+        "showerTime": showerTime,
+        "recordDate": recordDate.toIso8601String(),
+        "userId": userId
+      };
+}
+
+Future<bool> postRecord(int seconds) async {
+  // TODO: check if the user is logged in. For logged in users, record their user id
+  var record = new ShowerRecord(showerTime: seconds, recordDate: DateTime.now())
+      .toJson();
+  var recordBody = json.encode(record);
+  var res = await http.post(
+      Uri.parse('https://tp17-api.azurewebsites.net/api/ShowerRecords'),
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+      body: recordBody);
+  print(recordBody);
+
+  return Future.value(res.statusCode == 201 ? true : false);
 }
 
 // class MyHomePage extends StatelessWidget {
