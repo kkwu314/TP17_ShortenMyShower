@@ -269,132 +269,132 @@ class LandingPage extends StatelessWidget {
                     ),
                   ),
                   //
-                  Container(
-                    width: 160,
-                    // color: Colors.amber[100],
-                    child: Column(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5.0),
-                            color: Colors.blue[100]!.withOpacity(0.6),
-                          ),
-                          child: Text(
-                            "Estimation",
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600,
-                                fontStyle: FontStyle.italic),
-                          ),
-                        ),
-                        //
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            width: 120,
-                            child: Text(
-                              "Estimating water usage by inputting base facilities information and get a better awareness of water.",
-                              overflow: TextOverflow.clip,
-                              softWrap: true,
-                              style: TextStyle(
-                                  // fontSize: 16,
-                                  fontWeight: FontWeight.normal,
-                                  fontStyle: FontStyle.normal),
-                            ),
-                          ),
-                        ),
+                  // Container(
+                  //   width: 160,
+                  //   // color: Colors.amber[100],
+                  //   child: Column(
+                  //     children: [
+                  //       Container(
+                  //         decoration: BoxDecoration(
+                  //           borderRadius: BorderRadius.circular(5.0),
+                  //           color: Colors.blue[100]!.withOpacity(0.6),
+                  //         ),
+                  //         child: Text(
+                  //           "Estimation",
+                  //           style: TextStyle(
+                  //               fontSize: 20,
+                  //               fontWeight: FontWeight.w600,
+                  //               fontStyle: FontStyle.italic),
+                  //         ),
+                  //       ),
+                  //       //
+                  //       Padding(
+                  //         padding: const EdgeInsets.all(8.0),
+                  //         child: Container(
+                  //           width: 120,
+                  //           child: Text(
+                  //             "Estimating water usage by inputting base facilities information and get a better awareness of water.",
+                  //             overflow: TextOverflow.clip,
+                  //             softWrap: true,
+                  //             style: TextStyle(
+                  //                 // fontSize: 16,
+                  //                 fontWeight: FontWeight.normal,
+                  //                 fontStyle: FontStyle.normal),
+                  //           ),
+                  //         ),
+                  //       ),
 
-                        //
-                        //
-                        Container(
-                          child: Column(
-                            children: [
-                              IconButton(
-                                hoverColor: Colors.blue.withOpacity(.10),
-                                onPressed: () {
-                                  //Navigator.pushNamed(context, '/timer');
-                                },
-                                icon: Icon(Icons.calculate_rounded),
-                                iconSize: 60,
-                                color: Colors.blue[300],
-                              ),
-                              Text(
-                                "Start estimating!",
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    fontStyle: FontStyle.normal),
-                              )
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 30),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    // color: Colors.amberAccent,
-                    width: 160,
-                    child: Column(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5.0),
-                            color: Colors.blue[100]!.withOpacity(0.95),
-                          ),
-                          child: Text(
-                            "Reflection",
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w600,
-                                fontStyle: FontStyle.italic),
-                          ),
-                        ),
-                        //
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            width: 120,
-                            child: Text(
-                              "Share your thoughts and tricks of saving water. Let more people knows the secret of quick shower for the environment.",
-                              overflow: TextOverflow.clip,
-                              softWrap: true,
-                              style: TextStyle(
-                                  // fontSize: 16,
-                                  fontWeight: FontWeight.normal,
-                                  fontStyle: FontStyle.normal),
-                            ),
-                          ),
-                        ),
+                  //       //
+                  //       //
+                  //       Container(
+                  //         child: Column(
+                  //           children: [
+                  //             IconButton(
+                  //               hoverColor: Colors.blue.withOpacity(.10),
+                  //               onPressed: () {
+                  //                 //Navigator.pushNamed(context, '/timer');
+                  //               },
+                  //               icon: Icon(Icons.calculate_rounded),
+                  //               iconSize: 60,
+                  //               color: Colors.blue[300],
+                  //             ),
+                  //             Text(
+                  //               "Start estimating!",
+                  //               style: TextStyle(
+                  //                   fontSize: 16,
+                  //                   fontWeight: FontWeight.bold,
+                  //                   fontStyle: FontStyle.normal),
+                  //             )
+                  //           ],
+                  //         ),
+                  //       ),
+                  //       SizedBox(height: 30),
+                  //     ],
+                  //   ),
+                  // ),
+                  // Container(
+                  //   // color: Colors.amberAccent,
+                  //   width: 160,
+                  //   child: Column(
+                  //     children: [
+                  //       Container(
+                  //         decoration: BoxDecoration(
+                  //           borderRadius: BorderRadius.circular(5.0),
+                  //           color: Colors.blue[100]!.withOpacity(0.95),
+                  //         ),
+                  //         child: Text(
+                  //           "Reflection",
+                  //           style: TextStyle(
+                  //               fontSize: 20,
+                  //               fontWeight: FontWeight.w600,
+                  //               fontStyle: FontStyle.italic),
+                  //         ),
+                  //       ),
+                  //       //
+                  //       Padding(
+                  //         padding: const EdgeInsets.all(8.0),
+                  //         child: Container(
+                  //           width: 120,
+                  //           child: Text(
+                  //             "Share your thoughts and tricks of saving water. Let more people knows the secret of quick shower for the environment.",
+                  //             overflow: TextOverflow.clip,
+                  //             softWrap: true,
+                  //             style: TextStyle(
+                  //                 // fontSize: 16,
+                  //                 fontWeight: FontWeight.normal,
+                  //                 fontStyle: FontStyle.normal),
+                  //           ),
+                  //         ),
+                  //       ),
 
-                        //
-                        //
-                        Container(
-                          child: Column(
-                            children: [
-                              IconButton(
-                                hoverColor: Colors.blue.withOpacity(.10),
-                                onPressed: () {
-                                  //Navigator.pushNamed(context, '/timer');
-                                },
-                                icon: Icon(Icons.text_snippet_rounded),
-                                iconSize: 60,
-                                color: Colors.blue[300],
-                              ),
-                              Text(
-                                "Start writing!",
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    fontStyle: FontStyle.normal),
-                              )
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 30),
-                      ],
-                    ),
-                  ),
+                  //       //
+                  //       //
+                  //       Container(
+                  //         child: Column(
+                  //           children: [
+                  //             IconButton(
+                  //               hoverColor: Colors.blue.withOpacity(.10),
+                  //               onPressed: () {
+                  //                 //Navigator.pushNamed(context, '/timer');
+                  //               },
+                  //               icon: Icon(Icons.text_snippet_rounded),
+                  //               iconSize: 60,
+                  //               color: Colors.blue[300],
+                  //             ),
+                  //             Text(
+                  //               "Start writing!",
+                  //               style: TextStyle(
+                  //                   fontSize: 16,
+                  //                   fontWeight: FontWeight.bold,
+                  //                   fontStyle: FontStyle.normal),
+                  //             )
+                  //           ],
+                  //         ),
+                  //       ),
+                  //       SizedBox(height: 30),
+                  //     ],
+                  //   ),
+                  // ),
                   //
                 ],
               ),
@@ -1077,42 +1077,42 @@ class HomeNav extends StatelessWidget {
                   },
                   child: const Text("Timer")),
             ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: TextButton(
-                  style: TextButton.styleFrom(
-                      primary: Colors.black,
-                      textStyle:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50))),
-                  onPressed: () {},
-                  child: const Text("Estimation")),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: TextButton(
-                  style: TextButton.styleFrom(
-                      primary: Colors.black,
-                      textStyle:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50))),
-                  onPressed: () {},
-                  child: const Text("Reflection")),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: TextButton(
-                  style: TextButton.styleFrom(
-                      primary: Colors.black,
-                      textStyle:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50))),
-                  onPressed: () {},
-                  child: const Text("Login")),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(4.0),
+            //   child: TextButton(
+            //       style: TextButton.styleFrom(
+            //           primary: Colors.black,
+            //           textStyle:
+            //               TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            //           shape: RoundedRectangleBorder(
+            //               borderRadius: BorderRadius.circular(50))),
+            //       onPressed: () {},
+            //       child: const Text("Estimation")),
+            // ),
+            // Padding(
+            //   padding: const EdgeInsets.all(4.0),
+            //   child: TextButton(
+            //       style: TextButton.styleFrom(
+            //           primary: Colors.black,
+            //           textStyle:
+            //               TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            //           shape: RoundedRectangleBorder(
+            //               borderRadius: BorderRadius.circular(50))),
+            //       onPressed: () {},
+            //       child: const Text("Reflection")),
+            // ),
+            // Padding(
+            //   padding: const EdgeInsets.all(4.0),
+            //   child: TextButton(
+            //       style: TextButton.styleFrom(
+            //           primary: Colors.black,
+            //           textStyle:
+            //               TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            //           shape: RoundedRectangleBorder(
+            //               borderRadius: BorderRadius.circular(50))),
+            //       onPressed: () {},
+            //       child: const Text("Login")),
+            // ),
           ],
         ),
         SizedBox(
