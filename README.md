@@ -1,16 +1,8 @@
 # shorten_my_shower
+FIT5120 IE project using Flutter as frontend and .net core as backend. 
 
-A new Flutter project.
+Main branch for source code and web branch for web deployment
 
-## Getting Started
+Website Link: https://shortenmyshower1.tk/
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Backend code repository: https://github.com/kkwu314/TP17WaterAPI
