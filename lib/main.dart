@@ -36,15 +36,94 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/',
+      initialRoute: '/password',
       routes: {
         '/': (context) => LandingPage(),
         '/timer': (context) => BodyTimerPage(),
+        '/password': (context) => PasswordPage(),
       },
       debugShowCheckedModeBanner: false,
     );
   }
 }
+
+//
+class PasswordPage extends StatefulWidget {
+  @override
+  _PasswordPageState createState() => _PasswordPageState();
+}
+
+class _PasswordPageState extends State<PasswordPage> {
+  TextEditingController accountController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  String accountName = '';
+  String accountPassword = '';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Center(
+            child: Column(children: <Widget>[
+      Container(
+          margin: EdgeInsets.all(20),
+          child: TextField(
+            controller: accountController,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Account Name',
+            ),
+            onChanged: (text) {
+              setState(() {
+                accountName = text;
+                //you can access nameController in its scope to get
+                // the value of text entered as shown below
+                //fullName = nameController.text;
+              });
+            },
+          )),
+      Container(
+          margin: EdgeInsets.all(20),
+          child: TextField(
+            controller: passwordController,
+            obscureText: true,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Password',
+            ),
+            onChanged: (text) {
+              setState(() {
+                accountPassword = text;
+                //you can access nameController in its scope to get
+                // the value of text entered as shown below
+                //fullName = nameController.text;
+              });
+            },
+          )),
+      // Container(
+      //   margin: EdgeInsets.all(20),
+      //   child: Column(children: [
+      //     Text(accountName),
+      //     Text(accountPassword),
+      //   ]),
+      // ),
+      ElevatedButton(
+          onPressed: () {
+            if (accountName == "ShortenMyShower" &&
+                accountPassword == "Lucky17") {
+              print("going to landing page");
+              Navigator.pushNamed(context, '/');
+            } else {
+              print("Try again");
+
+              Navigator.pushNamed(context, '/password');
+            }
+          },
+          child: Text("Visit"))
+    ])));
+  }
+}
+
+//
 
 class LandingPage extends StatelessWidget {
   @override
@@ -1692,8 +1771,9 @@ class _ShowerReportState extends State<ShowerReport> {
                                       ),
                                     ),
                           SizedBox(
-                            height: 20,
+                            height: 5,
                           ),
+
                           // Text(
                           //   "Your this shower time is ",
                           //   style: TextStyle(fontSize: 20),
@@ -1702,10 +1782,11 @@ class _ShowerReportState extends State<ShowerReport> {
                           //   "${minutes} minutes ${seconds} seconds",
                           //   style: TextStyle(fontSize: 20),
                           // ),
+
                           FittedBox(
                             child: isGood
                                 ? Padding(
-                                    padding: const EdgeInsets.all(50.0),
+                                    padding: const EdgeInsets.all(20.0),
                                     child: Column(
                                       children: [
                                         Text(
@@ -1719,7 +1800,7 @@ class _ShowerReportState extends State<ShowerReport> {
                                   )
                                 : isAverage
                                     ? Padding(
-                                        padding: const EdgeInsets.all(50.0),
+                                        padding: const EdgeInsets.all(20.0),
                                         child: Column(
                                           children: [
                                             Text(
@@ -1732,7 +1813,7 @@ class _ShowerReportState extends State<ShowerReport> {
                                         ),
                                       )
                                     : Padding(
-                                        padding: const EdgeInsets.all(50.0),
+                                        padding: const EdgeInsets.all(20.0),
                                         child: Column(
                                           children: [
                                             Text(
@@ -1745,281 +1826,15 @@ class _ShowerReportState extends State<ShowerReport> {
                                         ),
                                       ),
                           ),
-
-                          Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: GestureDetector(
-                              onTap: () {
-                                setSelected('ALL');
-                              },
-                              child: Text(
-                                'National Average Shower Time (Minutes)',
-                                style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
-                              ),
-                            ),
+                          Icon(
+                            Icons.keyboard_double_arrow_down,
+                            color: Colors.blue[500],
+                            size: 50,
                           ),
                           FittedBox(
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          setSelected('VIC');
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                            primary: Colors.blue[100]),
-                                        child: Container(
-                                          width: 50,
-                                          height: 50,
-                                          decoration: BoxDecoration(
-                                            color: Colors.blue[300],
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/images/vic.jpg"),
-                                              fit: BoxFit.fitWidth,
-                                            ),
-                                          ),
-                                          child: Center(
-                                              child: Text(
-                                            "VIC",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          )),
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          setSelected('NSW');
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                            primary: Colors.blue[100]),
-                                        child: Container(
-                                          width: 50,
-                                          height: 50,
-                                          decoration: BoxDecoration(
-                                            color: Colors.blue[300],
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/images/nsw.jpg"),
-                                              fit: BoxFit.fitWidth,
-                                            ),
-                                          ),
-                                          child: Center(
-                                              child: Text(
-                                            "NSW",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          )),
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          setSelected('QLD');
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                            primary: Colors.blue[100]),
-                                        child: Container(
-                                          width: 50,
-                                          height: 50,
-                                          decoration: BoxDecoration(
-                                            color: Colors.blue[300],
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/images/qld.jpg"),
-                                              fit: BoxFit.fitWidth,
-                                            ),
-                                          ),
-                                          child: Center(
-                                              child: Text(
-                                            "QLD",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          )),
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          setSelected('SA');
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                            primary: Colors.blue[100]),
-                                        child: Container(
-                                          width: 50,
-                                          height: 50,
-                                          decoration: BoxDecoration(
-                                            color: Colors.blue[300],
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/images/sa.jpg"),
-                                              fit: BoxFit.fitWidth,
-                                            ),
-                                          ),
-                                          child: Center(
-                                              child: Text(
-                                            "SA",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          )),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          setSelected('WA');
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                            primary: Colors.blue[100]),
-                                        child: Container(
-                                          width: 50,
-                                          height: 50,
-                                          decoration: BoxDecoration(
-                                            color: Colors.blue[300],
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/images/wa.jpg"),
-                                              fit: BoxFit.fitWidth,
-                                            ),
-                                          ),
-                                          child: Center(
-                                              child: Text(
-                                            "WA",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          )),
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          setSelected('NT');
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                            primary: Colors.blue[100]),
-                                        child: Container(
-                                          width: 50,
-                                          height: 50,
-                                          decoration: BoxDecoration(
-                                            color: Colors.blue[300],
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/images/nt.jpg"),
-                                              fit: BoxFit.fitWidth,
-                                            ),
-                                          ),
-                                          child: Center(
-                                              child: Text(
-                                            "NT",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          )),
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          setSelected('ACT');
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                            primary: Colors.blue[100]),
-                                        child: Container(
-                                          width: 50,
-                                          height: 50,
-                                          decoration: BoxDecoration(
-                                            color: Colors.blue[300],
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/images/act.jpg"),
-                                              fit: BoxFit.fitWidth,
-                                            ),
-                                          ),
-                                          child: Center(
-                                              child: Text(
-                                            "ACT",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          )),
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          setSelected('TAS');
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                            primary: Colors.blue[100]),
-                                        child: Container(
-                                          width: 50,
-                                          height: 50,
-                                          decoration: BoxDecoration(
-                                            color: Colors.blue[100],
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  "assets/images/tas.jpg"),
-                                              fit: BoxFit.fitWidth,
-                                            ),
-                                          ),
-                                          child: Center(
-                                              child: Text(
-                                            "TAS",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          )),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          isVIC
-                              ? FittedBox(
-                                  child: FutureBuilder<List<WaterData>>(
-                                    future: fetchWaterData(http.Client()),
-                                    builder: (context, snapshot) {
-                                      if (snapshot.hasError) {
-                                        return const Center(
-                                          child: Text('An error has occurred!'),
-                                        );
-                                      } else if (snapshot.hasData) {
-                                        return WaterDataList(
-                                            waterdata: snapshot.data!,
-                                            timerdata: widget.minutes,
-                                            selected: "VIC");
-                                      } else {
-                                        return const Center(
-                                          child: CircularProgressIndicator(),
-                                        );
-                                      }
-                                    },
-                                  ),
-                                )
-                              : isNSW
+                              child: Column(
+                            children: [
+                              isVIC
                                   ? FittedBox(
                                       child: FutureBuilder<List<WaterData>>(
                                         future: fetchWaterData(http.Client()),
@@ -2033,7 +1848,7 @@ class _ShowerReportState extends State<ShowerReport> {
                                             return WaterDataList(
                                                 waterdata: snapshot.data!,
                                                 timerdata: widget.minutes,
-                                                selected: "NSW");
+                                                selected: "VIC");
                                           } else {
                                             return const Center(
                                               child:
@@ -2043,7 +1858,7 @@ class _ShowerReportState extends State<ShowerReport> {
                                         },
                                       ),
                                     )
-                                  : isQLD
+                                  : isNSW
                                       ? FittedBox(
                                           child: FutureBuilder<List<WaterData>>(
                                             future:
@@ -2058,7 +1873,7 @@ class _ShowerReportState extends State<ShowerReport> {
                                                 return WaterDataList(
                                                     waterdata: snapshot.data!,
                                                     timerdata: widget.minutes,
-                                                    selected: "QLD");
+                                                    selected: "NSW");
                                               } else {
                                                 return const Center(
                                                   child:
@@ -2068,7 +1883,7 @@ class _ShowerReportState extends State<ShowerReport> {
                                             },
                                           ),
                                         )
-                                      : isSA
+                                      : isQLD
                                           ? FittedBox(
                                               child: FutureBuilder<
                                                   List<WaterData>>(
@@ -2086,7 +1901,7 @@ class _ShowerReportState extends State<ShowerReport> {
                                                             snapshot.data!,
                                                         timerdata:
                                                             widget.minutes,
-                                                        selected: "SA");
+                                                        selected: "QLD");
                                                   } else {
                                                     return const Center(
                                                       child:
@@ -2096,7 +1911,7 @@ class _ShowerReportState extends State<ShowerReport> {
                                                 },
                                               ),
                                             )
-                                          : isWA
+                                          : isSA
                                               ? FittedBox(
                                                   child: FutureBuilder<
                                                       List<WaterData>>(
@@ -2116,7 +1931,7 @@ class _ShowerReportState extends State<ShowerReport> {
                                                                 snapshot.data!,
                                                             timerdata:
                                                                 widget.minutes,
-                                                            selected: "WA");
+                                                            selected: "SA");
                                                       } else {
                                                         return const Center(
                                                           child:
@@ -2126,7 +1941,7 @@ class _ShowerReportState extends State<ShowerReport> {
                                                     },
                                                   ),
                                                 )
-                                              : isNT
+                                              : isWA
                                                   ? FittedBox(
                                                       child: FutureBuilder<
                                                           List<WaterData>>(
@@ -2148,7 +1963,7 @@ class _ShowerReportState extends State<ShowerReport> {
                                                                         .data!,
                                                                 timerdata: widget
                                                                     .minutes,
-                                                                selected: "NT");
+                                                                selected: "WA");
                                                           } else {
                                                             return const Center(
                                                               child:
@@ -2158,7 +1973,7 @@ class _ShowerReportState extends State<ShowerReport> {
                                                         },
                                                       ),
                                                     )
-                                                  : isACT
+                                                  : isNT
                                                       ? FittedBox(
                                                           child: FutureBuilder<
                                                               List<WaterData>>(
@@ -2182,7 +1997,7 @@ class _ShowerReportState extends State<ShowerReport> {
                                                                         widget
                                                                             .minutes,
                                                                     selected:
-                                                                        "ACT");
+                                                                        "NT");
                                                               } else {
                                                                 return const Center(
                                                                   child:
@@ -2192,7 +2007,7 @@ class _ShowerReportState extends State<ShowerReport> {
                                                             },
                                                           ),
                                                         )
-                                                      : isTAS
+                                                      : isACT
                                                           ? FittedBox(
                                                               child: FutureBuilder<
                                                                   List<
@@ -2217,7 +2032,7 @@ class _ShowerReportState extends State<ShowerReport> {
                                                                             widget
                                                                                 .minutes,
                                                                         selected:
-                                                                            "TAS");
+                                                                            "ACT");
                                                                   } else {
                                                                     return const Center(
                                                                       child:
@@ -2227,40 +2042,331 @@ class _ShowerReportState extends State<ShowerReport> {
                                                                 },
                                                               ),
                                                             )
-                                                          : FittedBox(
-                                                              child: FutureBuilder<
-                                                                  List<
-                                                                      WaterData>>(
-                                                                future: fetchWaterData(
-                                                                    http.Client()),
-                                                                builder: (context,
-                                                                    snapshot) {
-                                                                  if (snapshot
-                                                                      .hasError) {
-                                                                    return const Center(
-                                                                      child: Text(
-                                                                          'An error has occurred!'),
-                                                                    );
-                                                                  } else if (snapshot
-                                                                      .hasData) {
-                                                                    return WaterDataList(
-                                                                        waterdata:
-                                                                            snapshot
-                                                                                .data!,
-                                                                        timerdata:
-                                                                            widget
-                                                                                .minutes,
-                                                                        selected:
-                                                                            "ALL");
-                                                                  } else {
-                                                                    return const Center(
-                                                                      child:
-                                                                          CircularProgressIndicator(),
-                                                                    );
-                                                                  }
-                                                                },
-                                                              ),
-                                                            ),
+                                                          : isTAS
+                                                              ? FittedBox(
+                                                                  child: FutureBuilder<
+                                                                      List<
+                                                                          WaterData>>(
+                                                                    future: fetchWaterData(
+                                                                        http.Client()),
+                                                                    builder:
+                                                                        (context,
+                                                                            snapshot) {
+                                                                      if (snapshot
+                                                                          .hasError) {
+                                                                        return const Center(
+                                                                          child:
+                                                                              Text('An error has occurred!'),
+                                                                        );
+                                                                      } else if (snapshot
+                                                                          .hasData) {
+                                                                        return WaterDataList(
+                                                                            waterdata:
+                                                                                snapshot.data!,
+                                                                            timerdata: widget.minutes,
+                                                                            selected: "TAS");
+                                                                      } else {
+                                                                        return const Center(
+                                                                          child:
+                                                                              CircularProgressIndicator(),
+                                                                        );
+                                                                      }
+                                                                    },
+                                                                  ),
+                                                                )
+                                                              : FittedBox(
+                                                                  child: FutureBuilder<
+                                                                      List<
+                                                                          WaterData>>(
+                                                                    future: fetchWaterData(
+                                                                        http.Client()),
+                                                                    builder:
+                                                                        (context,
+                                                                            snapshot) {
+                                                                      if (snapshot
+                                                                          .hasError) {
+                                                                        return const Center(
+                                                                          child:
+                                                                              Text('An error has occurred!'),
+                                                                        );
+                                                                      } else if (snapshot
+                                                                          .hasData) {
+                                                                        return WaterDataList(
+                                                                            waterdata:
+                                                                                snapshot.data!,
+                                                                            timerdata: widget.minutes,
+                                                                            selected: "ALL");
+                                                                      } else {
+                                                                        return const Center(
+                                                                          child:
+                                                                              CircularProgressIndicator(),
+                                                                        );
+                                                                      }
+                                                                    },
+                                                                  ),
+                                                                ),
+                              Padding(
+                                padding: const EdgeInsets.all(15.0),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    setSelected('ALL');
+                                  },
+                                  child: Text(
+                                    'National Average Shower Time (Minutes)',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ),
+                              FittedBox(
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              setSelected('VIC');
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                                primary: Colors.blue[100]),
+                                            child: Container(
+                                              width: 50,
+                                              height: 50,
+                                              decoration: BoxDecoration(
+                                                color: Colors.blue[300],
+                                                image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/images/vic.jpg"),
+                                                  fit: BoxFit.fitWidth,
+                                                ),
+                                              ),
+                                              child: Center(
+                                                  child: Text(
+                                                "VIC",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )),
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              setSelected('NSW');
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                                primary: Colors.blue[100]),
+                                            child: Container(
+                                              width: 50,
+                                              height: 50,
+                                              decoration: BoxDecoration(
+                                                color: Colors.blue[300],
+                                                image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/images/nsw.jpg"),
+                                                  fit: BoxFit.fitWidth,
+                                                ),
+                                              ),
+                                              child: Center(
+                                                  child: Text(
+                                                "NSW",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )),
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              setSelected('QLD');
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                                primary: Colors.blue[100]),
+                                            child: Container(
+                                              width: 50,
+                                              height: 50,
+                                              decoration: BoxDecoration(
+                                                color: Colors.blue[300],
+                                                image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/images/qld.jpg"),
+                                                  fit: BoxFit.fitWidth,
+                                                ),
+                                              ),
+                                              child: Center(
+                                                  child: Text(
+                                                "QLD",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )),
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              setSelected('SA');
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                                primary: Colors.blue[100]),
+                                            child: Container(
+                                              width: 50,
+                                              height: 50,
+                                              decoration: BoxDecoration(
+                                                color: Colors.blue[300],
+                                                image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/images/sa.jpg"),
+                                                  fit: BoxFit.fitWidth,
+                                                ),
+                                              ),
+                                              child: Center(
+                                                  child: Text(
+                                                "SA",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )),
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              setSelected('WA');
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                                primary: Colors.blue[100]),
+                                            child: Container(
+                                              width: 50,
+                                              height: 50,
+                                              decoration: BoxDecoration(
+                                                color: Colors.blue[300],
+                                                image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/images/wa.jpg"),
+                                                  fit: BoxFit.fitWidth,
+                                                ),
+                                              ),
+                                              child: Center(
+                                                  child: Text(
+                                                "WA",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )),
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              setSelected('NT');
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                                primary: Colors.blue[100]),
+                                            child: Container(
+                                              width: 50,
+                                              height: 50,
+                                              decoration: BoxDecoration(
+                                                color: Colors.blue[300],
+                                                image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/images/nt.jpg"),
+                                                  fit: BoxFit.fitWidth,
+                                                ),
+                                              ),
+                                              child: Center(
+                                                  child: Text(
+                                                "NT",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )),
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              setSelected('ACT');
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                                primary: Colors.blue[100]),
+                                            child: Container(
+                                              width: 50,
+                                              height: 50,
+                                              decoration: BoxDecoration(
+                                                color: Colors.blue[300],
+                                                image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/images/act.jpg"),
+                                                  fit: BoxFit.fitWidth,
+                                                ),
+                                              ),
+                                              child: Center(
+                                                  child: Text(
+                                                "ACT",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )),
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              setSelected('TAS');
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                                primary: Colors.blue[100]),
+                                            child: Container(
+                                              width: 50,
+                                              height: 50,
+                                              decoration: BoxDecoration(
+                                                color: Colors.blue[100],
+                                                image: DecorationImage(
+                                                  image: AssetImage(
+                                                      "assets/images/tas.jpg"),
+                                                  fit: BoxFit.fitWidth,
+                                                ),
+                                              ),
+                                              child: Center(
+                                                  child: Text(
+                                                "TAS",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              )),
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          )),
 
                           Padding(
                             padding: const EdgeInsets.all(16.0),
@@ -2299,7 +2405,7 @@ class _ShowerReportState extends State<ShowerReport> {
 Future<List<WaterData>> fetchWaterData(http.Client client) async {
   final response = await client
       // .get(Uri.parse('https://api.jsonbin.io/b/62500812d8a4cc06909ddd01'));
-      //.get(Uri.parse('https://tp17-api.azurewebsites.net/api/WaterDatas'));
+      // .get(Uri.parse('https://tp17-api.azurewebsites.net/api/WaterDatas'));
       .get(Uri.parse(
           'https://tp17waterapiiterationone.azurewebsites.net/api/WaterDatas'));
 
@@ -2384,9 +2490,11 @@ Future<bool> postRecord(int seconds) async {
       .toJson();
   var recordBody = json.encode(record);
   var res = await http.post(
+      // Uri.parse('https://tp17-api.azurewebsites.net/api/showerrecords'),
+      // Uri.parse(
+      //     'https://tp17waterapi20220412011238.azurewebsites.net/api/showerrecords'),
       Uri.parse(
-          "https://tp17waterapiiterationone.azurewebsites.net/api/showerrecords"),
-      // Uri.parse('https://tp17-api.azurewebsites.net/api/ShowerRecords'),
+          'https://tp17waterapiiterationone.azurewebsites.net/api/showerrecords'),
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
       },
