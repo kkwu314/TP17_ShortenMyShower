@@ -17192,7 +17192,7 @@ s.yH()},
 hl(a){var s=0,r=A.a1(t.l),q,p
 var $async$hl=A.a2(function(b,c){if(b===1)return A.Z(c,r)
 while(true)switch(s){case 0:s=3
-return A.Y(a.Vj("GET",A.mR("https://tp17-api.azurewebsites.net/api/WaterDatas"),null),$async$hl)
+return A.Y(a.Vj("GET",A.mR("https://tp17waterapiiterationone.azurewebsites.net/api/WaterDatas"),null),$async$hl)
 case 3:p=c
 q=A.arj().$2$2(A.at0(),A.asn(A.aqF(p.e).c.a.j(0,"charset")).cj(0,p.w),t.N,t.l)
 s=1
@@ -17205,7 +17205,7 @@ var $async$a6M=A.a2(function(b,c){if(b===1)return A.Z(c,r)
 while(true)switch(s){case 0:p=B.ak.fE(new A.Y4(a,new A.ds(Date.now(),!1)).y9())
 o=t.N
 s=3
-return A.Y(A.atc(A.mR("https://tp17-api.azurewebsites.net/api/ShowerRecords"),p,A.aL(["Content-Type","application/json; charset=UTF-8"],o,o)),$async$a6M)
+return A.Y(A.atc(A.mR("https://tp17waterapiiterationone.azurewebsites.net/api/showerrecords"),p,A.aL(["Content-Type","application/json; charset=UTF-8"],o,o)),$async$a6M)
 case 3:n=c
 A.jN(p)
 o=n.b===201&&!0
