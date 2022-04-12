@@ -2299,7 +2299,9 @@ class _ShowerReportState extends State<ShowerReport> {
 Future<List<WaterData>> fetchWaterData(http.Client client) async {
   final response = await client
       // .get(Uri.parse('https://api.jsonbin.io/b/62500812d8a4cc06909ddd01'));
-      .get(Uri.parse('https://tp17-api.azurewebsites.net/api/WaterDatas'));
+      //.get(Uri.parse('https://tp17-api.azurewebsites.net/api/WaterDatas'));
+      .get(Uri.parse(
+          'https://tp17waterapiiterationone.azurewebsites.net/api/WaterDatas'));
 
   return compute(parseWaterData, response.body);
 }
@@ -2382,7 +2384,9 @@ Future<bool> postRecord(int seconds) async {
       .toJson();
   var recordBody = json.encode(record);
   var res = await http.post(
-      Uri.parse('https://tp17-api.azurewebsites.net/api/ShowerRecords'),
+      Uri.parse(
+          "https://tp17waterapiiterationone.azurewebsites.net/api/showerrecords"),
+      // Uri.parse('https://tp17-api.azurewebsites.net/api/ShowerRecords'),
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
       },
