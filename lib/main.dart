@@ -176,11 +176,12 @@ class LandingPage extends StatelessWidget {
                               Text(
                                 "Saving water for Australia \n ",
                                 style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.bold),
+                                    fontSize: 20, fontWeight: FontWeight.bold),
                               ),
                               Text(
                                 "Adult Generation Z (18-25) in Victoria \ncares about water conservation \nbut does not have good water habits. \nWe aim to improve the awareness of saving water \nvia developing a 4 minutes shower habit. ",
                                 style: TextStyle(
+                                    fontSize: 16,
                                     fontStyle: FontStyle.italic,
                                     color: Colors.black87),
                               ),
