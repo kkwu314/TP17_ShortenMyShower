@@ -66953,7 +66953,7 @@ ghC(){return"windows"},
 glN(){return"\\"}}
 A.Gx.prototype={
 N(a,b){var s=A.am0(null,B.t3)
-return new A.wR(A.a6(["/",new A.ZG(),"/timer",new A.ZH(),"/password",new A.ZI(),"/estimation",new A.ZJ(),"/iot",new A.ZK()],t.N,t.Ab),"/","Shorten My Shower",s,!1,null)}}
+return new A.wR(A.a6(["/",new A.ZG(),"/timer",new A.ZH(),"/password",new A.ZI(),"/estimation",new A.ZJ(),"/iot",new A.ZK()],t.N,t.Ab),"/password","Shorten My Shower",s,!1,null)}}
 A.ZG.prototype={
 $1(a){return new A.qt(null)},
 $S:408}
