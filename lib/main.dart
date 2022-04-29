@@ -11,6 +11,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import "package:collection/collection.dart";
 
 void main() {
   runApp(const MyApp());
@@ -36,13 +37,1167 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/password',
+      initialRoute: '/',
       routes: {
         '/': (context) => LandingPage(),
         '/timer': (context) => BodyTimerPage(),
         '/password': (context) => PasswordPage(),
+        '/estimation': (context) => EstimationPage(),
+        '/iot': (context) => IoTPage(),
       },
       debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+final List<Map<String, dynamic>> allDeviceInfo = [
+  {
+    "id": 1,
+    "name": "first floor master bathroom shower",
+    "label": "shower",
+    "description": "Water flow meter for first floor master bathroom shower",
+    "userId": 2
+  },
+  {
+    "id": 2,
+    "name": "first floor side bathroom toilet",
+    "label": "toilet",
+    "description": "Water flow meter for first floor side bathroom toilet",
+    "userId": 4
+  },
+  {
+    "id": 3,
+    "name": "master bathroom toilet",
+    "label": "toilet",
+    "description": "Water flow meter for master bathroom toilet",
+    "userId": 3
+  },
+  {
+    "id": 4,
+    "name": "side bathroom toilet",
+    "label": "toilet",
+    "description": "Water flow meter for side bathroom toilet",
+    "userId": 4
+  },
+  {
+    "id": 5,
+    "name": "first floor master bathroom shower",
+    "label": "shower",
+    "description": "Water flow meter for first floor master bathroom shower",
+    "userId": 1
+  },
+  {
+    "id": 6,
+    "name": "master bathroom toilet",
+    "label": "toilet",
+    "description": "Water flow meter for master bathroom toilet",
+    "userId": 1
+  },
+  {
+    "id": 7,
+    "name": "first floor master bathroom bath",
+    "label": "bath",
+    "description": "Water flow meter for first floor master bathroom bath",
+    "userId": 2
+  },
+  {
+    "id": 8,
+    "name": "second floor master bathroom wash basin taps",
+    "label": "wash basin taps",
+    "description":
+        "Water flow meter for second floor master bathroom wash basin taps",
+    "userId": 3
+  },
+  {
+    "id": 9,
+    "name": "first floor side bathroom toilet",
+    "label": "toilet",
+    "description": "Water flow meter for first floor side bathroom toilet",
+    "userId": 2
+  },
+  {
+    "id": 10,
+    "name": "first floor master bathroom bath",
+    "label": "bath",
+    "description": "Water flow meter for first floor master bathroom bath",
+    "userId": 0
+  }
+];
+
+final List<Map<String, dynamic>> allRecordsInfo = [
+  {
+    "id": 1,
+    "deviceId": 1,
+    "recordDateTime": "2021-06-25 18:37:26",
+    "usedSecond": 3,
+    "flowPerSec": 0.13
+  },
+  {
+    "id": 2,
+    "deviceId": 1,
+    "recordDateTime": "2021-12-17 21:20:33",
+    "usedSecond": 1,
+    "flowPerSec": 0.28
+  },
+  {
+    "id": 3,
+    "deviceId": 9,
+    "recordDateTime": "2021-10-27 09:07:07",
+    "usedSecond": 1,
+    "flowPerSec": 0.93
+  },
+  {
+    "id": 4,
+    "deviceId": 2,
+    "recordDateTime": "2021-10-15 10:48:30",
+    "usedSecond": 1,
+    "flowPerSec": 0.51
+  },
+  {
+    "id": 5,
+    "deviceId": 6,
+    "recordDateTime": "2021-11-02 08:18:47",
+    "usedSecond": 1,
+    "flowPerSec": 0.85
+  },
+  {
+    "id": 6,
+    "deviceId": 6,
+    "recordDateTime": "2022-03-31 04:47:22",
+    "usedSecond": 1,
+    "flowPerSec": 0.58
+  },
+  {
+    "id": 7,
+    "deviceId": 6,
+    "recordDateTime": "2021-11-11 11:51:30",
+    "usedSecond": 1,
+    "flowPerSec": 0.94
+  },
+  {
+    "id": 8,
+    "deviceId": 4,
+    "recordDateTime": "2021-10-10 03:42:57",
+    "usedSecond": 1,
+    "flowPerSec": 0.33
+  },
+  {
+    "id": 9,
+    "deviceId": 7,
+    "recordDateTime": "2022-01-30 23:10:02",
+    "usedSecond": 1,
+    "flowPerSec": 0.75
+  },
+  {
+    "id": 10,
+    "deviceId": 7,
+    "recordDateTime": "2021-10-12 22:32:57",
+    "usedSecond": 1,
+    "flowPerSec": 0.54
+  },
+  {
+    "id": 11,
+    "deviceId": 0,
+    "recordDateTime": "2021-12-13 02:10:35",
+    "usedSecond": 1,
+    "flowPerSec": 0.19
+  },
+  {
+    "id": 12,
+    "deviceId": 5,
+    "recordDateTime": "2022-04-20 11:53:23",
+    "usedSecond": 1,
+    "flowPerSec": 0.36
+  },
+  {
+    "id": 13,
+    "deviceId": 10,
+    "recordDateTime": "2021-05-26 10:08:06",
+    "usedSecond": 1,
+    "flowPerSec": 0.85
+  },
+  {
+    "id": 14,
+    "deviceId": 8,
+    "recordDateTime": "2021-05-22 19:30:55",
+    "usedSecond": 1,
+    "flowPerSec": 0.99
+  },
+  {
+    "id": 15,
+    "deviceId": 8,
+    "recordDateTime": "2021-08-11 10:56:26",
+    "usedSecond": 1,
+    "flowPerSec": 0.99
+  },
+  {
+    "id": 16,
+    "deviceId": 1,
+    "recordDateTime": "2021-09-11 03:22:33",
+    "usedSecond": 1,
+    "flowPerSec": 0.99
+  },
+  {
+    "id": 17,
+    "deviceId": 6,
+    "recordDateTime": "2022-01-26 12:17:11",
+    "usedSecond": 1,
+    "flowPerSec": 0.53
+  },
+  {
+    "id": 18,
+    "deviceId": 1,
+    "recordDateTime": "2021-05-13 16:04:10",
+    "usedSecond": 1,
+    "flowPerSec": 0.81
+  },
+  {
+    "id": 19,
+    "deviceId": 2,
+    "recordDateTime": "2021-05-24 23:11:17",
+    "usedSecond": 1,
+    "flowPerSec": 0.03
+  },
+  {
+    "id": 20,
+    "deviceId": 9,
+    "recordDateTime": "2021-05-25 21:17:21",
+    "usedSecond": 1,
+    "flowPerSec": 0.26
+  }
+];
+
+class IoTPage extends StatefulWidget {
+  @override
+  _IoTPageState createState() => _IoTPageState();
+}
+
+class _IoTPageState extends State<IoTPage> {
+  final List<Map<String, dynamic>> _allDeviceInfo = allDeviceInfo;
+  final List<Map<String, dynamic>> _allRecordsInfo = allRecordsInfo;
+
+  //List<Map<String, dynamic>> _summaryRecords = [];
+  List<double> _sumlistOfLites = [];
+  List<double> _idsList = [];
+  var groupedMap;
+
+  var _showerMap;
+  var _bathMap;
+  var _toiletMap;
+  var _tapsMap;
+
+  bool showIot = false;
+
+  void productFuction(dynamic mymap) {
+    _sumlistOfLites.add(mymap['usedSecond'] * mymap['flowPerSec']);
+    // return (mymap['usedSecond'] * mymap['flowPerSec']);
+  }
+
+  String forloopFuction(dynamic mymap) {
+    mymap?.forEach(productFuction);
+    print(_sumlistOfLites);
+    var localList = _sumlistOfLites;
+    _sumlistOfLites = [];
+    return (localList.sum * 100.round() / 100).toStringAsFixed(2) + ' liters';
+  }
+
+  double forloopCalFuction(dynamic mymap) {
+    mymap?.forEach(productFuction);
+    print(_sumlistOfLites);
+    var localList = _sumlistOfLites;
+    _sumlistOfLites = [];
+    return (localList.sum * 100.round() / 100);
+  }
+
+//
+
+  void getIdsFuction(dynamic mymap) {
+    _idsList.add(mymap['id']);
+    // return (mymap['usedSecond'] * mymap['flowPerSec']);
+  }
+
+  String sumEachFuction(dynamic mymap) {
+    print(mymap);
+    mymap?.forEach(getIdsFuction);
+    print(_idsList);
+    _idsList = _idsList.toSet().toList();
+    //
+    List<double> localList = [];
+    for (var i = 0; i < _idsList.length; i++) {
+      localList.add(forloopCalFuction(groupedMap[_idsList[i]]));
+    }
+    print(localList.toString());
+    _idsList = [];
+    // return (localList.sum * 100.round() / 100).toStringAsFixed(2) + ' liters';
+    return (localList.sum * 100.round() / 100).toStringAsFixed(2) + ' liters';
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    // }
+
+    var newMap = groupBy(_allRecordsInfo, (Map obj) => obj['deviceId']);
+
+    groupedMap = newMap;
+
+    // print(forloopFuction(groupedMap[3]));
+    // print(newMap);
+    // print(_deviceIndexList);
+    // print(_sumlistOfLites);
+    // print(_summarylistOfLites);
+
+    var _labelMap = groupBy(_allDeviceInfo, (Map obj) => obj['label']);
+    // print(_labelMap);
+    _showerMap = _labelMap['shower'];
+    _bathMap = _labelMap['bath'];
+    _toiletMap = _labelMap['toilet'];
+    _tapsMap = _labelMap['wash basin taps'];
+
+    // print(_showerMap);
+    sumEachFuction(_showerMap);
+
+    // sumEachFuction(_showerMap);
+    // print(_bathMap);
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.blue[100],
+        title: HomeNav(),
+        toolbarHeight: 180,
+      ),
+      body: showIot
+          ? Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 120,
+                          color: Colors.blueAccent[100],
+                          child: Card(
+                            margin: EdgeInsets.all(8.0),
+                            child: ListTile(
+                              leading: Text('Showers'),
+                              title: Text('Total showers water usage'),
+                              subtitle: Text('${sumEachFuction(_showerMap)}'),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                            child: _showerMap.isNotEmpty
+                                ? ListView.builder(
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: _showerMap.length,
+                                    itemBuilder: (context, index) => Align(
+                                      child: Card(
+                                        key: ValueKey(_showerMap[index]["id"]),
+                                        // color: _getColorByBin(
+                                        //     _foundCards[index]["color"].toString()),
+                                        elevation: 4,
+                                        margin: EdgeInsets.all(16.0),
+                                        child: ListTile(
+                                          leading: Text(
+                                            (index + 1).toString(),
+                                            style: TextStyle(fontSize: 14.0),
+                                          ),
+                                          title: Text(
+                                            _showerMap[index]['name'],
+                                            style: TextStyle(fontSize: 14.0),
+                                          ),
+                                          // subtitle: Text(
+                                          //     '${((_summaryRecords[index]['usedSecond'] * _summaryRecords[index]['waterFlowLiterPerSecond']) * 10.round() / 10).toStringAsFixed(1)} liters '),
+                                          // subtitle: Text(
+                                          //     '${groupedMap[_allDeviceInfo[index]['id']]?.forEach(sumFuction)}'),
+                                          subtitle: Text(
+                                              '${forloopFuction(groupedMap[_showerMap[index]['id']])}'),
+
+                                          onTap: () {
+                                            // Navigator.push(
+                                            //   context,
+                                            //   MaterialPageRoute(
+                                            //     builder: (context) => DetailScreen(
+                                            //         foundCard: _foundCards[index]),
+                                            //   ),
+                                            // );
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                : Text("No found of waste")),
+                      ],
+                    ),
+                  ),
+                  //
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 120,
+                          color: Colors.blueAccent[100],
+                          child: Card(
+                            margin: EdgeInsets.all(8.0),
+                            child: ListTile(
+                              leading: Text('Baths'),
+                              title: Text('Total baths water usage'),
+                              subtitle: Text('${sumEachFuction(_bathMap)}'),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: _bathMap.isNotEmpty
+                              ? ListView.builder(
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: _bathMap.length,
+                                  itemBuilder: (context, index) => Align(
+                                    child: Card(
+                                      key: ValueKey(_bathMap[index]["id"]),
+                                      // color: _getColorByBin(
+                                      //     _foundCards[index]["color"].toString()),
+                                      elevation: 4,
+                                      margin: EdgeInsets.all(16.0),
+                                      child: ListTile(
+                                        leading: Text(
+                                          (index + 1).toString(),
+                                          style: TextStyle(fontSize: 14.0),
+                                        ),
+                                        title: Text(
+                                          _bathMap[index]['name'],
+                                          style: TextStyle(fontSize: 14.0),
+                                        ),
+                                        // subtitle: Text(
+                                        //     '${((_summaryRecords[index]['usedSecond'] * _summaryRecords[index]['waterFlowLiterPerSecond']) * 10.round() / 10).toStringAsFixed(1)} liters '),
+                                        // subtitle: Text(
+                                        //     '${groupedMap[_allDeviceInfo[index]['id']]?.forEach(sumFuction)}'),
+                                        subtitle: Text(
+                                            '${forloopFuction(groupedMap[_bathMap[index]['id']])}'),
+
+                                        onTap: () {
+                                          // Navigator.push(
+                                          //   context,
+                                          //   MaterialPageRoute(
+                                          //     builder: (context) => DetailScreen(
+                                          //         foundCard: _foundCards[index]),
+                                          //   ),
+                                          // );
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : Text("No found of waste"),
+                        ),
+                      ],
+                    ),
+                  ),
+//
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 120,
+                          color: Colors.blueAccent[100],
+                          child: Card(
+                            margin: EdgeInsets.all(8.0),
+                            child: ListTile(
+                              leading: Text('Toilets'),
+                              title: Text('Total toilets water usage'),
+                              subtitle: Text('${sumEachFuction(_toiletMap)}'),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: _toiletMap.isNotEmpty
+                              ? ListView.builder(
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: _toiletMap.length,
+                                  itemBuilder: (context, index) => Align(
+                                    child: Card(
+                                      key: ValueKey(_toiletMap[index]["id"]),
+                                      // color: _getColorByBin(
+                                      //     _foundCards[index]["color"].toString()),
+                                      elevation: 4,
+                                      margin: EdgeInsets.all(16.0),
+                                      child: ListTile(
+                                        leading: Text(
+                                          (index + 1).toString(),
+                                          style: TextStyle(fontSize: 14.0),
+                                        ),
+                                        title: Text(
+                                          _toiletMap[index]['name'],
+                                          style: TextStyle(fontSize: 14.0),
+                                        ),
+                                        // subtitle: Text(
+                                        //     '${((_summaryRecords[index]['usedSecond'] * _summaryRecords[index]['waterFlowLiterPerSecond']) * 10.round() / 10).toStringAsFixed(1)} liters '),
+                                        // subtitle: Text(
+                                        //     '${groupedMap[_allDeviceInfo[index]['id']]?.forEach(sumFuction)}'),
+                                        subtitle: Text(
+                                            '${forloopFuction(groupedMap[_toiletMap[index]['id']])}'),
+
+                                        onTap: () {
+                                          // Navigator.push(
+                                          //   context,
+                                          //   MaterialPageRoute(
+                                          //     builder: (context) => DetailScreen(
+                                          //         foundCard: _foundCards[index]),
+                                          //   ),
+                                          // );
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : Text("No found of waste"),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 120,
+                          color: Colors.blueAccent[100],
+                          child: Card(
+                            margin: EdgeInsets.all(8.0),
+                            child: ListTile(
+                              leading: Text('Taps'),
+                              title: Text('Total taps water usage'),
+                              subtitle: Text('${sumEachFuction(_tapsMap)}'),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: _tapsMap.isNotEmpty
+                              ? ListView.builder(
+                                  itemCount: _tapsMap.length,
+                                  itemBuilder: (context, index) => Align(
+                                    child: Card(
+                                      key: ValueKey(_tapsMap[index]["id"]),
+                                      // color: _getColorByBin(
+                                      //     _foundCards[index]["color"].toString()),
+                                      elevation: 4,
+                                      margin: EdgeInsets.all(16.0),
+                                      child: ListTile(
+                                        leading: Text(
+                                          (index + 1).toString(),
+                                          style: TextStyle(fontSize: 14.0),
+                                        ),
+                                        title: Text(
+                                          _tapsMap[index]['name'],
+                                          style: TextStyle(fontSize: 14.0),
+                                        ),
+                                        // subtitle: Text(
+                                        //     '${((_summaryRecords[index]['usedSecond'] * _summaryRecords[index]['waterFlowLiterPerSecond']) * 10.round() / 10).toStringAsFixed(1)} liters '),
+                                        // subtitle: Text(
+                                        //     '${groupedMap[_allDeviceInfo[index]['id']]?.forEach(sumFuction)}'),
+                                        subtitle: Text(
+                                            '${forloopFuction(groupedMap[_tapsMap[index]['id']])}'),
+
+                                        onTap: () {
+                                          // Navigator.push(
+                                          //   context,
+                                          //   MaterialPageRoute(
+                                          //     builder: (context) => DetailScreen(
+                                          //         foundCard: _foundCards[index]),
+                                          //   ),
+                                          // );
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : Text("No found of waste"),
+                        ),
+                      ],
+                    ),
+                  ),
+                  // Expanded(
+                  //     child: groupedMap.isNotEmpty
+                  //         ? ListView.builder(
+                  //             itemCount: _allDeviceInfo.length,
+                  //             itemBuilder: (context, index) => Align(
+                  //               child: SizedBox(
+                  //                 width: 600,
+                  //                 child: Card(
+                  //                   key: ValueKey(_allDeviceInfo[index]["id"]),
+                  //                   // color: _getColorByBin(
+                  //                   //     _foundCards[index]["color"].toString()),
+                  //                   elevation: 4,
+                  //                   margin: EdgeInsets.symmetric(vertical: 10.0),
+                  //                   child: ListTile(
+                  //                     leading: Text(
+                  //                       _allDeviceInfo[index]['id'].toString(),
+                  //                     ),
+                  //                     title: Text(_allDeviceInfo[index]['name']),
+                  //                     // subtitle: Text(
+                  //                     //     '${((_summaryRecords[index]['usedSecond'] * _summaryRecords[index]['waterFlowLiterPerSecond']) * 10.round() / 10).toStringAsFixed(1)} liters '),
+                  //                     // subtitle: Text(
+                  //                     //     '${groupedMap[_allDeviceInfo[index]['id']]?.forEach(sumFuction)}'),
+                  //                     subtitle: Text(
+                  //                         '${forloopFuction(groupedMap[_allDeviceInfo[index]['id']])}'),
+
+                  //                     onTap: () {
+                  //                       // Navigator.push(
+                  //                       //   context,
+                  //                       //   MaterialPageRoute(
+                  //                       //     builder: (context) => DetailScreen(
+                  //                       //         foundCard: _foundCards[index]),
+                  //                       //   ),
+                  //                       // );
+                  //                     },
+                  //                   ),
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //           )
+                  //         : Text("No found of waste")),
+                ],
+              ),
+            )
+          : Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                    child: Text(
+                        'Once installed IoT devices in your bathrooms,\nyou can easily checking the usage of water in this page. \nThe summary of types of water used will show on the top\n'),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          showIot = true;
+                        });
+                      },
+                      child: Text('Connect to IoT Devices'),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+    );
+  }
+}
+
+///
+
+class EstimationPage extends StatefulWidget {
+  @override
+  _EstimationPageState createState() => _EstimationPageState();
+}
+
+class _EstimationPageState extends State<EstimationPage> {
+  int _peopleValue = 1;
+  int _showerHeadValue = 1;
+  int _showerTimesValue = 1;
+  int _showerAvgMinutesValue = 5;
+
+  bool? _showerIsWEValue = true;
+  int _bathValue = 0;
+  int _toiletValue = 1;
+
+  bool? _toiletIsWEValue = true;
+
+  double _showerWEWaterFlowPerMinute = 6.9;
+
+  double _showerWaterFlowPerMinute = 15.4;
+  double _bathWaterFlowPerTime = 14.0;
+
+  double _toiletWEWaterFlowPerDay = 18.9;
+  double _toiletWaterFlowPerDay = 21.5;
+
+  double _dailyWaterLiters = 0;
+
+  List<Icon> _peopleIcons() {
+    List<Icon> iconslist = [];
+    //
+
+    // for (int i = 0; i < duration.inMinutes.remainder(60); i++) {
+    for (int i = 0; i < _peopleValue; i++) {
+      iconslist.add(Icon(
+        Icons.person,
+        color: Colors.blue[300],
+      ));
+    }
+    return iconslist;
+  }
+
+  List<Icon> _showerheadIcons() {
+    List<Icon> iconslist = [];
+    //
+
+    // for (int i = 0; i < duration.inMinutes.remainder(60); i++) {
+    for (int i = 0; i < _showerHeadValue; i++) {
+      iconslist.add(Icon(
+        Icons.shower,
+        color: Colors.blue[300],
+      ));
+    }
+    return iconslist;
+  }
+
+  List<Icon> _threeStarsRatingsIcons() {
+    List<Icon> iconslist = [];
+    //
+
+    // for (int i = 0; i < duration.inMinutes.remainder(60); i++) {
+    for (int i = 0; i < 3; i++) {
+      iconslist.add(Icon(
+        Icons.star,
+        color: Colors.blue[300],
+      ));
+    }
+    return iconslist;
+  }
+
+  List<Icon> _bathIcons() {
+    List<Icon> iconslist = [];
+    //
+
+    // for (int i = 0; i < duration.inMinutes.remainder(60); i++) {
+    for (int i = 0; i < _bathValue; i++) {
+      iconslist.add(Icon(
+        Icons.bathtub,
+        color: Colors.blue[300],
+      ));
+    }
+    if (_bathValue == 0) {
+      iconslist.add(Icon(
+        Icons.bathtub,
+        color: Colors.white,
+      ));
+    }
+    return iconslist;
+  }
+
+  List<ImageIcon> _showerIcons() {
+    List<ImageIcon> iconslist = [];
+    //
+
+    // for (int i = 0; i < duration.inMinutes.remainder(60); i++) {
+    for (int i = 0; i < _showerTimesValue; i++) {
+      iconslist.add(
+        ImageIcon(
+          AssetImage("images/shower.png"),
+          color: Colors.blue[300],
+        ),
+      );
+    }
+
+    return iconslist;
+  }
+
+  List<ImageIcon> _toiletIcons() {
+    List<ImageIcon> iconslist = [];
+    //
+
+    // for (int i = 0; i < duration.inMinutes.remainder(60); i++) {
+    for (int i = 0; i < _toiletValue; i++) {
+      iconslist.add(
+        ImageIcon(
+          AssetImage("images/toilet.png"),
+          color: Colors.blue[300],
+        ),
+      );
+    }
+
+    return iconslist;
+  }
+
+  List<ImageIcon> _dualFlushIcons() {
+    List<ImageIcon> iconslist = [];
+    //
+
+    // for (int i = 0; i < duration.inMinutes.remainder(60); i++) {
+    for (int i = 0; i < 1; i++) {
+      iconslist.add(
+        ImageIcon(
+          AssetImage("images/flushdual.png"),
+          color: Colors.blue[300],
+        ),
+      );
+    }
+
+    return iconslist;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.blue[100],
+        title: HomeNav(),
+        toolbarHeight: 180,
+      ),
+      body: SingleChildScrollView(
+          child: Center(
+        child: Container(
+          width: size.width * 5 / 6,
+          child: Column(
+            children: [
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FittedBox(
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: _peopleIcons()),
+                    ),
+                  ),
+                  Text('$_peopleValue people living in your home'),
+                  //  Text('$_peopleValue people living in your home'),
+                  Slider(
+                      value: _peopleValue.toDouble(),
+                      min: 1.0,
+                      max: 12.0,
+                      divisions: 11,
+                      activeColor: Colors.blue[200],
+                      inactiveColor: Colors.black,
+                      label: 'Choose number of people living in your home',
+                      onChanged: (double newValue) {
+                        setState(() {
+                          _peopleValue = newValue.round();
+                        });
+                      },
+                      semanticFormatterCallback: (double newValue) {
+                        return '${newValue.round()}';
+                      })
+                ],
+              ),
+              //
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FittedBox(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: _showerheadIcons(),
+                      ),
+                    ),
+                  ),
+                  Text('$_showerHeadValue showerheads in your home'),
+                  Slider(
+                      value: _showerHeadValue.toDouble(),
+                      min: 1.0,
+                      max: 12.0,
+                      divisions: 11,
+                      activeColor: Colors.blue[200],
+                      inactiveColor: Colors.black,
+                      label: 'Choose number of showerheads in your home',
+                      onChanged: (double newValue) {
+                        setState(() {
+                          _showerHeadValue = newValue.round();
+                        });
+                      },
+                      semanticFormatterCallback: (double newValue) {
+                        return '${newValue.round()}';
+                      })
+                ],
+              ),
+              //
+              Column(children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FittedBox(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: _threeStarsRatingsIcons(),
+                    ),
+                  ),
+                ),
+                Text(
+                    '$_showerIsWEValue all showerheads are water efficient with 3 stars rating.'),
+                Checkbox(
+                  value: this._showerIsWEValue,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      this._showerIsWEValue = value;
+                    });
+                  },
+                ),
+              ]),
+
+              //
+              //
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FittedBox(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: _showerIcons(),
+                      ),
+                    ),
+                  ),
+                  Text('$_showerTimesValue how many showers taken per day?'),
+                  Slider(
+                      value: _showerTimesValue.toDouble(),
+                      min: 1.0,
+                      max: 10.0,
+                      divisions: 9,
+                      activeColor: Colors.blue[200],
+                      inactiveColor: Colors.black,
+                      label: 'Choose number of showers per day',
+                      onChanged: (double newValue) {
+                        setState(() {
+                          _showerTimesValue = newValue.round();
+                        });
+                      },
+                      semanticFormatterCallback: (double newValue) {
+                        return '${newValue.round()}';
+                      })
+                ],
+              ),
+              //
+              //
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FittedBox(
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('${_showerAvgMinutesValue} Minutes',
+                                style: TextStyle(
+                                  color: Colors.blue[300],
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                )),
+                          ]),
+                    ),
+                  ),
+                  Text(
+                      '$_showerAvgMinutesValue how many minutes on average per shower?'),
+                  Slider(
+                      value: _showerAvgMinutesValue.toDouble(),
+                      min: 1.0,
+                      max: 60.0,
+                      divisions: 59,
+                      activeColor: Colors.blue[200],
+                      inactiveColor: Colors.black,
+                      label: 'Choose average minutes per shower',
+                      onChanged: (double newValue) {
+                        setState(() {
+                          _showerAvgMinutesValue = newValue.round();
+                        });
+                      },
+                      semanticFormatterCallback: (double newValue) {
+                        return '${newValue.round()}';
+                      })
+                ],
+              ),
+              //
+              //
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FittedBox(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: _bathIcons(),
+                      ),
+                    ),
+                  ),
+                  Text('$_bathValue how many times you having a bath per week'),
+                  Slider(
+                      value: _bathValue.toDouble(),
+                      min: 0.0,
+                      max: 14.0,
+                      divisions: 14,
+                      activeColor: Colors.blue[200],
+                      inactiveColor: Colors.black,
+                      label: 'Choose number of bath per week',
+                      onChanged: (double newValue) {
+                        setState(() {
+                          _bathValue = newValue.round();
+                        });
+                      },
+                      semanticFormatterCallback: (double newValue) {
+                        return '${newValue.round()}';
+                      })
+                ],
+              ),
+              //
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FittedBox(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: _toiletIcons(),
+                      ),
+                    ),
+                  ),
+                  Text('$_toiletValue how many toilet in your house'),
+                  Slider(
+                      value: _toiletValue.toDouble(),
+                      min: 1.0,
+                      max: 10.0,
+                      divisions: 9,
+                      activeColor: Colors.blue[200],
+                      inactiveColor: Colors.black,
+                      label: 'Choose number of toilet in your house',
+                      onChanged: (double newValue) {
+                        setState(() {
+                          _toiletValue = newValue.round();
+                        });
+                      },
+                      semanticFormatterCallback: (double newValue) {
+                        return '${newValue.round()}';
+                      })
+                ],
+              ),
+              //
+              Column(children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FittedBox(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: _dualFlushIcons(),
+                    ),
+                  ),
+                ),
+                Text('$_toiletIsWEValue all toilet are dual flush.'),
+                Checkbox(
+                  value: this._toiletIsWEValue,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      this._toiletIsWEValue = value;
+                    });
+                  },
+                ), //Chec
+              ]),
+
+              //
+
+              ElevatedButton(
+                  onPressed: () {
+                    print("estimate");
+                    print(
+                        "$_peopleValue, $_showerHeadValue ,$_showerIsWEValue, $_bathValue, $_toiletValue, $_toiletIsWEValue,");
+                    if (_showerIsWEValue! && _toiletIsWEValue!) {
+                      _dailyWaterLiters = _peopleValue *
+                          (_showerHeadValue *
+                                  _showerWEWaterFlowPerMinute *
+                                  _showerTimesValue *
+                                  _showerAvgMinutesValue +
+                              _bathValue * _bathWaterFlowPerTime +
+                              _toiletValue * _toiletWEWaterFlowPerDay);
+                    }
+                    if (!_showerIsWEValue! && _toiletIsWEValue!) {
+                      _dailyWaterLiters = _peopleValue *
+                          (_showerHeadValue *
+                                  _showerWaterFlowPerMinute *
+                                  _showerTimesValue *
+                                  _showerAvgMinutesValue +
+                              _bathValue * _bathWaterFlowPerTime +
+                              _toiletValue * _toiletWEWaterFlowPerDay);
+                    }
+                    if (_showerIsWEValue! && !_toiletIsWEValue!) {
+                      _dailyWaterLiters = _peopleValue *
+                          (_showerHeadValue *
+                                  _showerWEWaterFlowPerMinute *
+                                  _showerTimesValue *
+                                  _showerAvgMinutesValue +
+                              _bathValue * _bathWaterFlowPerTime +
+                              _toiletValue * _toiletWaterFlowPerDay);
+                    }
+                    if (!_showerIsWEValue! && !_toiletIsWEValue!) {
+                      _dailyWaterLiters = _peopleValue *
+                          (_showerHeadValue *
+                                  _showerWaterFlowPerMinute *
+                                  _showerTimesValue *
+                                  _showerAvgMinutesValue +
+                              _bathValue * _bathWaterFlowPerTime +
+                              _toiletValue * _toiletWaterFlowPerDay);
+                    }
+
+                    print(_dailyWaterLiters);
+                    setState(() {
+                      _dailyWaterLiters = _dailyWaterLiters;
+                    });
+                    // send it to other screen
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EstimationDetailScreen(
+                          estimatedAmount: _dailyWaterLiters,
+                        ),
+                      ),
+                    );
+                  },
+                  child: Text('Estimate')),
+              Container(
+                child: Text('${_dailyWaterLiters}'),
+              )
+            ],
+          ),
+        ),
+      )),
+    );
+  }
+}
+
+class EstimationDetailScreen extends StatefulWidget {
+  final double estimatedAmount;
+
+  const EstimationDetailScreen({Key? key, required this.estimatedAmount})
+      : super(key: key);
+  @override
+  _EstimationDetailScreenState createState() => _EstimationDetailScreenState();
+}
+
+class _EstimationDetailScreenState extends State<EstimationDetailScreen> {
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.blue[100],
+        title: HomeNav(),
+        toolbarHeight: 180,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Container(
+                // color: Colors.blue,
+                height: size.height * 5 / 6,
+                width: size.width * 5 / 6,
+                child: Center(
+                  child: Text(
+                      'Your estimated water usage is about ${widget.estimatedAmount} liter per day\n which equal to ${(widget.estimatedAmount * 33.814 / 8).round()} cups of coffee'),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -348,70 +1503,134 @@ class LandingPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  //
-                  // Container(
-                  //   width: 160,
-                  //   // color: Colors.amber[100],
-                  //   child: Column(
-                  //     children: [
-                  //       Container(
-                  //         decoration: BoxDecoration(
-                  //           borderRadius: BorderRadius.circular(5.0),
-                  //           color: Colors.blue[100]!.withOpacity(0.6),
-                  //         ),
-                  //         child: Text(
-                  //           "Estimation",
-                  //           style: TextStyle(
-                  //               fontSize: 20,
-                  //               fontWeight: FontWeight.w600,
-                  //               fontStyle: FontStyle.italic),
-                  //         ),
-                  //       ),
-                  //       //
-                  //       Padding(
-                  //         padding: const EdgeInsets.all(8.0),
-                  //         child: Container(
-                  //           width: 120,
-                  //           child: Text(
-                  //             "Estimating water usage by inputting base facilities information and get a better awareness of water.",
-                  //             overflow: TextOverflow.clip,
-                  //             softWrap: true,
-                  //             style: TextStyle(
-                  //                 // fontSize: 16,
-                  //                 fontWeight: FontWeight.normal,
-                  //                 fontStyle: FontStyle.normal),
-                  //           ),
-                  //         ),
-                  //       ),
+                  Container(
+                    width: 160,
+                    // color: Colors.amber[100],
+                    child: Column(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5.0),
+                            color: Colors.blue[100]!.withOpacity(0.6),
+                          ),
+                          child: Text(
+                            "Estimation",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FontStyle.italic),
+                          ),
+                        ),
+                        //
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            width: 120,
+                            child: Text(
+                              "Estimating water usage by inputting base facilities information and get a better awareness of water.",
+                              overflow: TextOverflow.clip,
+                              softWrap: true,
+                              style: TextStyle(
+                                  // fontSize: 16,
+                                  fontWeight: FontWeight.normal,
+                                  fontStyle: FontStyle.normal),
+                            ),
+                          ),
+                        ),
 
-                  //       //
-                  //       //
-                  //       Container(
-                  //         child: Column(
-                  //           children: [
-                  //             IconButton(
-                  //               hoverColor: Colors.blue.withOpacity(.10),
-                  //               onPressed: () {
-                  //                 //Navigator.pushNamed(context, '/timer');
-                  //               },
-                  //               icon: Icon(Icons.calculate_rounded),
-                  //               iconSize: 60,
-                  //               color: Colors.blue[300],
-                  //             ),
-                  //             Text(
-                  //               "Start estimating!",
-                  //               style: TextStyle(
-                  //                   fontSize: 16,
-                  //                   fontWeight: FontWeight.bold,
-                  //                   fontStyle: FontStyle.normal),
-                  //             )
-                  //           ],
-                  //         ),
-                  //       ),
-                  //       SizedBox(height: 30),
-                  //     ],
-                  //   ),
-                  // ),
+                        //
+                        //
+                        Container(
+                          child: Column(
+                            children: [
+                              IconButton(
+                                hoverColor: Colors.blue.withOpacity(.10),
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/estimation');
+                                },
+                                icon: Icon(Icons.calculate_rounded),
+                                iconSize: 60,
+                                color: Colors.blue[300],
+                              ),
+                              Text(
+                                "Start estimating!",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FontStyle.normal),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 30),
+                      ],
+                    ),
+                  ),
+
+                  Container(
+                    width: 160,
+                    // color: Colors.amber[100],
+                    child: Column(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5.0),
+                            color: Colors.blue[100]!.withOpacity(0.6),
+                          ),
+                          child: Text(
+                            "IoT",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FontStyle.italic),
+                          ),
+                        ),
+                        //
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            width: 120,
+                            child: Text(
+                              "Connect to IoT devices to keep track of your usage of water to get more accurate data and see where water used.",
+                              overflow: TextOverflow.clip,
+                              softWrap: true,
+                              style: TextStyle(
+                                  // fontSize: 16,
+                                  fontWeight: FontWeight.normal,
+                                  fontStyle: FontStyle.normal),
+                            ),
+                          ),
+                        ),
+
+                        //
+                        //
+                        Container(
+                          child: Column(
+                            children: [
+                              IconButton(
+                                hoverColor: Colors.blue.withOpacity(.10),
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/iot');
+                                },
+                                icon: Icon(Icons.calculate_rounded),
+                                iconSize: 60,
+                                color: Colors.blue[300],
+                              ),
+                              Text(
+                                "Connect to IoT!",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FontStyle.normal),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 30),
+                      ],
+                    ),
+                  ),
+
                   // Container(
                   //   // color: Colors.amberAccent,
                   //   width: 160,
@@ -423,7 +1642,7 @@ class LandingPage extends StatelessWidget {
                   //           color: Colors.blue[100]!.withOpacity(0.95),
                   //         ),
                   //         child: Text(
-                  //           "Reflection",
+                  //           "IoT",
                   //           style: TextStyle(
                   //               fontSize: 20,
                   //               fontWeight: FontWeight.w600,
@@ -436,7 +1655,8 @@ class LandingPage extends StatelessWidget {
                   //         child: Container(
                   //           width: 120,
                   //           child: Text(
-                  //             "Share your thoughts and tricks of saving water. Let more people knows the secret of quick shower for the environment.",
+                  //             // "Share your thoughts and tricks of saving water. Let more people knows the secret of quick shower for the environment.",
+                  //             "Connect to IoT devices to keep track of your usage of water to get more accurate data and see where water can be saved.",
                   //             overflow: TextOverflow.clip,
                   //             softWrap: true,
                   //             style: TextStyle(
@@ -462,7 +1682,7 @@ class LandingPage extends StatelessWidget {
                   //               color: Colors.blue[300],
                   //             ),
                   //             Text(
-                  //               "Start writing!",
+                  //               "Connect to IoT!",
                   //               style: TextStyle(
                   //                   fontSize: 16,
                   //                   fontWeight: FontWeight.bold,
@@ -475,7 +1695,6 @@ class LandingPage extends StatelessWidget {
                   //     ],
                   //   ),
                   // ),
-                  //
                 ],
               ),
             ),
@@ -1157,30 +2376,34 @@ class HomeNav extends StatelessWidget {
                   },
                   child: const Text("Timer")),
             ),
-            // Padding(
-            //   padding: const EdgeInsets.all(4.0),
-            //   child: TextButton(
-            //       style: TextButton.styleFrom(
-            //           primary: Colors.black,
-            //           textStyle:
-            //               TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            //           shape: RoundedRectangleBorder(
-            //               borderRadius: BorderRadius.circular(50))),
-            //       onPressed: () {},
-            //       child: const Text("Estimation")),
-            // ),
-            // Padding(
-            //   padding: const EdgeInsets.all(4.0),
-            //   child: TextButton(
-            //       style: TextButton.styleFrom(
-            //           primary: Colors.black,
-            //           textStyle:
-            //               TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            //           shape: RoundedRectangleBorder(
-            //               borderRadius: BorderRadius.circular(50))),
-            //       onPressed: () {},
-            //       child: const Text("Reflection")),
-            // ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: TextButton(
+                  style: TextButton.styleFrom(
+                      primary: Colors.black,
+                      textStyle:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/estimation');
+                  },
+                  child: const Text("Estimation")),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: TextButton(
+                  style: TextButton.styleFrom(
+                      primary: Colors.black,
+                      textStyle:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/iot');
+                  },
+                  child: const Text("IoT")),
+            ),
             // Padding(
             //   padding: const EdgeInsets.all(4.0),
             //   child: TextButton(
@@ -2407,8 +3630,7 @@ Future<List<WaterData>> fetchWaterData(http.Client client) async {
   final response = await client
       // .get(Uri.parse('https://api.jsonbin.io/b/62500812d8a4cc06909ddd01'));
       // .get(Uri.parse('https://tp17-api.azurewebsites.net/api/WaterDatas'));
-      .get(Uri.parse(
-          'https://tp17waterapiiterationone.azurewebsites.net/api/WaterDatas'));
+      .get(Uri.parse('https://tp17-water.azurewebsites.net/api/WaterDatas'));
 
   return compute(parseWaterData, response.body);
 }
@@ -2494,8 +3716,7 @@ Future<bool> postRecord(int seconds) async {
       // Uri.parse('https://tp17-api.azurewebsites.net/api/showerrecords'),
       // Uri.parse(
       //     'https://tp17waterapi20220412011238.azurewebsites.net/api/showerrecords'),
-      Uri.parse(
-          'https://tp17waterapiiterationone.azurewebsites.net/api/showerrecords'),
+      Uri.parse('https://tp17-water.azurewebsites.net/api/ShowerRecords'),
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
       },
