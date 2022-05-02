@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/iot',
+      initialRoute: '/password',
       routes: {
         '/': (context) => LandingPage(),
         '/timer': (context) => BodyTimerPage(),
