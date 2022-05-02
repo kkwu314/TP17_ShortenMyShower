@@ -3,9 +3,10 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "3644c965e74b1c455ca41ec11a952022",
+  "assets/AssetManifest.json": "497963b132a56f1cac99041c2e937933",
 "assets/assets/images/act.jpg": "f294d2923aa77f44be1e89795e870d1f",
 "assets/assets/images/background.jpg": "4544ffcd97825d99c5716f6e32a33ff2",
+"assets/assets/images/bath_draw.jpg": "267c229baebed01241326c8a1f6afdff",
 "assets/assets/images/dualFlush.png": "f02693c855daead361777c5a0d3df1c5",
 "assets/assets/images/flush.png": "db84eb8822f5e7dfddf39f4cea137aec",
 "assets/assets/images/flushdual.png": "32a59717abe2143eab92938a0c92caf0",
@@ -17,10 +18,17 @@ const RESOURCES = {
 "assets/assets/images/qld.jpg": "ea8c470afb104177e5d98bd505242b86",
 "assets/assets/images/sa.jpg": "2c51c6056a8a66e3fd139f1d0ee7eeff",
 "assets/assets/images/shower.png": "d30127272e599b46f0cd459e8e631d05",
+"assets/assets/images/showerhead_draw.jpg": "b379f7dd2028620d528c54c0ccb8e37b",
 "assets/assets/images/shower_background.jpg": "87e4113ac81f0ca75eb433b56bc865ed",
 "assets/assets/images/shower_man.jpg": "5cf21703bcdad51089d092a2333d0e89",
+"assets/assets/images/step1.jpg": "3b6961d1687e1acc5a55a0d33465f30a",
+"assets/assets/images/step2.jpg": "3ca4ad9c827cc2567634ee45add35f01",
+"assets/assets/images/step3.jpg": "58e8108eac8f0354be18989e08cd9218",
+"assets/assets/images/step4.jpg": "069d43f08171033f97f64c21aa07ebe9",
+"assets/assets/images/tap_draw.jpg": "b120cbae18680edacc4b1b8cdfb48c9d",
 "assets/assets/images/tas.jpg": "2c9568f14bf02ed3fb35bb5aca809f5f",
 "assets/assets/images/toilet.png": "bcd2906d2fe5b38b0a7281a5fe58a4ab",
+"assets/assets/images/toilet_draw.jpg": "a6ad9b8aa5645a9929bbc004cf468237",
 "assets/assets/images/vic.jpg": "41d8a4f8f6c940e336606010e983b625",
 "assets/assets/images/wa.jpg": "dad0cf86a2c2d5a6ff3b72a1a9101156",
 "assets/assets/images/water_bye.jpg": "4126d084f83d61c5c151ea9e16c4e487",
@@ -47,9 +55,9 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "69eef4ff462c9c9eda9d5da80fbbaf1b",
-"/": "69eef4ff462c9c9eda9d5da80fbbaf1b",
-"main.dart.js": "198504ed35213919738b71be1ad0665f",
+"index.html": "387bec427e662b340b6bce44853a2ebe",
+"/": "387bec427e662b340b6bce44853a2ebe",
+"main.dart.js": "866ec1b0d8ee9351a0d59fadfba7c1a1",
 "manifest.json": "3318bdcd6229cba3e58d5127ebef2b2f",
 "version.json": "1f8373c1f4e85b6217b1268f1a8a2e17"
 };
