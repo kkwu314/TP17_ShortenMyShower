@@ -68444,7 +68444,7 @@ ghJ(){return"windows"},
 glY(){return"\\"}}
 A.Hi.prototype={
 K(a,b){var s=A.anT(null,B.tp)
-return new A.xq(A.aD(["/",new A.a_E(),"/timer",new A.a_F(),"/password",new A.a_G(),"/estimation",new A.a_H(),"/iot",new A.a_I(),"/adddevice",new A.a_J()],t.N,t.Ab),"/iot","Shorten My Shower",s,!1,null)}}
+return new A.xq(A.aD(["/",new A.a_E(),"/timer",new A.a_F(),"/password",new A.a_G(),"/estimation",new A.a_H(),"/iot",new A.a_I(),"/adddevice",new A.a_J()],t.N,t.Ab),"/password","Shorten My Shower",s,!1,null)}}
 A.a_E.prototype={
 $1(a){return new A.qU(null)},
 $S:415}
