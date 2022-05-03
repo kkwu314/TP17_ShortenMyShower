@@ -923,212 +923,215 @@ class _IoTPageState extends State<IoTPage> {
                 ],
               )
             : Center(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Text(
-                        'Five steps to measure water usage in a smart way',
-                        style: TextStyle(fontSize: 30),
-                      ),
-                    ),
-                    Container(
-                      height: 500,
-                      // color: Colors.blue,
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width: 100,
-                                    height: 400,
-                                    color: Colors.blue[100],
-                                    child: Center(
-                                        child: Text("1",
-                                            style: TextStyle(fontSize: 100))),
-                                  ),
-                                  Container(
-                                    width: 300,
-                                    height: 400,
-                                    color: Colors.blue[200],
-                                    child: Column(
-                                      children: [
-                                        Image.asset(
-                                          "images/step1.jpg",
-                                          height: 300,
-                                        ),
-                                        Text(
-                                            "Install smart water meter with WiFi in your bathroom taps",
-                                            style: TextStyle(fontSize: 18)),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-
-                            // step 2
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width: 100,
-                                    height: 400,
-                                    color: Colors.blue[100],
-                                    child: Center(
-                                        child: Text("2",
-                                            style: TextStyle(fontSize: 100))),
-                                  ),
-                                  Container(
-                                    width: 300,
-                                    height: 400,
-                                    color: Colors.blue[200],
-                                    child: Column(
-                                      children: [
-                                        Image.asset(
-                                          "images/step2.jpg",
-                                          height: 300,
-                                        ),
-                                        Text(
-                                            "Using WiFi Hub to connect with Jetson Nano",
-                                            style: TextStyle(fontSize: 18)),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-
-                            //
-                            // step 3
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width: 100,
-                                    height: 400,
-                                    color: Colors.blue[100],
-                                    child: Center(
-                                        child: Text("3",
-                                            style: TextStyle(fontSize: 100))),
-                                  ),
-                                  Container(
-                                    width: 300,
-                                    height: 400,
-                                    color: Colors.blue[200],
-                                    child: Column(
-                                      children: [
-                                        Image.asset(
-                                          "images/step3.jpg",
-                                          height: 300,
-                                        ),
-                                        Text("Showering with some water",
-                                            style: TextStyle(fontSize: 18)),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            // step 4
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width: 100,
-                                    height: 400,
-                                    color: Colors.blue[100],
-                                    child: Center(
-                                        child: Text("4",
-                                            style: TextStyle(fontSize: 100))),
-                                  ),
-                                  Container(
-                                    width: 300,
-                                    height: 400,
-                                    color: Colors.blue[200],
-                                    child: Column(
-                                      children: [
-                                        Image.asset(
-                                          "images/step4.jpg",
-                                          height: 300,
-                                        ),
-                                        Text("Gathering data with Jetson nano",
-                                            style: TextStyle(fontSize: 18)),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            // step 5
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width: 100,
-                                    height: 400,
-                                    color: Colors.blue[100],
-                                    child: Center(
-                                        child: Text("5",
-                                            style: TextStyle(fontSize: 100))),
-                                  ),
-                                  Container(
-                                    width: 300,
-                                    height: 400,
-                                    color: Colors.blue[200],
-                                    child: Column(
-                                      children: [
-                                        Icon(Icons.cloud_sync, size: 300),
-                                        Text(
-                                            "Jetson nano sync and sending to Azure cloud database",
-                                            style: TextStyle(fontSize: 18)),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text("Scroll horizontally to see more"),
-                        Icon(
-                          Icons.arrow_right,
-                          size: 50,
-                          color: Colors.blue[100],
-                        ),
-                      ],
-                    ),
-                    Container(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(20.0),
                         child: Text(
-                            "Once installed IoT devices in your bathrooms,\nyou can easily checking the usage of water in this page. \nThe summary of types of water used will show on the top\n'",
-                            style: TextStyle(fontSize: 18))),
-                    ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            showIot = true;
-                          });
-                        },
-                        child: Text('Connect to IoT Devices'))
-                  ],
+                          'Five steps to measure water usage in a smart way',
+                          style: TextStyle(fontSize: 30),
+                        ),
+                      ),
+                      Container(
+                        height: 500,
+                        // color: Colors.blue,
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      width: 100,
+                                      height: 400,
+                                      color: Colors.blue[100],
+                                      child: Center(
+                                          child: Text("1",
+                                              style: TextStyle(fontSize: 100))),
+                                    ),
+                                    Container(
+                                      width: 300,
+                                      height: 400,
+                                      color: Colors.blue[200],
+                                      child: Column(
+                                        children: [
+                                          Image.asset(
+                                            "images/step1.jpg",
+                                            height: 300,
+                                          ),
+                                          Text(
+                                              "Install smart water meter with WiFi in your bathroom taps",
+                                              style: TextStyle(fontSize: 18)),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+
+                              // step 2
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      width: 100,
+                                      height: 400,
+                                      color: Colors.blue[100],
+                                      child: Center(
+                                          child: Text("2",
+                                              style: TextStyle(fontSize: 100))),
+                                    ),
+                                    Container(
+                                      width: 300,
+                                      height: 400,
+                                      color: Colors.blue[200],
+                                      child: Column(
+                                        children: [
+                                          Image.asset(
+                                            "images/step2.jpg",
+                                            height: 300,
+                                          ),
+                                          Text(
+                                              "Using WiFi Hub to connect with Jetson Nano",
+                                              style: TextStyle(fontSize: 18)),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+
+                              //
+                              // step 3
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      width: 100,
+                                      height: 400,
+                                      color: Colors.blue[100],
+                                      child: Center(
+                                          child: Text("3",
+                                              style: TextStyle(fontSize: 100))),
+                                    ),
+                                    Container(
+                                      width: 300,
+                                      height: 400,
+                                      color: Colors.blue[200],
+                                      child: Column(
+                                        children: [
+                                          Image.asset(
+                                            "images/step3.jpg",
+                                            height: 300,
+                                          ),
+                                          Text("Showering with some water",
+                                              style: TextStyle(fontSize: 18)),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              // step 4
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      width: 100,
+                                      height: 400,
+                                      color: Colors.blue[100],
+                                      child: Center(
+                                          child: Text("4",
+                                              style: TextStyle(fontSize: 100))),
+                                    ),
+                                    Container(
+                                      width: 300,
+                                      height: 400,
+                                      color: Colors.blue[200],
+                                      child: Column(
+                                        children: [
+                                          Image.asset(
+                                            "images/step4.jpg",
+                                            height: 300,
+                                          ),
+                                          Text(
+                                              "Gathering data with Jetson nano",
+                                              style: TextStyle(fontSize: 18)),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              // step 5
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      width: 100,
+                                      height: 400,
+                                      color: Colors.blue[100],
+                                      child: Center(
+                                          child: Text("5",
+                                              style: TextStyle(fontSize: 100))),
+                                    ),
+                                    Container(
+                                      width: 300,
+                                      height: 400,
+                                      color: Colors.blue[200],
+                                      child: Column(
+                                        children: [
+                                          Icon(Icons.cloud_sync, size: 300),
+                                          Text(
+                                              "Jetson nano sync and sending to Azure cloud database",
+                                              style: TextStyle(fontSize: 18)),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text("Scroll horizontally to see more"),
+                          Icon(
+                            Icons.arrow_right,
+                            size: 50,
+                            color: Colors.blue[100],
+                          ),
+                        ],
+                      ),
+                      Container(
+                          child: Text(
+                              "Once installed IoT devices in your bathrooms,\nyou can easily checking the usage of water in this page. \nThe summary of types of water used will show on the top\n'",
+                              style: TextStyle(fontSize: 18))),
+                      ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              showIot = true;
+                            });
+                          },
+                          child: Text('Connect to IoT Devices'))
+                    ],
+                  ),
                 ),
               ),
       );
