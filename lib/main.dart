@@ -29,6 +29,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      scrollBehavior: MaterialScrollBehavior().copyWith(
+        dragDevices: {
+          PointerDeviceKind.mouse,
+          PointerDeviceKind.touch,
+          PointerDeviceKind.stylus,
+          PointerDeviceKind.unknown
+        },
+      ),
       title: 'Shorten My Shower',
       theme: ThemeData(
         // This is the theme of your application.
@@ -1111,7 +1119,7 @@ class _IoTPageState extends State<IoTPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text("Scroll horizontally to see more"),
+                          Text("Scroll/drag horizontally to see more"),
                           Icon(
                             Icons.arrow_right,
                             size: 50,
@@ -1644,6 +1652,7 @@ class _AddDevicePageState extends State<AddDevicePage> {
       //   icon: const Icon(Icons.add),
       //   backgroundColor: Colors.blue[300],
       // ),
+
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.blue[100],
