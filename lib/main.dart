@@ -58,6 +58,8 @@ class MyApp extends StatelessWidget {
         '/estimation': (context) => EstimationPage(),
         '/iot': (context) => IoTPage(),
         '/adddevice': (context) => AddDevicePage(),
+        '/search': (context) => SearchProductPage(),
+        '/tips': (context) => KnowledgeCardPage(),
       },
       debugShowCheckedModeBanner: false,
     );
@@ -69,9 +71,6 @@ class MyApp extends StatelessWidget {
 Future<List<Map<String, dynamic>>> fetchIoTDeviceData(
     http.Client client) async {
   final response = await client
-      // .get(Uri.parse('https://api.jsonbin.io/b/62500812d8a4cc06909ddd01'));
-      // .get(Uri.parse('https://tp17-api.azurewebsites.net/api/WaterDatas'));
-      // .get(Uri.parse('https://tp17-water.azurewebsites.net/api/Devices'));
       .get(Uri.parse('https://api.jsonbin.io/b/626ebc5f38be296761faaf93'));
   //print(response.body);
   var result = jsonDecode(response.body).cast<Map<String, dynamic>>();
@@ -83,9 +82,6 @@ Future<List<Map<String, dynamic>>> fetchIoTDeviceData(
 
 Future<List<Map<String, dynamic>>> fetchSummary(http.Client client) async {
   final response = await client
-      // .get(Uri.parse('https://api.jsonbin.io/b/62500812d8a4cc06909ddd01'));
-      // .get(Uri.parse('https://tp17-api.azurewebsites.net/api/WaterDatas'));
-      // .get(Uri.parse('https://tp17-water.azurewebsites.net/api/Devices'));
       .get(Uri.parse('https://tp17-water.azurewebsites.net/api/IotRecords/1'));
   //print(response.body);
   var result = jsonDecode(response.body).cast<Map<String, dynamic>>();
@@ -4478,18 +4474,34 @@ class HomeNav extends StatelessWidget {
                   },
                   child: const Text("IoT")),
             ),
-            // Padding(
-            //   padding: const EdgeInsets.all(4.0),
-            //   child: TextButton(
-            //       style: TextButton.styleFrom(
-            //           primary: Colors.black,
-            //           textStyle:
-            //               TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            //           shape: RoundedRectangleBorder(
-            //               borderRadius: BorderRadius.circular(50))),
-            //       onPressed: () {},
-            //       child: const Text("Login")),
-            // ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: TextButton(
+                  style: TextButton.styleFrom(
+                      primary: Colors.black,
+                      textStyle:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/search');
+                  },
+                  child: const Text("Search")),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: TextButton(
+                  style: TextButton.styleFrom(
+                      primary: Colors.black,
+                      textStyle:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/tips');
+                  },
+                  child: const Text("Tips")),
+            ),
           ],
         ),
         SizedBox(
@@ -6486,4 +6498,1005 @@ List<Icon> _maxwaterTime() {
     ));
   }
   return stars;
+}
+
+class KnowledgeCardPage extends StatefulWidget {
+  @override
+  _KnowledgeCardPageState createState() => _KnowledgeCardPageState();
+}
+
+bool showTips_1 = false;
+bool showTips_2 = false;
+bool showTips_3 = false;
+bool showTips_4 = false;
+bool showTips_5 = false;
+
+class _KnowledgeCardPageState extends State<KnowledgeCardPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // floatingActionButton: FloatingActionButton.extended(
+      //   onPressed: () {
+      //     Navigator.pushNamed(context, '/adddevice');
+      //   },
+      //   label: const Text('Add Devices'),
+      //   icon: const Icon(Icons.add),
+      //   backgroundColor: Colors.blue[300],
+      // ),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.blue[100],
+        title: HomeNav(),
+        toolbarHeight: 180,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('Tips for saving water in bathroom',
+                  style: TextStyle(fontSize: 30, color: Colors.blue[500])),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                // icon column
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                showTips_1 = !showTips_1;
+                              });
+                            },
+                            child: Container(
+                                height: 150,
+                                width: 150,
+                                child: Image.asset('images/water_love.jpg')),
+                          ),
+                          Container(
+                            child: showTips_1
+                                ? Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          height: 120,
+                                          width: 300,
+                                          // color: Colors.white,
+                                          child: Center(
+                                            child: Text(
+                                                'Fill the bathtub only halfway when you take a bath. This minimizes the overflow of bathtub water.',
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    color: Colors.blue[500])),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                : Container(),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                showTips_2 = !showTips_2;
+                              });
+                            },
+                            child: Container(
+                                height: 150,
+                                width: 150,
+                                child: Image.asset('images/water_stars.jpg')),
+                          ),
+                          Container(
+                            child: showTips_2
+                                ? Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          height: 120,
+                                          width: 300,
+                                          // color: Colors.white,
+                                          child: Center(
+                                            child: Text(
+                                                'Install Water-Saving Shower Heads. A water-saving shower head can restricts the volume of water that it allows to flow through it, thereby reducing the amount of water used in the shower.',
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    color: Colors.blue[500])),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                : Container(),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                showTips_3 = !showTips_3;
+                              });
+                            },
+                            child: Container(
+                                height: 150,
+                                width: 150,
+                                child: Image.asset('images/water_strong.jpg')),
+                          ),
+                          Container(
+                            child: showTips_3
+                                ? Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          height: 120,
+                                          width: 300,
+                                          // color: Colors.white,
+                                          child: Center(
+                                            child: Text(
+                                                'Turn off the tap in time. For example, Turn off the water while brushing your teeth or shaving to keep excess water from going down the drain.',
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    color: Colors.blue[500])),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                : Container(),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                showTips_4 = !showTips_4;
+                              });
+                            },
+                            child: Container(
+                                height: 150,
+                                width: 150,
+                                child: Image.asset('images/water_glass.jpg')),
+                          ),
+                          Container(
+                            child: showTips_4
+                                ? Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          height: 120,
+                                          width: 300,
+                                          // color: Colors.white,
+                                          child: Center(
+                                            child: Text(
+                                                'Collect cold water in a bucket. When you turn on the water in the shower and wait for it to get hot, place a bucket in the shower during this time and use the collected water to clean the bathroom or water plants.',
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    color: Colors.blue[500])),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                : Container(),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                showTips_5 = !showTips_5;
+                              });
+                            },
+                            child: Container(
+                                height: 150,
+                                width: 150,
+                                child: Image.asset('images/water_bye.jpg')),
+                          ),
+                          Container(
+                            child: showTips_5
+                                ? Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          height: 120,
+                                          width: 300,
+                                          // color: Colors.white,
+                                          child: Center(
+                                            child: Text(
+                                                'Take showers, not baths.',
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    color: Colors.blue[500])),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                : Container(),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+
+            //
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+//
+Future<List<Map<String, dynamic>>> fetchTapsSummaryData(
+    http.Client client) async {
+  final response = await client
+      // .get(Uri.parse('https://api.jsonbin.io/b/62500812d8a4cc06909ddd01'));
+      .get(Uri.parse('https://tp17-water.azurewebsites.net/api/SummaryTaps'));
+
+  //print(response.body);
+  var result = jsonDecode(response.body).cast<Map<String, dynamic>>();
+  // print(result);
+  // .map<IoTDeviceData>((json) => IoTDeviceData.fromJson(json))
+  // .toList();
+  //print(result);
+  return result;
+}
+
+Future<List<Map<String, dynamic>>> fetchTapsProductData(
+    http.Client client) async {
+  final response = await client
+      // .get(Uri.parse('https://api.jsonbin.io/b/62500812d8a4cc06909ddd01'));
+      .get(Uri.parse('https://tp17-water.azurewebsites.net/api/Taps'));
+
+  //print(response.body);
+  var result = jsonDecode(response.body).cast<Map<String, dynamic>>();
+  // print(result);
+  // .map<IoTDeviceData>((json) => IoTDeviceData.fromJson(json))
+  // .toList();
+  //print(result);
+  return result;
+}
+
+Future<List<Map<String, dynamic>>> fetchShowerheadsSummaryData(
+    http.Client client) async {
+  final response = await client
+      // .get(Uri.parse('https://api.jsonbin.io/b/62500812d8a4cc06909ddd01'));
+      .get(Uri.parse(
+          'https://tp17-water.azurewebsites.net/api/SummaryShowerheads'));
+
+  //print(response.body);
+  var result = jsonDecode(response.body).cast<Map<String, dynamic>>();
+  // print(result);
+  // .map<IoTDeviceData>((json) => IoTDeviceData.fromJson(json))
+  // .toList();
+  //print(result);
+  return result;
+}
+
+Future<List<Map<String, dynamic>>> fetchShowersProductData(
+    http.Client client) async {
+  final response = await client
+      // .get(Uri.parse('https://api.jsonbin.io/b/62500812d8a4cc06909ddd01'));
+      .get(Uri.parse('https://tp17-water.azurewebsites.net/api/Showerheads'));
+
+  //print(response.body);
+  var result = jsonDecode(response.body).cast<Map<String, dynamic>>();
+  // print(result);
+  // .map<IoTDeviceData>((json) => IoTDeviceData.fromJson(json))
+  // .toList();
+  //print(result);
+  return result;
+}
+
+class SearchProductPage extends StatefulWidget {
+  @override
+  _SearchProductPageState createState() => _SearchProductPageState();
+}
+
+double _selectedTapStarValue = 7.0;
+double _selectedShowerStarValue = 3.0;
+
+bool showTapProduct = false;
+bool showShowerProduct = false;
+
+bool showStoLbyRating = false;
+
+bool showLtoSbyRating = false;
+
+bool showStoLbyWater = false;
+
+bool showLtoSbyWater = false;
+
+bool showTapsSummary = false;
+
+bool showShowerheadsSummary = false;
+
+class _SearchProductPageState extends State<SearchProductPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // floatingActionButton: FloatingActionButton.extended(
+      //   onPressed: () {
+      //     Navigator.pushNamed(context, '/adddevice');
+      //   },
+      //   label: const Text('Add Devices'),
+      //   icon: const Icon(Icons.add),
+      //   backgroundColor: Colors.blue[300],
+      // ),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.blue[100],
+        title: HomeNav(),
+        toolbarHeight: 180,
+      ),
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    showShowerheadsSummary = false;
+                    showTapsSummary = true;
+                  });
+                },
+                child: Text('Summary Of Taps'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    showTapsSummary = false;
+                    showShowerheadsSummary = true;
+                  });
+                },
+                child: Text('Summary Of ShowerHeads'),
+              ),
+            ],
+          ),
+//
+          showShowerheadsSummary
+              ? Column(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          showStoLbyRating = false;
+                          showStoLbyWater = false;
+                          showLtoSbyWater = false;
+                          showLtoSbyRating = true;
+                        });
+                      },
+                      child: Text(
+                          'Top 5 brands of Showerheads by average water rating'),
+                    ),
+
+                    ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            showLtoSbyRating = false;
+                            showStoLbyWater = false;
+                            showLtoSbyWater = false;
+                            showStoLbyRating = true;
+                          });
+                        },
+                        child: Text(
+                            'Last 5 brands of Showerheads by average water rating')),
+                    ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            showStoLbyRating = false;
+                            showLtoSbyRating = false;
+                            showStoLbyWater = false;
+                            showLtoSbyWater = true;
+                          });
+                        },
+                        child: Text(
+                            '5 brands of Showerheads with highest average water uses in liters')),
+                    ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            showStoLbyRating = false;
+                            showLtoSbyRating = false;
+                            showLtoSbyWater = false;
+                            showStoLbyWater = true;
+                          });
+                        },
+                        child: Text(
+                            '5 brands of Showerheads with lowest average water uses in liters')),
+
+                    //
+                  ],
+                )
+              : Container(),
+
+          showShowerheadsSummary
+              ? FutureBuilder(
+                  future: fetchShowerheadsSummaryData(http.Client()),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.hasError) {
+                      return const Center(
+                        child: Text('An error has occurred!'),
+                      );
+                    } else if (snapshot.hasData) {
+                      var result_data = snapshot.data!;
+
+                      if (showLtoSbyWater) {
+                        final temp = List.from(result_data);
+                        temp.sort((a, b) => double.parse(
+                                b['averageWaterConsumpLiters'].toString())
+                            .compareTo(double.parse(
+                                a['averageWaterConsumpLiters'].toString())));
+
+                        var filteredList = temp;
+
+                        result_data = filteredList;
+                      }
+
+                      if (showStoLbyWater) {
+                        final temp = List.from(result_data);
+                        temp.sort((a, b) => double.parse(
+                                a['averageWaterConsumpLiters'].toString())
+                            .compareTo(double.parse(
+                                b['averageWaterConsumpLiters'].toString())));
+
+                        var filteredList = temp;
+
+                        result_data = filteredList;
+                      }
+
+                      if (showLtoSbyRating) {
+                        final temp = List.from(result_data);
+                        temp.sort((a, b) => double.parse(
+                                b['averageRating'].toString())
+                            .compareTo(
+                                double.parse(a['averageRating'].toString())));
+
+                        var filteredList = temp;
+
+                        result_data = filteredList;
+                      }
+
+                      if (showStoLbyRating) {
+                        final temp = List.from(result_data);
+                        temp.sort((a, b) => double.parse(
+                                a['averageRating'].toString())
+                            .compareTo(
+                                double.parse(b['averageRating'].toString())));
+
+                        var filteredList = temp;
+
+                        result_data = filteredList;
+                      }
+
+                      return Expanded(
+                        child: ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          itemCount: 5,
+                          itemBuilder: (context, index) => Align(
+                            child: Card(
+                              key: ValueKey(result_data![index]['brand']),
+                              // color: _getColorByBin(
+                              //     _foundCards[index]["color"].toString()),
+                              elevation: 4,
+                              margin: EdgeInsets.all(16.0),
+                              child: ListTile(
+                                leading: Text(
+                                  '${result_data![index]['medianRating'].toString()} Stars',
+                                  style: TextStyle(fontSize: 14.0),
+                                ),
+                                title: Text(
+                                  '${result_data![index]['brand']} - ${result_data![index]['averageRating']} stars on average',
+                                  style: TextStyle(fontSize: 14.0),
+                                ),
+                                // subtitle: Text(
+                                //     '${((_summaryRecords[index]['usedSecond'] * _summaryRecords[index]['waterFlowLiterPerSecond']) * 10.round() / 10).toStringAsFixed(1)} liters '),
+                                // subtitle: Text(
+                                //     '${groupedMap[_allDeviceInfo[index]['id']]?.forEach(sumFuction)}'),
+                                subtitle: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                        '${result_data![index]['averageWaterConsumpLiters']} liters per minute on average with ${result_data![index]['nOfProduct']} products'),
+                                  ],
+                                ),
+
+                                onTap: () {
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(
+                                  //     builder: (context) => DetailScreen(
+                                  //         foundCard: _foundCards[index]),
+                                  //   ),
+                                  // );
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  },
+                )
+              : Container(),
+//
+          showTapsSummary
+              ? Column(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          showStoLbyRating = false;
+                          showStoLbyWater = false;
+                          showLtoSbyWater = false;
+                          showLtoSbyRating = true;
+                        });
+                      },
+                      child:
+                          Text('Top 5 brands of taps by average water rating'),
+                    ),
+
+                    ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            showLtoSbyRating = false;
+                            showStoLbyWater = false;
+                            showLtoSbyWater = false;
+                            showStoLbyRating = true;
+                          });
+                        },
+                        child: Text(
+                            'Last 5 brands of taps by average water rating')),
+                    ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            showStoLbyRating = false;
+                            showLtoSbyRating = false;
+                            showStoLbyWater = false;
+                            showLtoSbyWater = true;
+                          });
+                        },
+                        child: Text(
+                            '5 brands of taps with highest average water uses in liters')),
+                    ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            showStoLbyRating = false;
+                            showLtoSbyRating = false;
+                            showLtoSbyWater = false;
+                            showStoLbyWater = true;
+                          });
+                        },
+                        child: Text(
+                            '5 brands of taps with lowest average water uses in liters')),
+
+                    //
+                  ],
+                )
+              : Container(),
+
+          showTapsSummary
+              ? FutureBuilder(
+                  future: fetchTapsSummaryData(http.Client()),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.hasError) {
+                      return const Center(
+                        child: Text('An error has occurred!'),
+                      );
+                    } else if (snapshot.hasData) {
+                      var result_data = snapshot.data!;
+
+                      if (showLtoSbyWater) {
+                        final temp = List.from(result_data);
+                        temp.sort((a, b) => double.parse(
+                                b['averageWaterConsumpLiters'].toString())
+                            .compareTo(double.parse(
+                                a['averageWaterConsumpLiters'].toString())));
+
+                        var filteredList = temp;
+
+                        result_data = filteredList;
+                      }
+
+                      if (showStoLbyWater) {
+                        final temp = List.from(result_data);
+                        temp.sort((a, b) => double.parse(
+                                a['averageWaterConsumpLiters'].toString())
+                            .compareTo(double.parse(
+                                b['averageWaterConsumpLiters'].toString())));
+
+                        var filteredList = temp;
+
+                        result_data = filteredList;
+                      }
+
+                      if (showLtoSbyRating) {
+                        final temp = List.from(result_data);
+                        temp.sort((a, b) => double.parse(
+                                b['averageRating'].toString())
+                            .compareTo(
+                                double.parse(a['averageRating'].toString())));
+
+                        var filteredList = temp;
+
+                        result_data = filteredList;
+                      }
+
+                      if (showStoLbyRating) {
+                        final temp = List.from(result_data);
+                        temp.sort((a, b) => double.parse(
+                                a['averageRating'].toString())
+                            .compareTo(
+                                double.parse(b['averageRating'].toString())));
+
+                        var filteredList = temp;
+
+                        result_data = filteredList;
+                      }
+
+                      return Expanded(
+                        child: ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          itemCount: 5,
+                          itemBuilder: (context, index) => Align(
+                            child: Card(
+                              key: ValueKey(result_data![index]['brand']),
+                              // color: _getColorByBin(
+                              //     _foundCards[index]["color"].toString()),
+                              elevation: 4,
+                              margin: EdgeInsets.all(16.0),
+                              child: ListTile(
+                                leading: Text(
+                                  '${result_data![index]['medianRating'].toString()} Stars',
+                                  style: TextStyle(fontSize: 14.0),
+                                ),
+                                title: Text(
+                                  '${result_data![index]['brand']} - ${result_data![index]['averageRating']} stars on average',
+                                  style: TextStyle(fontSize: 14.0),
+                                ),
+                                // subtitle: Text(
+                                //     '${((_summaryRecords[index]['usedSecond'] * _summaryRecords[index]['waterFlowLiterPerSecond']) * 10.round() / 10).toStringAsFixed(1)} liters '),
+                                // subtitle: Text(
+                                //     '${groupedMap[_allDeviceInfo[index]['id']]?.forEach(sumFuction)}'),
+                                subtitle: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                        '${result_data![index]['averageWaterConsumpLiters']} liters per minute on average with ${result_data![index]['nOfProduct']} products'),
+                                  ],
+                                ),
+
+                                onTap: () {
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(
+                                  //     builder: (context) => DetailScreen(
+                                  //         foundCard: _foundCards[index]),
+                                  //   ),
+                                  // );
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  },
+                )
+              : Container(),
+          //
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      showShowerProduct = false;
+                      showTapProduct = !showTapProduct;
+                    });
+                  },
+                  child: Text('Tap Products')),
+              ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      showTapProduct = false;
+                      showShowerProduct = !showShowerProduct;
+                    });
+                  },
+                  child: Text('Shower Products')),
+            ],
+          ),
+
+          //
+          showShowerProduct
+              ? Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('3 stars'),
+                      Text('4 stars'),
+                      Text('All stars')
+                    ],
+                  ),
+                )
+              : Container(),
+          showShowerProduct
+              ? Slider(
+                  value: _selectedShowerStarValue.toDouble(),
+                  min: 3.0,
+                  max: 5.0,
+                  divisions: 2,
+                  activeColor: Colors.blue[200],
+                  inactiveColor: Colors.black,
+                  label:
+                      '${_selectedShowerStarValue.toDouble() == 5 ? "Show All" : _selectedShowerStarValue.toDouble()} stars',
+                  onChanged: (double newValue) {
+                    setState(() {
+                      _selectedShowerStarValue = newValue.round().toDouble();
+                    });
+                  },
+                  semanticFormatterCallback: (double newValue) {
+                    return '${newValue.round()}';
+                  })
+              : Container(),
+
+          showShowerProduct
+              ? FutureBuilder(
+                  future: fetchShowersProductData(http.Client()),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.hasError) {
+                      return const Center(
+                        child: Text('An error has occurred!'),
+                      );
+                    } else if (snapshot.hasData) {
+                      var grouped_data = snapshot.data!
+                          .where((o) =>
+                              o['intStarRating'] == _selectedShowerStarValue)
+                          .toList();
+
+                      _selectedShowerStarValue.toDouble() == 5
+                          ? grouped_data = snapshot.data!
+                          : grouped_data;
+                      // return Text('${snapshot.data![1]['key']}');
+
+                      return Expanded(
+                        child: ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          itemCount: grouped_data!.length,
+                          itemBuilder: (context, index) => Align(
+                            child: Card(
+                              key: ValueKey(grouped_data![index]['brand']),
+                              // color: _getColorByBin(
+                              //     _foundCards[index]["color"].toString()),
+                              elevation: 4,
+                              margin: EdgeInsets.all(16.0),
+                              child: ListTile(
+                                leading: Text(
+                                  '${grouped_data![index]['intStarRating'].toString()} Stars',
+                                  style: TextStyle(fontSize: 14.0),
+                                ),
+                                title: Text(
+                                  '${grouped_data![index]['brand']} - ${grouped_data![index]['model']}',
+                                  style: TextStyle(fontSize: 14.0),
+                                ),
+                                // subtitle: Text(
+                                //     '${((_summaryRecords[index]['usedSecond'] * _summaryRecords[index]['waterFlowLiterPerSecond']) * 10.round() / 10).toStringAsFixed(1)} liters '),
+                                // subtitle: Text(
+                                //     '${groupedMap[_allDeviceInfo[index]['id']]?.forEach(sumFuction)}'),
+                                subtitle: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                        '${grouped_data![index]['waterconsump.']} liters per minute'),
+                                    Text(
+                                        'Reg.number: ${grouped_data![index]['regnumber']}'),
+                                    Text(
+                                        'Subtype: ${grouped_data![index]['subtype']}'),
+                                  ],
+                                ),
+
+                                onTap: () {
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(
+                                  //     builder: (context) => DetailScreen(
+                                  //         foundCard: _foundCards[index]),
+                                  //   ),
+                                  // );
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  },
+                )
+              : Container(),
+
+          //
+          showTapProduct
+              ? Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('3 stars'),
+                      Text('4 stars'),
+                      Text('5 stars'),
+                      Text('6 stars'),
+                      Text('All stars')
+                    ],
+                  ),
+                )
+              : Container(),
+          showTapProduct
+              ? Slider(
+                  value: _selectedTapStarValue.toDouble(),
+                  min: 3.0,
+                  max: 7.0,
+                  divisions: 4,
+                  activeColor: Colors.blue[200],
+                  inactiveColor: Colors.black,
+                  label:
+                      '${_selectedTapStarValue.toDouble() == 7 ? "Show All" : _selectedTapStarValue.toDouble()} stars',
+                  onChanged: (double newValue) {
+                    setState(() {
+                      _selectedTapStarValue = newValue.round().toDouble();
+                    });
+                  },
+                  semanticFormatterCallback: (double newValue) {
+                    return '${newValue.round()}';
+                  })
+              : Container(),
+
+          showTapProduct
+              ? FutureBuilder(
+                  future: fetchTapsProductData(http.Client()),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.hasError) {
+                      return const Center(
+                        child: Text('An error has occurred!'),
+                      );
+                    } else if (snapshot.hasData) {
+                      var grouped_data = snapshot.data!
+                          .where((o) =>
+                              o['intStarRating'] == _selectedTapStarValue)
+                          .toList();
+
+                      _selectedTapStarValue.toDouble() == 7
+                          ? grouped_data = snapshot.data!
+                          : grouped_data;
+                      // return Text('${snapshot.data![1]['key']}');
+
+                      return Expanded(
+                        child: ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          itemCount: grouped_data!.length,
+                          itemBuilder: (context, index) => Align(
+                            child: Card(
+                              key: ValueKey(grouped_data![index]['brand']),
+                              // color: _getColorByBin(
+                              //     _foundCards[index]["color"].toString()),
+                              elevation: 4,
+                              margin: EdgeInsets.all(16.0),
+                              child: ListTile(
+                                leading: Text(
+                                  '${grouped_data![index]['intStarRating'].toString()} Stars',
+                                  style: TextStyle(fontSize: 14.0),
+                                ),
+                                title: Text(
+                                  '${grouped_data![index]['brand']} - ${grouped_data![index]['model']}',
+                                  style: TextStyle(fontSize: 14.0),
+                                ),
+                                // subtitle: Text(
+                                //     '${((_summaryRecords[index]['usedSecond'] * _summaryRecords[index]['waterFlowLiterPerSecond']) * 10.round() / 10).toStringAsFixed(1)} liters '),
+                                // subtitle: Text(
+                                //     '${groupedMap[_allDeviceInfo[index]['id']]?.forEach(sumFuction)}'),
+                                subtitle: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                        '${grouped_data![index]['waterconsump.']} liters per minute'),
+                                    Text(
+                                        'Reg.number: ${grouped_data![index]['regnumber']}'),
+                                    Text(
+                                        'Subtype: ${grouped_data![index]['subtype']}'),
+                                  ],
+                                ),
+
+                                onTap: () {
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(
+                                  //     builder: (context) => DetailScreen(
+                                  //         foundCard: _foundCards[index]),
+                                  //   ),
+                                  // );
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  },
+                )
+              : Container(),
+          //end
+        ],
+      ),
+    );
+  }
 }
