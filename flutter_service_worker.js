@@ -3,7 +3,7 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "497963b132a56f1cac99041c2e937933",
+  "assets/AssetManifest.json": "0712c2f59df6119334970db47b4155f3",
 "assets/assets/images/act.jpg": "f294d2923aa77f44be1e89795e870d1f",
 "assets/assets/images/background.jpg": "4544ffcd97825d99c5716f6e32a33ff2",
 "assets/assets/images/bath_draw.jpg": "267c229baebed01241326c8a1f6afdff",
@@ -31,6 +31,14 @@ const RESOURCES = {
 "assets/assets/images/toilet_draw.jpg": "a6ad9b8aa5645a9929bbc004cf468237",
 "assets/assets/images/vic.jpg": "41d8a4f8f6c940e336606010e983b625",
 "assets/assets/images/wa.jpg": "dad0cf86a2c2d5a6ff3b72a1a9101156",
+"assets/assets/images/waterlabelbottom.jpg": "b792c3cd6eeabdd4b2463a82d380e5a8",
+"assets/assets/images/waterlabelmidshowersortaps.jpg": "6334f63d02e8f3ca58fee671a54c7f92",
+"assets/assets/images/waterlabelmidtoilet.jpg": "605cef3ccc55678ba1e84b71dd674a08",
+"assets/assets/images/waterlabeltop.jpg": "b163f2e29d94cce1ba51495bfa1af93c",
+"assets/assets/images/waterlabel_3stars.jpg": "4cdb56d14b5e9ce048c568df8a819dc1",
+"assets/assets/images/waterlabel_4stars.jpg": "0b59b5e25f936e5e69bce378f0f5d039",
+"assets/assets/images/waterlabel_5stars.jpg": "8b960a1118e70d5a5f9145f935efd978",
+"assets/assets/images/waterlabel_6stars.jpg": "2664801e88e752381fa2d041cd0d52f2",
 "assets/assets/images/water_bye.jpg": "4126d084f83d61c5c151ea9e16c4e487",
 "assets/assets/images/water_cry.jpg": "10b24fa6df12ade5327d9e677dcebdad",
 "assets/assets/images/water_drop.jpg": "fbff624c2fc7d5d164900c19deac2a8c",
@@ -55,9 +63,9 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "10d66a8dd797c444cd38a19719efb90a",
-"/": "10d66a8dd797c444cd38a19719efb90a",
-"main.dart.js": "cf4b951961aa0d8984355c86d529388d",
+"index.html": "029c2fc5bf011e2862719c3ed57db6e6",
+"/": "029c2fc5bf011e2862719c3ed57db6e6",
+"main.dart.js": "031468162332232fa6b57e86d3b7fdec",
 "manifest.json": "3318bdcd6229cba3e58d5127ebef2b2f",
 "version.json": "1f8373c1f4e85b6217b1268f1a8a2e17"
 };
