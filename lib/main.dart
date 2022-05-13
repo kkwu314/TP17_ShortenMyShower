@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/password',
+      initialRoute: '/ratedproducts',
       routes: {
         '/': (context) => LandingPage(),
         '/timer': (context) => BodyTimerPage(),
@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
         '/estimation': (context) => EstimationPage(),
         '/iot': (context) => IoTPage(),
         '/adddevice': (context) => AddDevicePage(),
-        '/search': (context) => SearchProductPage(),
+        '/ratedproducts': (context) => RatedProductPage(),
         '/tips': (context) => KnowledgeCardPage(),
       },
       debugShowCheckedModeBanner: false,
@@ -4484,9 +4484,9 @@ class HomeNav extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
                   onPressed: () {
-                    Navigator.pushNamed(context, '/search');
+                    Navigator.pushNamed(context, '/tips');
                   },
-                  child: const Text("Search")),
+                  child: const Text("Tips")),
             ),
             Padding(
               padding: const EdgeInsets.all(4.0),
@@ -4498,9 +4498,9 @@ class HomeNav extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
                   onPressed: () {
-                    Navigator.pushNamed(context, '/tips');
+                    Navigator.pushNamed(context, '/ratedproducts');
                   },
-                  child: const Text("Tips")),
+                  child: const Text("Rated Products")),
             ),
           ],
         ),
@@ -7192,8 +7192,26 @@ class _KnowledgeCardPageState extends State<KnowledgeCardPage> {
             SizedBox(
               height: 30.0,
             ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextButton(
+                  style: TextButton.styleFrom(
+                      primary: Colors.blue[800],
+                      textStyle:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/ratedproducts');
+                  },
+                  child: const Text("Explore more water efficiency products")),
+            ),
 
             ///
+            ///
+            SizedBox(
+              height: 30.0,
+            ),
             //
             Padding(
               padding: const EdgeInsets.all(20.0),
@@ -7501,9 +7519,9 @@ Future<List<Map<String, dynamic>>> fetchShowersProductData(
   return result;
 }
 
-class SearchProductPage extends StatefulWidget {
+class RatedProductPage extends StatefulWidget {
   @override
-  _SearchProductPageState createState() => _SearchProductPageState();
+  _RatedProductPageState createState() => _RatedProductPageState();
 }
 
 double _selectedTapStarValue = 7.0;
@@ -7514,17 +7532,17 @@ bool showShowerProduct = false;
 
 bool showStoLbyRating = false;
 
-bool showLtoSbyRating = false;
+bool showLtoSbyRating = true;
 
 bool showStoLbyWater = false;
 
 bool showLtoSbyWater = false;
 
-bool showTapsSummary = false;
+bool showTapsSummary = true;
 
 bool showShowerheadsSummary = false;
 
-class _SearchProductPageState extends State<SearchProductPage> {
+class _RatedProductPageState extends State<RatedProductPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -7544,6 +7562,31 @@ class _SearchProductPageState extends State<SearchProductPage> {
       ),
       body: Column(
         children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              showTapsSummary
+                  ? Padding(
+                      padding: const EdgeInsets.all(18.0),
+                      child: Text('Taps brands with highest ratings',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                          )),
+                    )
+                  : Container(),
+              showShowerheadsSummary
+                  ? Padding(
+                      padding: const EdgeInsets.all(18.0),
+                      child: Text('Showerheads brands with highest ratings',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                          )),
+                    )
+                  : Container()
+            ],
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -7568,60 +7611,60 @@ class _SearchProductPageState extends State<SearchProductPage> {
             ],
           ),
 //
-          showShowerheadsSummary
-              ? Column(
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          showStoLbyRating = false;
-                          showStoLbyWater = false;
-                          showLtoSbyWater = false;
-                          showLtoSbyRating = true;
-                        });
-                      },
-                      child: Text(
-                          'Top 5 brands of Showerheads by average water rating'),
-                    ),
+          // showShowerheadsSummary
+          //     ? Row(
+          //         children: [
+          //           ElevatedButton(
+          //             onPressed: () {
+          //               setState(() {
+          //                 showStoLbyRating = false;
+          //                 showStoLbyWater = false;
+          //                 showLtoSbyWater = false;
+          //                 showLtoSbyRating = true;
+          //               });
+          //             },
+          //             child: Text(
+          //                 'Top 5 brands of Showerheads by average water rating'),
+          //           ),
 
-                    ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            showLtoSbyRating = false;
-                            showStoLbyWater = false;
-                            showLtoSbyWater = false;
-                            showStoLbyRating = true;
-                          });
-                        },
-                        child: Text(
-                            'Last 5 brands of Showerheads by average water rating')),
-                    ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            showStoLbyRating = false;
-                            showLtoSbyRating = false;
-                            showStoLbyWater = false;
-                            showLtoSbyWater = true;
-                          });
-                        },
-                        child: Text(
-                            '5 brands of Showerheads with highest average water uses in liters')),
-                    ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            showStoLbyRating = false;
-                            showLtoSbyRating = false;
-                            showLtoSbyWater = false;
-                            showStoLbyWater = true;
-                          });
-                        },
-                        child: Text(
-                            '5 brands of Showerheads with lowest average water uses in liters')),
+          //           ElevatedButton(
+          //               onPressed: () {
+          //                 setState(() {
+          //                   showLtoSbyRating = false;
+          //                   showStoLbyWater = false;
+          //                   showLtoSbyWater = false;
+          //                   showStoLbyRating = true;
+          //                 });
+          //               },
+          //               child: Text(
+          //                   'Last 5 brands of Showerheads by average water rating')),
+          //           ElevatedButton(
+          //               onPressed: () {
+          //                 setState(() {
+          //                   showStoLbyRating = false;
+          //                   showLtoSbyRating = false;
+          //                   showStoLbyWater = false;
+          //                   showLtoSbyWater = true;
+          //                 });
+          //               },
+          //               child: Text(
+          //                   '5 brands of Showerheads with highest average water uses in liters')),
+          //           ElevatedButton(
+          //               onPressed: () {
+          //                 setState(() {
+          //                   showStoLbyRating = false;
+          //                   showLtoSbyRating = false;
+          //                   showLtoSbyWater = false;
+          //                   showStoLbyWater = true;
+          //                 });
+          //               },
+          //               child: Text(
+          //                   '5 brands of Showerheads with lowest average water uses in liters')),
 
-                    //
-                  ],
-                )
-              : Container(),
+          //           //
+          //         ],
+          //       )
+          //     : Container(),
 
           showShowerheadsSummary
               ? FutureBuilder(
@@ -7684,46 +7727,67 @@ class _SearchProductPageState extends State<SearchProductPage> {
 
                       return Expanded(
                         child: ListView.builder(
-                          scrollDirection: Axis.vertical,
+                          scrollDirection: Axis.horizontal,
                           itemCount: 5,
                           itemBuilder: (context, index) => Align(
-                            child: Card(
-                              key: ValueKey(result_data![index]['brand']),
-                              // color: _getColorByBin(
-                              //     _foundCards[index]["color"].toString()),
-                              elevation: 4,
-                              margin: EdgeInsets.all(16.0),
-                              child: ListTile(
-                                leading: Text(
-                                  '${result_data![index]['medianRating'].toString()} Stars',
-                                  style: TextStyle(fontSize: 14.0),
-                                ),
-                                title: Text(
-                                  '${result_data![index]['brand']} - ${result_data![index]['averageRating']} stars on average',
-                                  style: TextStyle(fontSize: 14.0),
-                                ),
-                                // subtitle: Text(
-                                //     '${((_summaryRecords[index]['usedSecond'] * _summaryRecords[index]['waterFlowLiterPerSecond']) * 10.round() / 10).toStringAsFixed(1)} liters '),
-                                // subtitle: Text(
-                                //     '${groupedMap[_allDeviceInfo[index]['id']]?.forEach(sumFuction)}'),
-                                subtitle: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                        '${result_data![index]['averageWaterConsumpLiters']} liters per minute on average with ${result_data![index]['nOfProduct']} products'),
-                                  ],
-                                ),
+                            child: Container(
+                              width: 300,
+                              height: 200,
+                              child: Card(
+                                semanticContainer: true,
+                                color: Colors.blue[200],
+                                key: ValueKey(result_data![index]['brand']),
+                                // color: _getColorByBin(
+                                //     _foundCards[index]["color"].toString()),
+                                elevation: 4,
+                                margin: EdgeInsets.all(16.0),
+                                child: ListTile(
+                                  leading: Column(
+                                    children: [
+                                      Text(
+                                        'Rank ${index + 1}',
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(
+                                        '${result_data![index]['medianRating'].toString()} Stars',
+                                        style: TextStyle(fontSize: 14.0),
+                                      ),
+                                    ],
+                                  ),
+                                  title: Text(
+                                    '${result_data![index]['brand']} - ${result_data![index]['averageRating']} stars on average',
+                                    style: TextStyle(fontSize: 14.0),
+                                  ),
+                                  // subtitle: Text(
+                                  //     '${((_summaryRecords[index]['usedSecond'] * _summaryRecords[index]['waterFlowLiterPerSecond']) * 10.round() / 10).toStringAsFixed(1)} liters '),
+                                  // subtitle: Text(
+                                  //     '${groupedMap[_allDeviceInfo[index]['id']]?.forEach(sumFuction)}'),
+                                  subtitle: Container(
+                                    height: 50,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                            '${result_data![index]['averageWaterConsumpLiters']} liters per minute on average with ${result_data![index]['nOfProduct']} products'),
+                                      ],
+                                    ),
+                                  ),
 
-                                onTap: () {
-                                  // Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(
-                                  //     builder: (context) => DetailScreen(
-                                  //         foundCard: _foundCards[index]),
-                                  //   ),
-                                  // );
-                                },
+                                  onTap: () {
+                                    // Navigator.push(
+                                    //   context,
+                                    //   MaterialPageRoute(
+                                    //     builder: (context) => DetailScreen(
+                                    //         foundCard: _foundCards[index]),
+                                    //   ),
+                                    // );
+                                  },
+                                ),
                               ),
                             ),
                           ),
@@ -7738,60 +7802,57 @@ class _SearchProductPageState extends State<SearchProductPage> {
                 )
               : Container(),
 //
-          showTapsSummary
-              ? Column(
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          showStoLbyRating = false;
-                          showStoLbyWater = false;
-                          showLtoSbyWater = false;
-                          showLtoSbyRating = true;
-                        });
-                      },
-                      child:
-                          Text('Top 5 brands of taps by average water rating'),
-                    ),
+          // showTapsSummary
+          //     ? Row(
+          //         children: [
+          //           ElevatedButton(
+          //             onPressed: () {
+          //               setState(() {
+          //                 showStoLbyRating = false;
+          //                 showStoLbyWater = false;
+          //                 showLtoSbyWater = false;
+          //                 showLtoSbyRating = true;
+          //               });
+          //             },
+          //             child: Text('Top 5 brands by water rating'),
+          //           ),
 
-                    ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            showLtoSbyRating = false;
-                            showStoLbyWater = false;
-                            showLtoSbyWater = false;
-                            showStoLbyRating = true;
-                          });
-                        },
-                        child: Text(
-                            'Last 5 brands of taps by average water rating')),
-                    ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            showStoLbyRating = false;
-                            showLtoSbyRating = false;
-                            showStoLbyWater = false;
-                            showLtoSbyWater = true;
-                          });
-                        },
-                        child: Text(
-                            '5 brands of taps with highest average water uses in liters')),
-                    ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            showStoLbyRating = false;
-                            showLtoSbyRating = false;
-                            showLtoSbyWater = false;
-                            showStoLbyWater = true;
-                          });
-                        },
-                        child: Text(
-                            '5 brands of taps with lowest average water uses in liters')),
+          //           ElevatedButton(
+          //             onPressed: () {
+          //               setState(() {
+          //                 showLtoSbyRating = false;
+          //                 showStoLbyWater = false;
+          //                 showLtoSbyWater = false;
+          //                 showStoLbyRating = true;
+          //               });
+          //             },
+          //             child: Text('Last 5 brands by water rating'),
+          //           ),
+          //           ElevatedButton(
+          //               onPressed: () {
+          //                 setState(() {
+          //                   showStoLbyRating = false;
+          //                   showLtoSbyRating = false;
+          //                   showStoLbyWater = false;
+          //                   showLtoSbyWater = true;
+          //                 });
+          //               },
+          //               child: Text('5 highest water uses brands')),
+          //           ElevatedButton(
+          //               onPressed: () {
+          //                 setState(() {
+          //                   showStoLbyRating = false;
+          //                   showLtoSbyRating = false;
+          //                   showLtoSbyWater = false;
+          //                   showStoLbyWater = true;
+          //                 });
+          //               },
+          //               child: Text('5 lowest water uses brands')),
 
-                    //
-                  ],
-                )
-              : Container(),
+          //           //
+          //         ],
+          //       )
+          //     : Container(),
 
           showTapsSummary
               ? FutureBuilder(
@@ -7854,46 +7915,91 @@ class _SearchProductPageState extends State<SearchProductPage> {
 
                       return Expanded(
                         child: ListView.builder(
-                          scrollDirection: Axis.vertical,
+                          scrollDirection: Axis.horizontal,
                           itemCount: 5,
+                          shrinkWrap: true,
+                          //     itemBuilder: (context, index) => Padding(
+                          //       padding: const EdgeInsets.all(8.0),
+                          //       child: Container(
+                          //         width: 200,
+                          //         height: 200,
+                          //         color: Colors.blue[300],
+                          //         child: Column(children: [
+                          //           Text("Rank ${index + 1} "),
+                          //           Text(
+                          //             '${result_data![index]['medianRating'].toString()} Stars',
+                          //             style: TextStyle(fontSize: 14.0),
+                          //           ),
+                          //           Text(
+                          //             '${result_data![index]['brand']} - ${result_data![index]['averageRating']} stars on average',
+                          //             style: TextStyle(fontSize: 14.0),
+                          //           ),
+                          //           Text(
+                          //               '${result_data![index]['averageWaterConsumpLiters']} liters per minute on average with ${result_data![index]['nOfProduct']} products'),
+                          //         ]),
+                          //       ),
+                          //     ),
+                          //   ),
+                          // );
                           itemBuilder: (context, index) => Align(
-                            child: Card(
-                              key: ValueKey(result_data![index]['brand']),
-                              // color: _getColorByBin(
-                              //     _foundCards[index]["color"].toString()),
-                              elevation: 4,
-                              margin: EdgeInsets.all(16.0),
-                              child: ListTile(
-                                leading: Text(
-                                  '${result_data![index]['medianRating'].toString()} Stars',
-                                  style: TextStyle(fontSize: 14.0),
-                                ),
-                                title: Text(
-                                  '${result_data![index]['brand']} - ${result_data![index]['averageRating']} stars on average',
-                                  style: TextStyle(fontSize: 14.0),
-                                ),
-                                // subtitle: Text(
-                                //     '${((_summaryRecords[index]['usedSecond'] * _summaryRecords[index]['waterFlowLiterPerSecond']) * 10.round() / 10).toStringAsFixed(1)} liters '),
-                                // subtitle: Text(
-                                //     '${groupedMap[_allDeviceInfo[index]['id']]?.forEach(sumFuction)}'),
-                                subtitle: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                        '${result_data![index]['averageWaterConsumpLiters']} liters per minute on average with ${result_data![index]['nOfProduct']} products'),
-                                  ],
-                                ),
+                            child: Container(
+                              width: 300,
+                              height: 200,
+                              child: Card(
+                                semanticContainer: true,
+                                color: Colors.blue[200],
+                                key: ValueKey(result_data![index]['brand']),
+                                // color: _getColorByBin(
+                                //     _foundCards[index]["color"].toString()),
+                                elevation: 4,
+                                margin: EdgeInsets.all(16.0),
+                                child: ListTile(
+                                  leading: Column(
+                                    children: [
+                                      Text(
+                                        'Rank ${index + 1}',
+                                        style: TextStyle(
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(
+                                        '${result_data![index]['medianRating'].toString()} Stars',
+                                        style: TextStyle(fontSize: 14.0),
+                                      ),
+                                    ],
+                                  ),
+                                  title: Text(
+                                    '${result_data![index]['brand']} - ${result_data![index]['averageRating']} stars on average',
+                                    style: TextStyle(fontSize: 14.0),
+                                  ),
+                                  // subtitle: Text(
+                                  //     '${((_summaryRecords[index]['usedSecond'] * _summaryRecords[index]['waterFlowLiterPerSecond']) * 10.round() / 10).toStringAsFixed(1)} liters '),
+                                  // subtitle: Text(
+                                  //     '${groupedMap[_allDeviceInfo[index]['id']]?.forEach(sumFuction)}'),
+                                  subtitle: Container(
+                                    height: 50,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                            '${result_data![index]['averageWaterConsumpLiters']} liters per minute on average with ${result_data![index]['nOfProduct']} products'),
+                                      ],
+                                    ),
+                                  ),
 
-                                onTap: () {
-                                  // Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(
-                                  //     builder: (context) => DetailScreen(
-                                  //         foundCard: _foundCards[index]),
-                                  //   ),
-                                  // );
-                                },
+                                  onTap: () {
+                                    // Navigator.push(
+                                    //   context,
+                                    //   MaterialPageRoute(
+                                    //     builder: (context) => DetailScreen(
+                                    //         foundCard: _foundCards[index]),
+                                    //   ),
+                                    // );
+                                  },
+                                ),
                               ),
                             ),
                           ),
@@ -7907,256 +8013,336 @@ class _SearchProductPageState extends State<SearchProductPage> {
                   },
                 )
               : Container(),
+
           //
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      showShowerProduct = false;
-                      showTapProduct = !showTapProduct;
-                    });
-                  },
-                  child: Text('Tap Products')),
-              ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      showTapProduct = false;
-                      showShowerProduct = !showShowerProduct;
-                    });
-                  },
-                  child: Text('Shower Products')),
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Text('Find out more water saving products',
+                    style: TextStyle(
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                    )),
+              )
             ],
           ),
 
-          //
-          showShowerProduct
-              ? Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('3 stars'),
-                      Text('4 stars'),
-                      Text('All stars')
-                    ],
-                  ),
-                )
-              : Container(),
-          showShowerProduct
-              ? Slider(
-                  value: _selectedShowerStarValue.toDouble(),
-                  min: 3.0,
-                  max: 5.0,
-                  divisions: 2,
-                  activeColor: Colors.blue[200],
-                  inactiveColor: Colors.black,
-                  label:
-                      '${_selectedShowerStarValue.toDouble() == 5 ? "Show All" : _selectedShowerStarValue.toDouble()} stars',
-                  onChanged: (double newValue) {
-                    setState(() {
-                      _selectedShowerStarValue = newValue.round().toDouble();
-                    });
-                  },
-                  semanticFormatterCallback: (double newValue) {
-                    return '${newValue.round()}';
-                  })
-              : Container(),
+          Expanded(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            showShowerProduct = false;
+                            showTapProduct = !showTapProduct;
+                          });
+                        },
+                        child: Text('Tap Products')),
+                    ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            showTapProduct = false;
+                            showShowerProduct = !showShowerProduct;
+                          });
+                        },
+                        child: Text('Shower Products')),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    showTapProduct
+                        ? Padding(
+                            padding: const EdgeInsets.all(18.0),
+                            child: Text('Taps products with selected ratings',
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold,
+                                )),
+                          )
+                        : Container(),
+                    showShowerProduct
+                        ? Padding(
+                            padding: const EdgeInsets.all(18.0),
+                            child: Text(
+                                'Showerheads products with selected ratings',
+                                style: TextStyle(
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.bold,
+                                )),
+                          )
+                        : Container()
+                  ],
+                ),
 
-          showShowerProduct
-              ? FutureBuilder(
-                  future: fetchShowersProductData(http.Client()),
-                  builder: (BuildContext context, AsyncSnapshot snapshot) {
-                    if (snapshot.hasError) {
-                      return const Center(
-                        child: Text('An error has occurred!'),
-                      );
-                    } else if (snapshot.hasData) {
-                      var grouped_data = snapshot.data!
-                          .where((o) =>
-                              o['intStarRating'] == _selectedShowerStarValue)
-                          .toList();
-
-                      _selectedShowerStarValue.toDouble() == 5
-                          ? grouped_data = snapshot.data!
-                          : grouped_data;
-                      // return Text('${snapshot.data![1]['key']}');
-
-                      return Expanded(
-                        child: ListView.builder(
-                          scrollDirection: Axis.vertical,
-                          itemCount: grouped_data!.length,
-                          itemBuilder: (context, index) => Align(
-                            child: Card(
-                              key: ValueKey(grouped_data![index]['brand']),
-                              // color: _getColorByBin(
-                              //     _foundCards[index]["color"].toString()),
-                              elevation: 4,
-                              margin: EdgeInsets.all(16.0),
-                              child: ListTile(
-                                leading: Text(
-                                  '${grouped_data![index]['intStarRating'].toString()} Stars',
-                                  style: TextStyle(fontSize: 14.0),
-                                ),
-                                title: Text(
-                                  '${grouped_data![index]['brand']} - ${grouped_data![index]['model']}',
-                                  style: TextStyle(fontSize: 14.0),
-                                ),
-                                // subtitle: Text(
-                                //     '${((_summaryRecords[index]['usedSecond'] * _summaryRecords[index]['waterFlowLiterPerSecond']) * 10.round() / 10).toStringAsFixed(1)} liters '),
-                                // subtitle: Text(
-                                //     '${groupedMap[_allDeviceInfo[index]['id']]?.forEach(sumFuction)}'),
-                                subtitle: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                        '${grouped_data![index]['waterconsump.']} liters per minute'),
-                                    Text(
-                                        'Reg.number: ${grouped_data![index]['regnumber']}'),
-                                    Text(
-                                        'Subtype: ${grouped_data![index]['subtype']}'),
-                                  ],
-                                ),
-
-                                onTap: () {
-                                  // Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(
-                                  //     builder: (context) => DetailScreen(
-                                  //         foundCard: _foundCards[index]),
-                                  //   ),
-                                  // );
-                                },
-                              ),
-                            ),
+                //
+                showShowerProduct
+                    ? Container(
+                        width: 500,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('3 stars'),
+                              Text('4 stars'),
+                              Text('All stars')
+                            ],
                           ),
                         ),
-                      );
-                    } else {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                  },
-                )
-              : Container(),
+                      )
+                    : Container(),
+                showShowerProduct
+                    ? Container(
+                        width: 500,
+                        child: Slider(
+                            value: _selectedShowerStarValue.toDouble(),
+                            min: 3.0,
+                            max: 5.0,
+                            divisions: 2,
+                            activeColor: Colors.blue[200],
+                            inactiveColor: Colors.black,
+                            label:
+                                '${_selectedShowerStarValue.toDouble() == 5 ? "Show All" : _selectedShowerStarValue.toDouble()} stars',
+                            onChanged: (double newValue) {
+                              setState(() {
+                                _selectedShowerStarValue =
+                                    newValue.round().toDouble();
+                              });
+                            },
+                            semanticFormatterCallback: (double newValue) {
+                              return '${newValue.round()}';
+                            }),
+                      )
+                    : Container(),
 
-          //
-          showTapProduct
-              ? Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('3 stars'),
-                      Text('4 stars'),
-                      Text('5 stars'),
-                      Text('6 stars'),
-                      Text('All stars')
-                    ],
-                  ),
-                )
-              : Container(),
-          showTapProduct
-              ? Slider(
-                  value: _selectedTapStarValue.toDouble(),
-                  min: 3.0,
-                  max: 7.0,
-                  divisions: 4,
-                  activeColor: Colors.blue[200],
-                  inactiveColor: Colors.black,
-                  label:
-                      '${_selectedTapStarValue.toDouble() == 7 ? "Show All" : _selectedTapStarValue.toDouble()} stars',
-                  onChanged: (double newValue) {
-                    setState(() {
-                      _selectedTapStarValue = newValue.round().toDouble();
-                    });
-                  },
-                  semanticFormatterCallback: (double newValue) {
-                    return '${newValue.round()}';
-                  })
-              : Container(),
+                showShowerProduct
+                    ? FutureBuilder(
+                        future: fetchShowersProductData(http.Client()),
+                        builder:
+                            (BuildContext context, AsyncSnapshot snapshot) {
+                          if (snapshot.hasError) {
+                            return const Center(
+                              child: Text('An error has occurred!'),
+                            );
+                          } else if (snapshot.hasData) {
+                            var grouped_data = snapshot.data!
+                                .where((o) =>
+                                    o['intStarRating'] ==
+                                    _selectedShowerStarValue)
+                                .toList();
 
-          showTapProduct
-              ? FutureBuilder(
-                  future: fetchTapsProductData(http.Client()),
-                  builder: (BuildContext context, AsyncSnapshot snapshot) {
-                    if (snapshot.hasError) {
-                      return const Center(
-                        child: Text('An error has occurred!'),
-                      );
-                    } else if (snapshot.hasData) {
-                      var grouped_data = snapshot.data!
-                          .where((o) =>
-                              o['intStarRating'] == _selectedTapStarValue)
-                          .toList();
+                            _selectedShowerStarValue.toDouble() == 5
+                                ? grouped_data = snapshot.data!
+                                : grouped_data;
+                            // return Text('${snapshot.data![1]['key']}');
 
-                      _selectedTapStarValue.toDouble() == 7
-                          ? grouped_data = snapshot.data!
-                          : grouped_data;
-                      // return Text('${snapshot.data![1]['key']}');
+                            return Expanded(
+                              child: ListView.builder(
+                                scrollDirection: Axis.vertical,
+                                itemCount: grouped_data!.length,
+                                itemBuilder: (context, index) => Align(
+                                  child: Container(
+                                    width: 500,
+                                    child: Card(
+                                      semanticContainer: true,
+                                      key: ValueKey(
+                                          grouped_data![index]['brand']),
+                                      // color: _getColorByBin(
+                                      //     _foundCards[index]["color"].toString()),
+                                      elevation: 4,
+                                      margin: EdgeInsets.all(16.0),
+                                      child: ListTile(
+                                        leading: Text(
+                                          '${grouped_data![index]['intStarRating'].toString()} Stars',
+                                          style: TextStyle(fontSize: 14.0),
+                                        ),
+                                        title: Text(
+                                          '${grouped_data![index]['brand']} - ${grouped_data![index]['model']}',
+                                          style: TextStyle(fontSize: 14.0),
+                                        ),
+                                        // subtitle: Text(
+                                        //     '${((_summaryRecords[index]['usedSecond'] * _summaryRecords[index]['waterFlowLiterPerSecond']) * 10.round() / 10).toStringAsFixed(1)} liters '),
+                                        // subtitle: Text(
+                                        //     '${groupedMap[_allDeviceInfo[index]['id']]?.forEach(sumFuction)}'),
+                                        subtitle: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                                '${grouped_data![index]['waterconsump']} liters per minute'),
+                                            Text(
+                                                'Reg.number: ${grouped_data![index]['regnumber']}'),
+                                            Text(
+                                                'Subtype: ${grouped_data![index]['subtype']}'),
+                                          ],
+                                        ),
 
-                      return Expanded(
-                        child: ListView.builder(
-                          scrollDirection: Axis.vertical,
-                          itemCount: grouped_data!.length,
-                          itemBuilder: (context, index) => Align(
-                            child: Card(
-                              key: ValueKey(grouped_data![index]['brand']),
-                              // color: _getColorByBin(
-                              //     _foundCards[index]["color"].toString()),
-                              elevation: 4,
-                              margin: EdgeInsets.all(16.0),
-                              child: ListTile(
-                                leading: Text(
-                                  '${grouped_data![index]['intStarRating'].toString()} Stars',
-                                  style: TextStyle(fontSize: 14.0),
+                                        onTap: () {
+                                          // Navigator.push(
+                                          //   context,
+                                          //   MaterialPageRoute(
+                                          //     builder: (context) => DetailScreen(
+                                          //         foundCard: _foundCards[index]),
+                                          //   ),
+                                          // );
+                                        },
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                                title: Text(
-                                  '${grouped_data![index]['brand']} - ${grouped_data![index]['model']}',
-                                  style: TextStyle(fontSize: 14.0),
-                                ),
-                                // subtitle: Text(
-                                //     '${((_summaryRecords[index]['usedSecond'] * _summaryRecords[index]['waterFlowLiterPerSecond']) * 10.round() / 10).toStringAsFixed(1)} liters '),
-                                // subtitle: Text(
-                                //     '${groupedMap[_allDeviceInfo[index]['id']]?.forEach(sumFuction)}'),
-                                subtitle: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                        '${grouped_data![index]['waterconsump.']} liters per minute'),
-                                    Text(
-                                        'Reg.number: ${grouped_data![index]['regnumber']}'),
-                                    Text(
-                                        'Subtype: ${grouped_data![index]['subtype']}'),
-                                  ],
-                                ),
-
-                                onTap: () {
-                                  // Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(
-                                  //     builder: (context) => DetailScreen(
-                                  //         foundCard: _foundCards[index]),
-                                  //   ),
-                                  // );
-                                },
                               ),
-                            ),
+                            );
+                          } else {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+                        },
+                      )
+                    : Container(),
+
+                //
+                showTapProduct
+                    ? Container(
+                        width: 500,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('3 stars'),
+                              Text('4 stars'),
+                              Text('5 stars'),
+                              Text('6 stars'),
+                              Text('All stars')
+                            ],
                           ),
                         ),
-                      );
-                    } else {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                  },
-                )
-              : Container(),
+                      )
+                    : Container(),
+                showTapProduct
+                    ? Container(
+                        width: 500,
+                        child: Slider(
+                            value: _selectedTapStarValue.toDouble(),
+                            min: 3.0,
+                            max: 7.0,
+                            divisions: 4,
+                            activeColor: Colors.blue[200],
+                            inactiveColor: Colors.black,
+                            label:
+                                '${_selectedTapStarValue.toDouble() == 7 ? "Show All" : _selectedTapStarValue.toDouble()} stars',
+                            onChanged: (double newValue) {
+                              setState(() {
+                                _selectedTapStarValue =
+                                    newValue.round().toDouble();
+                              });
+                            },
+                            semanticFormatterCallback: (double newValue) {
+                              return '${newValue.round()}';
+                            }),
+                      )
+                    : Container(),
+
+                showTapProduct
+                    ? FutureBuilder(
+                        future: fetchTapsProductData(http.Client()),
+                        builder:
+                            (BuildContext context, AsyncSnapshot snapshot) {
+                          if (snapshot.hasError) {
+                            return const Center(
+                              child: Text('An error has occurred!'),
+                            );
+                          } else if (snapshot.hasData) {
+                            var grouped_data = snapshot.data!
+                                .where((o) =>
+                                    o['intStarRating'] == _selectedTapStarValue)
+                                .toList();
+
+                            _selectedTapStarValue.toDouble() == 7
+                                ? grouped_data = snapshot.data!
+                                : grouped_data;
+                            // return Text('${snapshot.data![1]['key']}');
+
+                            return Expanded(
+                              child: ListView.builder(
+                                scrollDirection: Axis.vertical,
+                                itemCount: grouped_data!.length,
+                                itemBuilder: (context, index) => Align(
+                                  child: Container(
+                                    width: 500,
+                                    child: Card(
+                                      semanticContainer: true,
+
+                                      key: ValueKey(
+                                          grouped_data![index]['brand']),
+                                      // color: _getColorByBin(
+                                      //     _foundCards[index]["color"].toString()),
+                                      elevation: 4,
+                                      margin: EdgeInsets.all(16.0),
+                                      child: ListTile(
+                                        leading: Text(
+                                          '${grouped_data![index]['intStarRating'].toString()} Stars',
+                                          style: TextStyle(fontSize: 14.0),
+                                        ),
+                                        title: Text(
+                                          '${grouped_data![index]['brand']} - ${grouped_data![index]['model']}',
+                                          style: TextStyle(fontSize: 14.0),
+                                        ),
+                                        // subtitle: Text(
+                                        //     '${((_summaryRecords[index]['usedSecond'] * _summaryRecords[index]['waterFlowLiterPerSecond']) * 10.round() / 10).toStringAsFixed(1)} liters '),
+                                        // subtitle: Text(
+                                        //     '${groupedMap[_allDeviceInfo[index]['id']]?.forEach(sumFuction)}'),
+                                        subtitle: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                                '${grouped_data![index]['waterconsump']} liters per minute'),
+                                            Text(
+                                                'Reg.number: ${grouped_data![index]['regnumber']}'),
+                                            Text(
+                                                'Subtype: ${grouped_data![index]['subtype']}'),
+                                          ],
+                                        ),
+
+                                        onTap: () {
+                                          // Navigator.push(
+                                          //   context,
+                                          //   MaterialPageRoute(
+                                          //     builder: (context) => DetailScreen(
+                                          //         foundCard: _foundCards[index]),
+                                          //   ),
+                                          // );
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          } else {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+                        },
+                      )
+                    : Container(),
+              ],
+            ),
+          ),
+
           //end
         ],
       ),
