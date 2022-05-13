@@ -68784,7 +68784,7 @@ ghM(){return"windows"},
 gm6(){return"\\"}}
 A.HI.prototype={
 K(a,b){var s=new A.a_x(null).a8n(A.cR([B.bD,B.bC,B.dJ,B.eU],t.J)),r=A.apN(null,B.tu)
-return new A.xU(A.aH(["/",new A.a08(),"/timer",new A.a09(),"/password",new A.a0a(),"/estimation",new A.a0b(),"/iot",new A.a0c(),"/adddevice",new A.a0d(),"/ratedproducts",new A.a0e(),"/tips",new A.a0f()],t.N,t.Ab),"/ratedproducts","Shorten My Shower",r,!1,s,null)}}
+return new A.xU(A.aH(["/",new A.a08(),"/timer",new A.a09(),"/password",new A.a0a(),"/estimation",new A.a0b(),"/iot",new A.a0c(),"/adddevice",new A.a0d(),"/ratedproducts",new A.a0e(),"/tips",new A.a0f()],t.N,t.Ab),"/password","Shorten My Shower",r,!1,s,null)}}
 A.a08.prototype={
 $1(a){return new A.rk(null)},
 $S:420}
