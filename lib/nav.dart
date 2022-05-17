@@ -14,6 +14,12 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import "package:collection/collection.dart";
 
+///
+
+// this about navigation bar and all elements and logic in that page
+// modify via searching keywords
+
+///
 class HomeNav extends StatelessWidget {
   HomeNav({
     required this.onPage,

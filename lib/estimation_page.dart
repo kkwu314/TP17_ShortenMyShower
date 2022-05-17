@@ -15,6 +15,8 @@ import 'package:http/http.dart' as http;
 import "package:collection/collection.dart";
 import 'package:shorten_my_shower/nav.dart';
 
+// this about estimation page and all elements and logic in that page
+// modify via searching keywords
 class EstimationPage extends StatefulWidget {
   @override
   _EstimationPageState createState() => _EstimationPageState();
@@ -632,7 +634,8 @@ class _EstimationDetailScreenState extends State<EstimationDetailScreen> {
                           ),
                     Container(
                       child: Center(
-                          child: Text('Did you know it could be equal to',
+                          child: Text(
+                              'Did you know this amount of water can be used for',
                               style: TextStyle(
                                   fontSize: 20, color: Colors.black))),
                     ),
@@ -669,11 +672,11 @@ class _EstimationDetailScreenState extends State<EstimationDetailScreen> {
                                 },
                                 child: Container(
                                   height: 100,
-                                  width: 200,
+
                                   // color: Colors.white,
                                   child: Center(
                                     child: Text(
-                                        '${(widget.estimatedAmount * 33.814 / 8).round()} cups of coffee',
+                                        'making ${(widget.estimatedAmount * 33.814 / 8).round()} cups of coffee',
                                         style: TextStyle(
                                             fontSize: 18,
                                             color: Colors.blue[500])),
@@ -715,11 +718,11 @@ class _EstimationDetailScreenState extends State<EstimationDetailScreen> {
                                 },
                                 child: Container(
                                   height: 100,
-                                  width: 200,
+
                                   // color: Colors.white,
                                   child: Center(
                                     child: Text(
-                                        '${(widget.estimatedAmount * 1 / 62).round()} adult human in 62kg',
+                                        'supporting ${(widget.estimatedAmount * 1 / 47).round()} people in Africa per day',
                                         style: TextStyle(
                                             fontSize: 18,
                                             color: Colors.blue[500])),
@@ -761,11 +764,11 @@ class _EstimationDetailScreenState extends State<EstimationDetailScreen> {
                                 },
                                 child: Container(
                                   height: 100,
-                                  width: 200,
+
                                   // color: Colors.white,
                                   child: Center(
                                     child: Text(
-                                        '${(widget.estimatedAmount / 3).round()} sq m covered by trees ',
+                                        'growing ${(widget.estimatedAmount / 3).round()} sq m trees',
                                         style: TextStyle(
                                             fontSize: 18,
                                             color: Colors.blue[500])),
@@ -786,7 +789,12 @@ class _EstimationDetailScreenState extends State<EstimationDetailScreen> {
                             onPressed: () {
                               Navigator.pushNamed(context, '/iot');
                             },
-                            child: Text("Measure by IoT"))
+                            child: Text("Measure by IoT")),
+                        ElevatedButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/tips');
+                            },
+                            child: Text("Find some tips"))
                       ],
                     ),
                     SizedBox(height: 20.0),

@@ -21,11 +21,14 @@ import 'package:shorten_my_shower/product_page.dart';
 import 'package:shorten_my_shower/timer_page.dart';
 import 'package:shorten_my_shower/tips_page.dart';
 
+///
+
+// this about main app and all elements and logic in that page
+// modify via searching keywords
+
+///
+///
 void main() async {
-  var _allDeviceInfo = await fetchIoTDeviceData(http.Client());
-
-  var _allRecordsInfo = await fetchIoTRecordData(http.Client());
-
   runApp(const MyApp());
 }
 
@@ -48,7 +51,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/password',
+      initialRoute: '/ratedproducts',
       routes: {
         '/': (context) => LandingPage(),
         '/timer': (context) => BodyTimerPage(),

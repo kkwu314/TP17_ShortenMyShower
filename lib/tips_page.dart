@@ -17,6 +17,13 @@ import 'package:shorten_my_shower/nav.dart';
 
 ///
 ///
+//////
+
+// this about Tips page and all elements and logic in that page
+// modify via searching keywords
+
+///
+///
 ///
 class KnowledgeCardPage extends StatefulWidget {
   @override

@@ -17,17 +17,10 @@ import 'package:shorten_my_shower/nav.dart';
 
 ///
 
-Future<List<Map<String, dynamic>>> fetchIoTDeviceData(
-    http.Client client) async {
-  final response = await client
-      .get(Uri.parse('https://api.jsonbin.io/b/626ebc5f38be296761faaf93'));
-  //print(response.body);
-  var result = jsonDecode(response.body).cast<Map<String, dynamic>>();
-  // .map<IoTDeviceData>((json) => IoTDeviceData.fromJson(json))
-  // .toList();
-  //print(result);
-  return result;
-}
+// this about IoT page and all elements and logic in that page
+// modify via searching keywords
+
+///
 
 Future<List<Map<String, dynamic>>> fetchSummary(http.Client client) async {
   final response = await client
@@ -99,22 +92,6 @@ Future<List<Map<String, dynamic>>> fetchTap(http.Client client) async {
   return result;
 }
 
-Future<List<Map<String, dynamic>>> fetchIoTRecordData(
-    http.Client client) async {
-  final response = await client
-      // .get(Uri.parse('https://api.jsonbin.io/b/62500812d8a4cc06909ddd01'));
-      // .get(Uri.parse('https://tp17-api.azurewebsites.net/api/WaterDatas'));
-      // .get(Uri.parse('https://tp17-water.azurewebsites.net/api/IotRecords'));
-      .get(Uri.parse('https://api.jsonbin.io/b/626ebcbf38be296761faafd7'));
-
-  //print(response.body);
-  var result = jsonDecode(response.body).cast<Map<String, dynamic>>();
-  // .map<IoTDeviceData>((json) => IoTDeviceData.fromJson(json))
-  // .toList();
-  //print(result);
-  return result;
-}
-
 class IoTPage extends StatefulWidget {
   @override
   _IoTPageState createState() => _IoTPageState();
@@ -124,14 +101,6 @@ class _IoTPageState extends State<IoTPage> {
   List<Map<String, dynamic>> _allSummary = [];
   List<Map<String, dynamic>> _allDeviceInfo = [];
   List<Map<String, dynamic>> _allRecordsInfo = [];
-
-  Future<List<Map<String, dynamic>>> fetchiot() async {
-    return await fetchIoTDeviceData(http.Client());
-  }
-
-  Future<List<Map<String, dynamic>>> fetchrc() async {
-    return await fetchIoTRecordData(http.Client());
-  }
 
   Future<List<Map<String, dynamic>>> fetchIoTSummary() async {
     return await fetchSummary(http.Client());
@@ -151,8 +120,6 @@ class _IoTPageState extends State<IoTPage> {
   @override
   Widget build(BuildContext context) {
     if (_allDeviceInfo == [] || _allRecordsInfo == []) {
-      fetchiot();
-      fetchrc();
       return Text('loading');
     } else {
       print("hey");

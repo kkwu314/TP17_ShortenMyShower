@@ -15,6 +15,12 @@ import 'package:http/http.dart' as http;
 import "package:collection/collection.dart";
 import 'package:shorten_my_shower/nav.dart';
 
+///
+
+// this about landing page and all elements and logic in that page
+// modify via searching keywords
+
+///
 class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
