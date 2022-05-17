@@ -69287,7 +69287,7 @@ A.d0(s,"/password",r)}},
 $S:0}
 A.HH.prototype={
 K(a,b){var s=new A.a_y(null).a8l(A.cQ([B.bE,B.bD,B.dK,B.eU],t.C)),r=A.apN(null,B.tx)
-return new A.xT(A.aH(["/",new A.a09(),"/timer",new A.a0a(),"/password",new A.a0b(),"/estimation",new A.a0c(),"/iot",new A.a0d(),"/adddevice",new A.a0e(),"/ratedproducts",new A.a0f(),"/tips",new A.a0g()],t.N,t.Ab),"/ratedproducts","Shorten My Shower",r,!1,s,null)}}
+return new A.xT(A.aH(["/",new A.a09(),"/timer",new A.a0a(),"/password",new A.a0b(),"/estimation",new A.a0c(),"/iot",new A.a0d(),"/adddevice",new A.a0e(),"/ratedproducts",new A.a0f(),"/tips",new A.a0g()],t.N,t.Ab),"/password","Shorten My Shower",r,!1,s,null)}}
 A.a09.prototype={
 $1(a){return new A.rk(null)},
 $S:427}
