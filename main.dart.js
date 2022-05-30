@@ -20122,7 +20122,7 @@ _.r=d},
 ahI(a){var s=0,r=A.a4(t.G),q,p
 var $async$ahI=A.a5(function(b,c){if(b===1)return A.a1(c,r)
 while(true)switch(s){case 0:s=3
-return A.a7(a.i3("GET",A.eo("https://tp17-water.azurewebsites.net/api/IotRecords/1"),null),$async$ahI)
+return A.a7(a.i3("GET",A.eo("https://tp17-water-5120.azurewebsites.net/api/IotRecords/1"),null),$async$ahI)
 case 3:p=c
 q=J.eN(B.a4.hu(0,A.le(A.l9(p.e).c.a.h(0,"charset")).bW(0,p.w),null),t.P)
 s=1
@@ -20132,7 +20132,7 @@ return A.a3($async$ahI,r)},
 ahF(a){var s=0,r=A.a4(t.G),q,p
 var $async$ahF=A.a5(function(b,c){if(b===1)return A.a1(c,r)
 while(true)switch(s){case 0:s=3
-return A.a7(a.i3("GET",A.eo("https://tp17-water.azurewebsites.net/api/Devices/1/shower"),null),$async$ahF)
+return A.a7(a.i3("GET",A.eo("https://tp17-water-5120.azurewebsites.net/api/Devices/1/shower"),null),$async$ahF)
 case 3:p=c
 q=J.eN(B.a4.hu(0,A.le(A.l9(p.e).c.a.h(0,"charset")).bW(0,p.w),null),t.P)
 s=1
@@ -20142,7 +20142,7 @@ return A.a3($async$ahF,r)},
 ahE(a){var s=0,r=A.a4(t.G),q,p
 var $async$ahE=A.a5(function(b,c){if(b===1)return A.a1(c,r)
 while(true)switch(s){case 0:s=3
-return A.a7(a.i3("GET",A.eo("https://tp17-water.azurewebsites.net/api/Devices/1/bath"),null),$async$ahE)
+return A.a7(a.i3("GET",A.eo("https://tp17-water-5120.azurewebsites.net/api/Devices/1/bath"),null),$async$ahE)
 case 3:p=c
 q=J.eN(B.a4.hu(0,A.le(A.l9(p.e).c.a.h(0,"charset")).bW(0,p.w),null),t.P)
 s=1
@@ -20152,7 +20152,7 @@ return A.a3($async$ahE,r)},
 ahM(a){var s=0,r=A.a4(t.G),q,p
 var $async$ahM=A.a5(function(b,c){if(b===1)return A.a1(c,r)
 while(true)switch(s){case 0:s=3
-return A.a7(a.i3("GET",A.eo("https://tp17-water.azurewebsites.net/api/Devices/1/toilet"),null),$async$ahM)
+return A.a7(a.i3("GET",A.eo("https://tp17-water-5120.azurewebsites.net/api/Devices/1/toilet"),null),$async$ahM)
 case 3:p=c
 q=J.eN(B.a4.hu(0,A.le(A.l9(p.e).c.a.h(0,"charset")).bW(0,p.w),null),t.P)
 s=1
@@ -20162,7 +20162,7 @@ return A.a3($async$ahM,r)},
 ahJ(a){var s=0,r=A.a4(t.G),q,p
 var $async$ahJ=A.a5(function(b,c){if(b===1)return A.a1(c,r)
 while(true)switch(s){case 0:s=3
-return A.a7(a.i3("GET",A.eo("https://tp17-water.azurewebsites.net/api/Devices/1/tap"),null),$async$ahJ)
+return A.a7(a.i3("GET",A.eo("https://tp17-water-5120.azurewebsites.net/api/Devices/1/tap"),null),$async$ahJ)
 case 3:p=c
 q=J.eN(B.a4.hu(0,A.le(A.l9(p.e).c.a.h(0,"charset")).bW(0,p.w),null),t.P)
 s=1
@@ -20174,7 +20174,7 @@ var $async$aih=A.a5(function(e,f){if(e===1)return A.a1(f,r)
 while(true)switch(s){case 0:q=B.a4.hz(new A.Zt(a,b,c,1).hg())
 p=t.N
 s=2
-return A.a7(A.asr(A.eo("https://tp17-water.azurewebsites.net/api/Devices"),q,A.aH(["Content-Type","application/json; charset=UTF-8"],p,p)),$async$aih)
+return A.a7(A.asr(A.eo("https://tp17-water-5120.azurewebsites.net/api/Devices"),q,A.aH(["Content-Type","application/json; charset=UTF-8"],p,p)),$async$aih)
 case 2:A.cJ(q)
 return A.a2(null,r)}})
 return A.a3($async$aih,r)},
@@ -20359,7 +20359,7 @@ YF:function YF(a){this.a=a},
 ahL(a){var s=0,r=A.a4(t.G),q,p
 var $async$ahL=A.a5(function(b,c){if(b===1)return A.a1(c,r)
 while(true)switch(s){case 0:s=3
-return A.a7(a.i3("GET",A.eo("https://tp17-water.azurewebsites.net/api/SummaryTaps"),null),$async$ahL)
+return A.a7(a.i3("GET",A.eo("https://tp17-water-5120.azurewebsites.net/api/SummaryTaps"),null),$async$ahL)
 case 3:p=c
 q=J.eN(B.a4.hu(0,A.le(A.l9(p.e).c.a.h(0,"charset")).bW(0,p.w),null),t.P)
 s=1
@@ -20369,7 +20369,7 @@ return A.a3($async$ahL,r)},
 ahK(a){var s=0,r=A.a4(t.G),q,p
 var $async$ahK=A.a5(function(b,c){if(b===1)return A.a1(c,r)
 while(true)switch(s){case 0:s=3
-return A.a7(a.i3("GET",A.eo("https://tp17-water.azurewebsites.net/api/Taps"),null),$async$ahK)
+return A.a7(a.i3("GET",A.eo("https://tp17-water-5120.azurewebsites.net/api/Taps"),null),$async$ahK)
 case 3:p=c
 q=J.eN(B.a4.hu(0,A.le(A.l9(p.e).c.a.h(0,"charset")).bW(0,p.w),null),t.P)
 s=1
@@ -20379,7 +20379,7 @@ return A.a3($async$ahK,r)},
 ahG(a){var s=0,r=A.a4(t.G),q,p
 var $async$ahG=A.a5(function(b,c){if(b===1)return A.a1(c,r)
 while(true)switch(s){case 0:s=3
-return A.a7(a.i3("GET",A.eo("https://tp17-water.azurewebsites.net/api/SummaryShowerheads"),null),$async$ahG)
+return A.a7(a.i3("GET",A.eo("https://tp17-water-5120.azurewebsites.net/api/SummaryShowerheads"),null),$async$ahG)
 case 3:p=c
 q=J.eN(B.a4.hu(0,A.le(A.l9(p.e).c.a.h(0,"charset")).bW(0,p.w),null),t.P)
 s=1
@@ -20389,7 +20389,7 @@ return A.a3($async$ahG,r)},
 ahH(a){var s=0,r=A.a4(t.G),q,p
 var $async$ahH=A.a5(function(b,c){if(b===1)return A.a1(c,r)
 while(true)switch(s){case 0:s=3
-return A.a7(a.i3("GET",A.eo("https://tp17-water.azurewebsites.net/api/Showerheads"),null),$async$ahH)
+return A.a7(a.i3("GET",A.eo("https://tp17-water-5120.azurewebsites.net/api/Showerheads"),null),$async$ahH)
 case 3:p=c
 q=J.eN(B.a4.hu(0,A.le(A.l9(p.e).c.a.h(0,"charset")).bW(0,p.w),null),t.P)
 s=1
@@ -20429,7 +20429,7 @@ adA:function adA(){},
 iB(a){var s=0,r=A.a4(t.ZG),q,p
 var $async$iB=A.a5(function(b,c){if(b===1)return A.a1(c,r)
 while(true)switch(s){case 0:s=3
-return A.a7(a.i3("GET",A.eo("https://tp17-water.azurewebsites.net/api/WaterDatas"),null),$async$iB)
+return A.a7(a.i3("GET",A.eo("https://tp17-water-5120.azurewebsites.net/api/WaterDatas"),null),$async$iB)
 case 3:p=c
 q=A.aEe().$2$2(A.aGw(),A.le(A.l9(p.e).c.a.h(0,"charset")).bW(0,p.w),t.N,t.ZG)
 s=1
@@ -20442,7 +20442,7 @@ var $async$aii=A.a5(function(b,c){if(b===1)return A.a1(c,r)
 while(true)switch(s){case 0:p=B.a4.hz(new A.a4b(a,new A.ef(Date.now(),!1)).hg())
 o=t.N
 s=3
-return A.a7(A.asr(A.eo("https://tp17-water.azurewebsites.net/api/ShowerRecords"),p,A.aH(["Content-Type","application/json; charset=UTF-8"],o,o)),$async$aii)
+return A.a7(A.asr(A.eo("https://tp17-water-5120.azurewebsites.net/api/ShowerRecords"),p,A.aH(["Content-Type","application/json; charset=UTF-8"],o,o)),$async$aii)
 case 3:n=c
 A.cJ(p)
 o=n.b===201&&!0
