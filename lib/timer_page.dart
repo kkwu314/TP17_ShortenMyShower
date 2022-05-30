@@ -1200,7 +1200,8 @@ Future<List<WaterData>> fetchWaterData(http.Client client) async {
       // .get(Uri.parse('https://tp17-api.azurewebsites.net/api/WaterDatas'));
       // .get(Uri.parse(
       //     'https://tp17waterapiiterationone.azurewebsites.net/api/WaterDatas'));
-      .get(Uri.parse('https://tp17-water.azurewebsites.net/api/WaterDatas'));
+      .get(Uri.parse(
+          'https://tp17-water-5120.azurewebsites.net/api/WaterDatas'));
   return compute(parseWaterData, response.body);
 }
 
@@ -1287,7 +1288,7 @@ Future<bool> postRecord(int seconds) async {
       //     'https://tp17waterapi20220412011238.azurewebsites.net/api/showerrecords'),
       // Uri.parse(
       //     'https://tp17waterapiiterationone.azurewebsites.net/api/showerrecords'),
-      Uri.parse('https://tp17-water.azurewebsites.net/api/ShowerRecords'),
+      Uri.parse('https://tp17-water-5120.azurewebsites.net/api/ShowerRecords'),
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
       },

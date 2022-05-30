@@ -23,8 +23,8 @@ import 'package:shorten_my_shower/nav.dart';
 ///
 
 Future<List<Map<String, dynamic>>> fetchSummary(http.Client client) async {
-  final response = await client
-      .get(Uri.parse('https://tp17-water.azurewebsites.net/api/IotRecords/1'));
+  final response = await client.get(
+      Uri.parse('https://tp17-water-5120.azurewebsites.net/api/IotRecords/1'));
   //print(response.body);
   var result = jsonDecode(response.body).cast<Map<String, dynamic>>();
   // .map<IoTDeviceData>((json) => IoTDeviceData.fromJson(json))
@@ -39,7 +39,7 @@ Future<List<Map<String, dynamic>>> fetchShower(http.Client client) async {
       // .get(Uri.parse('https://tp17-api.azurewebsites.net/api/WaterDatas'));
       // .get(Uri.parse('https://tp17-water.azurewebsites.net/api/Devices'));
       .get(Uri.parse(
-          'https://tp17-water.azurewebsites.net/api/Devices/1/shower'));
+          'https://tp17-water-5120.azurewebsites.net/api/Devices/1/shower'));
   //print(response.body);
   var result = jsonDecode(response.body).cast<Map<String, dynamic>>();
   // .map<IoTDeviceData>((json) => IoTDeviceData.fromJson(json))
@@ -53,8 +53,8 @@ Future<List<Map<String, dynamic>>> fetchBath(http.Client client) async {
       // .get(Uri.parse('https://api.jsonbin.io/b/62500812d8a4cc06909ddd01'));
       // .get(Uri.parse('https://tp17-api.azurewebsites.net/api/WaterDatas'));
       // .get(Uri.parse('https://tp17-water.azurewebsites.net/api/Devices'));
-      .get(
-          Uri.parse('https://tp17-water.azurewebsites.net/api/Devices/1/bath'));
+      .get(Uri.parse(
+          'https://tp17-water-5120.azurewebsites.net/api/Devices/1/bath'));
   //print(response.body);
   var result = jsonDecode(response.body).cast<Map<String, dynamic>>();
   // .map<IoTDeviceData>((json) => IoTDeviceData.fromJson(json))
@@ -69,7 +69,7 @@ Future<List<Map<String, dynamic>>> fetchToilet(http.Client client) async {
       // .get(Uri.parse('https://tp17-api.azurewebsites.net/api/WaterDatas'));
       // .get(Uri.parse('https://tp17-water.azurewebsites.net/api/Devices'));
       .get(Uri.parse(
-          'https://tp17-water.azurewebsites.net/api/Devices/1/toilet'));
+          'https://tp17-water-5120.azurewebsites.net/api/Devices/1/toilet'));
   //print(response.body);
   var result = jsonDecode(response.body).cast<Map<String, dynamic>>();
   // .map<IoTDeviceData>((json) => IoTDeviceData.fromJson(json))
@@ -83,7 +83,8 @@ Future<List<Map<String, dynamic>>> fetchTap(http.Client client) async {
       // .get(Uri.parse('https://api.jsonbin.io/b/62500812d8a4cc06909ddd01'));
       // .get(Uri.parse('https://tp17-api.azurewebsites.net/api/WaterDatas'));
       // .get(Uri.parse('https://tp17-water.azurewebsites.net/api/Devices'));
-      .get(Uri.parse('https://tp17-water.azurewebsites.net/api/Devices/1/tap'));
+      .get(Uri.parse(
+          'https://tp17-water-5120.azurewebsites.net/api/Devices/1/tap'));
   //print(response.body);
   var result = jsonDecode(response.body).cast<Map<String, dynamic>>();
   // .map<IoTDeviceData>((json) => IoTDeviceData.fromJson(json))
@@ -836,7 +837,7 @@ void postIoTDevice(
       // Uri.parse('https://tp17-api.azurewebsites.net/api/showerrecords'),
       // Uri.parse(
       //     'https://tp17waterapi20220412011238.azurewebsites.net/api/showerrecords'),
-      Uri.parse('https://tp17-water.azurewebsites.net/api/Devices'),
+      Uri.parse('https://tp17-water-5120.azurewebsites.net/api/Devices'),
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
       },

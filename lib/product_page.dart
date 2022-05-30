@@ -27,7 +27,8 @@ Future<List<Map<String, dynamic>>> fetchTapsSummaryData(
     http.Client client) async {
   final response = await client
       // .get(Uri.parse('https://api.jsonbin.io/b/62500812d8a4cc06909ddd01'));
-      .get(Uri.parse('https://tp17-water.azurewebsites.net/api/SummaryTaps'));
+      .get(Uri.parse(
+          'https://tp17-water-5120.azurewebsites.net/api/SummaryTaps'));
 
   //print(response.body);
   var result = jsonDecode(response.body).cast<Map<String, dynamic>>();
@@ -42,7 +43,7 @@ Future<List<Map<String, dynamic>>> fetchTapsProductData(
     http.Client client) async {
   final response = await client
       // .get(Uri.parse('https://api.jsonbin.io/b/62500812d8a4cc06909ddd01'));
-      .get(Uri.parse('https://tp17-water.azurewebsites.net/api/Taps'));
+      .get(Uri.parse('https://tp17-water-5120.azurewebsites.net/api/Taps'));
 
   //print(response.body);
   var result = jsonDecode(response.body).cast<Map<String, dynamic>>();
@@ -58,7 +59,7 @@ Future<List<Map<String, dynamic>>> fetchShowerheadsSummaryData(
   final response = await client
       // .get(Uri.parse('https://api.jsonbin.io/b/62500812d8a4cc06909ddd01'));
       .get(Uri.parse(
-          'https://tp17-water.azurewebsites.net/api/SummaryShowerheads'));
+          'https://tp17-water-5120.azurewebsites.net/api/SummaryShowerheads'));
 
   //print(response.body);
   var result = jsonDecode(response.body).cast<Map<String, dynamic>>();
@@ -73,7 +74,8 @@ Future<List<Map<String, dynamic>>> fetchShowersProductData(
     http.Client client) async {
   final response = await client
       // .get(Uri.parse('https://api.jsonbin.io/b/62500812d8a4cc06909ddd01'));
-      .get(Uri.parse('https://tp17-water.azurewebsites.net/api/Showerheads'));
+      .get(Uri.parse(
+          'https://tp17-water-5120.azurewebsites.net/api/Showerheads'));
 
   //print(response.body);
   var result = jsonDecode(response.body).cast<Map<String, dynamic>>();
